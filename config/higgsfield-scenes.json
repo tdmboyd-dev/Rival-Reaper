@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "model": "kling-video/o3/image-reference",
+  "rate_usd_per_second": 0.0462,
+  "duration_seconds_each": 5,
+  "aspect_ratio": "16:9",
+  "mode": "std",
+  "sound": "off",
+  "output_dir": "private/higgsfield-output",
+  "scenes": [
+    {
+      "id": "01-crowd-approach",
+      "refs": [
+        "private/higgsfield-inputs/field-day-master.png",
+        "private/higgsfield-inputs/reaper-machine.png"
+      ],
+      "prompt": "24mm cinematic wide lens at shoulder height inside a crowded late-afternoon Black-led family-and-friends Field Day. Slowly dolly forward through laughing adults, folding chairs, grill smoke and waving team banners toward the exact Rival Reaper machine. Foreground people naturally cross frame and create parallax. The machine remains geometrically stable, centered ahead, while the block party feels alive. Warm daylight, believable anatomy, no readable generated text, no player names, no camera spin, one continuous shot. End settled on the machine."
+    },
+    {
+      "id": "02-idle-loop",
+      "refs": [
+        "private/higgsfield-inputs/field-day-master.png",
+        "private/higgsfield-inputs/reaper-machine.png"
+      ],
+      "prompt": "Locked 35mm hero camera on the exact Rival Reaper machine inside the late-afternoon Field Day crowd. Keep the cabinet, lever, ticket slot and six energy chambers fixed. Only gentle ambient motion: distant people laugh and gesture, flags move lightly, grill smoke drifts, speaker cones barely pulse, colored energy breathes inside glass. No ticket movement, no names, no invented text. Beginning and ending composition should match as closely as possible for loop editing."
+    },
+    {
+      "id": "03-machine-awakens",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "private/higgsfield-inputs/field-day-master.png"
+      ],
+      "prompt": "Begin from the approved Rival Reaper hero pose. A controlled 1.5-second physical dolly moves closer as the machine wakes: side lights sequence on, gauges rise, speaker cones flex once, hydraulic hoses tense, internal mechanisms rotate slightly. The crowd behind reacts subtly and stays secondary. Keep silhouette, ram crown, lever, slot and six energy chambers unchanged. No ticket yet, no team selected, no readable generated text. End completely steady in a powered-on waiting pose."
+    },
+    {
+      "id": "04-colors-fight",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png"
+      ],
+      "prompt": "The camera performs a slow 10-degree orbit around the exact Rival Reaper cabinet while six contained energy systems violently compete inside the smoked-glass chamber: thorned crimson rose energy, cobalt hydraulic water pressure, emerald smoke, molten orange fire, hot-pink venom, and purple crystal force. They collide and braid without changing the cabinet geometry or implying a winner. Heavy physical machine remains grounded. No team badge or player name appears. End with all six energies collapsing toward the chamber center."
+    },
+    {
+      "id": "05-ticket-bay-closeup",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png"
+      ],
+      "prompt": "50mm mechanical close-up of the exact Rival Reaper ticket bay and rollers. Camera lowers toward the slot and holds steady. Internal gears rotate, brass rollers engage, paper feed mechanism gives two heavy jerky preparatory movements but the blank ticket does not fully eject. Maintain exact machine proportions and blank paper. No letters, logos or names generated. End on a stable close-up aligned for a code-driven DOM ticket overlay."
+    },
+    {
+      "id": "06-reset-next-victim",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "private/higgsfield-inputs/field-day-master.png"
+      ],
+      "prompt": "After a celebration, the Rival Reaper machine cools back to ready. Camera slowly pulls from a medium close shot to the wider Field Day hero composition. Colored energy retracts into six chambers, smoke and particles clear, crowd settles but stays excited, speaker lights return to idle. Cabinet geometry remains exact. No ticket or player name visible. End on the same stable framing used for the idle loop."
+    },
+    {
+      "id": "07-blood-bloom-explosion",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "examples/rival-reaper/assets/blood-bloom-roster-template.png"
+      ],
+      "prompt": "Team celebration visual shell for Blood Bloom. Keep the exact Rival Reaper machine centered and stable while crimson rose petals, black thorn-vines and deep red-gold energy erupt outward in a contained cinematic burst. Suggest the Rose Panther world through shadow and movement without inventing text or altering official art. Warm daylight crowd catches red reflections. No player name in generated media. End with particles clearing back toward the machine."
+    },
+    {
+      "id": "08-pressure-gang-explosion",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "examples/rival-reaper/assets/pressure-gang-roster-template.png"
+      ],
+      "prompt": "Team celebration visual shell for Pressure Gang. Exact Rival Reaper machine remains stable while cobalt hydraulic pressure rings, compressed water shockwaves and dark blue chrome reflections explode around it. Use the approved Water/Pressure King roster-world artwork only as visual style reference; do not turn it into a reveal badge and do not generate words. Crowd receives blue reflected light. End with pressure rings dissipating cleanly."
+    },
+    {
+      "id": "09-high-society-explosion",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "examples/rival-reaper/assets/high-society-roster-template.png"
+      ],
+      "prompt": "Team celebration visual shell for High Society. Exact Rival Reaper machine remains stable while emerald smoke, gold sparks and dense elevated green haze bloom outward with street-luxury fantasy energy. Use the approved Smoke King roster-world artwork only as style reference; do not create or fake a standalone badge, text or player name. End as smoke thins enough to restore a clear machine view."
+    },
+    {
+      "id": "10-heat-mob-explosion",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "examples/rival-reaper/assets/heat-mob-roster-template.png"
+      ],
+      "prompt": "Team celebration visual shell for Heat Mob. Exact Rival Reaper cabinet remains fixed while molten orange steel light, heat distortion and a Fire Lion-shaped flame silhouette erupt from vents and seams. Powerful but contained, daylight environment still readable, no full-screen flash, no generated words or player names. End with heat shimmer and embers receding."
+    },
+    {
+      "id": "11-pink-venom-explosion",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "examples/rival-reaper/assets/pink-venom-roster-template.png"
+      ],
+      "prompt": "Team celebration visual shell for Pink Venom. Exact Rival Reaper cabinet stays stable while hot-pink venom, black chrome serpent-liquid ribbons and sharp magenta reflections whip around the machine with dangerous gender-neutral energy. Use approved Venom Kingdom roster-world art only for style reference. No invented badge, no generated text, no player name. End with venom ribbons snapping back into the machine."
+    },
+    {
+      "id": "12-belt-2-ass-explosion",
+      "refs": [
+        "private/higgsfield-inputs/reaper-machine.png",
+        "examples/rival-reaper/assets/belt-2-ass-roster-template.png",
+        "examples/rival-reaper/assets/belt-2-ass-badge.png"
+      ],
+      "prompt": "Team celebration visual shell for BELT 2 ASS. Keep the exact Rival Reaper cabinet and the approved purple ram/crystal identity visually consistent. Purple crystal force fractures outward like luminous gemstone shockwaves, gold belt hardware gleams, ram-horn energy curls around the machine, then slams back inward. Do not alter or regenerate the approved badge artwork, and do not generate player names or replacement text. End on a clear purple-lit machine."
+    }
+  ]
+}
