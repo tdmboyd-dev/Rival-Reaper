@@ -22,3 +22,5 @@ Latest owner direction: daylight / sunset latest; visible urban block party domi
 Gate9 partial: owner visual acceptance, official badges and physical sound/readability rehearsal. Gate10 partial: fake browser rehearsal/audit passed; private real roster and actual phone/projector did not run. Authenticated 21st MCP unavailable; public source discovery and licensed upstream adaptation used. No GLB/video pipeline or production deployment claimed. Unusual rosters may exceed solver search budget; arbitrary 250-player feasibility not proven.
 
 Next: review daylight arena with owner, accept approved badge files locally, then rehearse private roster on actual phone/projector/speakers. Keep private data out of Git. Continue this engine; do not restart migration.
+
+Final preview: fake-data demo running on http://127.0.0.1:8787/arena (local exec session70407); opened in Codex. Host token stays in ignored .rival-reaper/demo/host-token. Tested implementation SHA155dafd26443fbfc46fb9732e9a6a943facd8b12.
