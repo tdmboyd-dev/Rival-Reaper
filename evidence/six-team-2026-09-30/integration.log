@@ -1,0 +1,31 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @mgr/rival-reaper@0.2.0 test:integration
+> node --test --import tsx test/rival-reaper-server.test.ts test/rival-reaper-lineup-server.test.ts
+
+✔ six-team fate survives every reveal restart and replay; old/new lineup mismatch never changes saved bytes (263.983919ms)
+✔ host routes reject missing, bare, malformed and incorrect auth (84.969855ms)
+✔ malformed body, missing command and oversized request are rejected (26.589105ms)
+✔ reveal without fate and unknown player fail without mutation (27.457812ms)
+✔ parallel identical commands lock once and replay once (18.393727ms)
+✔ parallel different commands and second draw cannot consume another fate (17.816322ms)
+✔ replay advance is idempotent; command reuse and stale revisions fail (30.4637ms)
+✔ presentation redacts fate and private metadata until their authorized phases (79.344253ms)
+✔ restart at every reveal phase preserves fate and command journal (160.2297ms)
+✔ SSE initial connection and reconnect supply current authoritative state (25.962036ms)
+✔ audit export is integrity-checkable and encrypted file contains no clear roster (10.496836ms)
+✔ save failure publishes no new fate and disables all further mutations (6.149282ms)
+✔ cross-origin commands are rejected and static traversal is not served (4.541474ms)
+✔ second local writer is refused without touching the existing snapshot (12.275111ms)
+✔ killed CLI process recovers encrypted fate and ink phase without reroll (309.45267ms)
+✔ restart rejects changed roster or teams without rewriting locked fate (17.901841ms)
+✔ host poster modules are served locally with private-input file paths inaccessible (11.381111ms)
+✔ session-bound host commands cannot apply to a different event at the same revision (17.092317ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1029.642392

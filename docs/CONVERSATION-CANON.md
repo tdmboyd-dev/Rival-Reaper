@@ -18,11 +18,13 @@ The later event-date correction supersedes the original weekend schedule: Rival 
 
 ## Draw contract
 
-The current documented competing lineup has five teams: Blood Bloom/red, Pressure Gang/blue, High Society/green, Heat Mob/orange, and Pink Venom/pink. Blackout Krew/supporters remain entirely outside competitive counts, gender balancing, household separation, and random selection. This records the current lineup, not a cap on players or a prohibition on future owner-approved team changes. Changes to the competing lineup require explicit owner approval; do not invent or silently activate teams or players.
+The earlier documented competing lineup comprised Blood Bloom/red, Pressure Gang/blue, High Society/green, Heat Mob/orange, and Pink Venom/pink. The later approved purple identity is recorded below. Support remains outside competitive balancing and random selection. This is not a participant cap; later explicit owner decisions control future changes.
 
 Balance actual input headcount and gender; split households as far as feasible, including honest unavoidable collision handling. Randomness operates among equally valid choices. Keep a private audit trail and immutable locked fate. Do not turn historical practice distributions into official assignments.
 
-Reconcile the roster from explicit user entries and corrections, not assistant cumulative totals. Team capacities and gender quotas must be derived dynamically from the actual validated roster. Current validated input and newer owner changes supersede historical snapshots. Never invent a player merely to reach a divisible total.
+Derive capacities and balancing quotas dynamically from validated input. Reconcile explicit owner entries and corrections rather than assistant cumulative totals. Do not invent missing input or turn practice distributions into official assignments.
+
+Newer owner decision on September 30: BELT 2 ASS (purple, ram titan) is approved as the sixth competing team, with separate badge and roster-poster approvals. The owner subsequently clarified this is one six-team app: normal launch requires actual configured input, and fictional demo names must not populate the event. Old saved test files are not loaded by default or automatically erased. No additional participant is inferred from lineup arithmetic.
 
 Real roster input, household relations, and private audits stay outside public Git. Committed fixtures and publicly reachable preview sessions use fake identities. Do not expose unrevealed identities or private roster attributes in arena responses or poster exports.
 

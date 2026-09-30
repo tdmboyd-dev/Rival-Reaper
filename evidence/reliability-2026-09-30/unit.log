@@ -1,0 +1,93 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @mgr/rival-reaper@0.2.0 test:unit
+> node --test --import tsx test/rival-reaper.test.ts test/rival-reaper-session.test.ts test/rival-reaper-roster.test.ts test/rival-reaper-reveal.test.ts test/rival-reaper-receipts.test.ts test/rival-reaper-persistence.test.ts test/rival-reaper-lock.test.ts test/rival-reaper-connection.test.ts test/rival-reaper-host.test.ts test/rival-reaper-posters.test.ts test/rival-reaper-lineup.test.ts test/rival-reaper-badge-view.test.ts test/rival-reaper-assets.test.ts
+
+✔ all six approved roster source images are byte-identical to recovered or owner-approved originals (41.628177ms)
+✔ installed standalone badges preserve correct original and approved source bytes (67.069415ms)
+✔ badge registry excludes obsolete names, posters and competitive Blackout (3.267584ms)
+✔ standalone badge appears only for released team and stale loads cannot expose previous fate (0.963523ms)
+✔ badge loading failure retains readable identity and cannot alter fate (1.175801ms)
+✔ Back/Forward restoration reconnects live state without duplicate streams (8.612759ms)
+✔ logout aborts an audit fetch and ignores a response delivered afterward (4.140231ms)
+✔ logout prevents a delayed private roster refresh from restoring private DOM (9.595972ms)
+✔ an old login response (200) cannot change a newer login (3.206723ms)
+✔ an old login response (401) cannot change a newer login (1.291755ms)
+✔ logout during the third yank prevents automatic name-reveal continuation (4.075605ms)
+✔ a new server session locks the host and resets private revision before reauthentication (1.846896ms)
+✔ another host reaching ink-3 does not turn an earlier beat into a name reveal (5.073098ms)
+✔ the third yank still automatically reveals the name when its own revision is current (2.782327ms)
+✔ official draw commands bind the session observed when the host submits (5.659897ms)
+✔ draw generates replay-safe command IDs when randomUUID is unavailable (2.993463ms)
+✔ advance generates replay-safe command IDs when randomUUID is unavailable (4.248923ms)
+✔ missing secure randomness fails closed with a visible recovery instruction (2.575717ms)
+✔ a lost response retries the original random-byte ID without generating another fate command (1.826475ms)
+✔ lineup selection is explicit, versioned, and preserves the five-team default (3.096558ms)
+✔ five-v1 47 complete synthetic draws preserve capacity, gender and minimum household repeats (5243.202993ms)
+✔ five-v1 48 complete synthetic draws preserve capacity, gender and minimum household repeats (802.505846ms)
+✔ six-v1 47 complete synthetic draws preserve capacity, gender and minimum household repeats (1176.376931ms)
+✔ six-v1 48 complete synthetic draws preserve capacity, gender and minimum household repeats (1101.46206ms)
+✔ backend, arena and poster identity registries agree and every team has a finite sound frequency (16.65517ms)
+✔ normal event and former demo entry require configured input and default to six teams (7.361415ms)
+✔ a paused stale-owner recheck cannot unlink another recovery's new writer (104.661697ms)
+✔ stale-lock stress admits exactly one of 16 contenders (281.485653ms)
+✔ independent processes recovering one stale lock admit one live writer (345.853647ms)
+✔ an existing recovery guard fails closed without changing stale lock bytes (70.566658ms)
+✔ release is idempotent and cannot remove a successor's lock (16.808154ms)
+✔ malformed or incomplete lock owners are preserved for inspection (72.885241ms)
+✔ a process-probe denial never authorizes lock reclamation (5.265035ms)
+✔ release tolerates an already missing lock path (2.880074ms)
+✔ an orphan recovery guard blocks fresh acquisition when the normal lock is absent (70.586904ms)
+✔ corrupt snapshot ciphertext and unsupported envelope are rejected (16.427554ms)
+✔ encrypted snapshot round-trips and rejects wrong secret (1.603952ms)
+✔ posters gate all five identities on confirmed auth, connection, full public roster and completed reveal (7.045271ms)
+✔ posters reject malformed names and duplicate draw identities (2.050441ms)
+✔ layout preserves all 10 names for a 46-person team and all 50 maximum-length names (141.239095ms)
+✔ wrapping preserves emoji, combining text, long words and every space (1.900176ms)
+✔ canvas contains all roster text and complete art, with deterministic safe PNG names (25.840192ms)
+✔ only bounded raster file signatures are accepted; SVG and disguised external markup fail (3.251189ms)
+✔ actual host controller renders five text-only previews and downloads a full-team image/png (22.728621ms)
+✔ all five independently configured full-team buttons generate uniquely named PNG downloads (237.304452ms)
+✔ logout wipes art URLs and late image decoding cannot restore the art (12.691298ms)
+✔ async export is cancelled by logout, disconnect, changed session or nonterminal reveal (67.384942ms)
+✔ rapid duplicate download clicks cannot create duplicate exports (29.165362ms)
+✔ on-art regions require explicit confirmation, bounded percentages and room for all names (31.876161ms)
+✔ names are bounded inside the explicit region and no below-art fallback is used (13.558091ms)
+✔ different team exports are serialized to bound mobile canvas memory (35.349554ms)
+✔ recovered original templates load and map all five name panels without user coordinates (51.138831ms)
+✔ late original-template loads cannot restore posters after locking the host (10.193547ms)
+✔ approved sixth lineup exposes six mapped templates while five-team sessions stay five (19.701757ms)
+✔ previously completed team remains downloadable while a later different fate is being revealed (1.719706ms)
+✔ transient disconnect or unhealthy state permanently cancels pending export but retains art (36.713611ms)
+✔ receipt chain verifies and detects tampering (10.812674ms)
+✔ reveal refuses missing fate, wrong team, forged receipt and invalid restored phase (14.607447ms)
+✔ reveal walks the locked fate through every theatrical phase (1.447518ms)
+✔ malformed roster and duplicate IDs fail closed (1.651433ms)
+✔ 45 competitors become five teams of nine and blackout stays outside (1.373096ms)
+✔ uneven counts distribute capacities by at most one (0.402893ms)
+✔ restore rejects assignments diverging from valid receipts (14.875589ms)
+✔ snapshots and constructor input cannot mutate locked session (1.560307ms)
+✔ session can snapshot and restore locked draw history (1.001109ms)
+✔ 43 complete draws enforce capacities, gender quotas and household separation (161.085299ms)
+✔ 45 complete draws enforce capacities, gender quotas and household separation (143.397247ms)
+✔ 46 complete draws enforce capacities, gender quotas and household separation (181.367976ms)
+✔ unavoidable household collision is minimized across the complete draw (3.072231ms)
+✔ duplicate, unknown and no-capacity attempts do not mutate assignments (0.540259ms)
+✔ invalid random values fail before assignment (1.399536ms)
+✔ full teams are excluded while other capacity remains (0.7346ms)
+✔ Rival Reaper fills balanced teams without duplicates (2.887634ms)
+✔ Black/support crew never enters engine unless explicitly supplied as players (0.232638ms)
+✔ seeded adversarial draw order preserves fairness across twelve full rehearsals (2054.541455ms)
+ℹ tests 75
+ℹ suites 0
+ℹ pass 75
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8549.396561
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.1.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0
+npm notice To update run: npm install -g npm@12.1.0
+npm notice

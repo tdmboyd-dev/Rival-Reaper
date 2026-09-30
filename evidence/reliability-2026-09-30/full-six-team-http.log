@@ -1,0 +1,10 @@
+✔ six-team fate survives every reveal restart and replay; old/new lineup mismatch never changes saved bytes (191.684042ms)
+✔ complete fictional 47-player six-team HTTP show preserves privacy, terminal rosters and restart (2943.172492ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3328.204084

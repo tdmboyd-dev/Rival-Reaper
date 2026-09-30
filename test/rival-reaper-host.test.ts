@@ -33,7 +33,7 @@ function deferredResponse() {
     }),
   };
 }
-async function harness() {
+async function harness(cryptoApi: unknown = { getRandomValues: (bytes: Uint8Array) => bytes.fill(17) }) {
   const nodes = new Map<string, any>();
   function $(selector: string): any {
     if (!nodes.has(selector)) nodes.set(selector, {
@@ -68,7 +68,7 @@ async function harness() {
     AbortController, AbortSignal, Blob,
     URL: { createObjectURL: () => "blob:test", revokeObjectURL() {} },
     setTimeout: () => 0,
-    crypto: { randomUUID: () => "test-command-uuid" },
+    crypto: cryptoApi,
     fetch: (path: string, options: any) => {
       requests.push({ path, options });
       return responder(path, options);
@@ -237,4 +237,60 @@ test("official draw commands bind the session observed when the host submits", a
   delayed.resolve({ error: "Session changed" }, 409);
   await settle();
   assert.equal(h.inspect("token"), "");
+});
+
+for (const action of ["draw", "advance"]) {
+  test(`${action} generates replay-safe command IDs when randomUUID is unavailable`, async () => {
+    let calls = 0;
+    const h = await harness({ getRandomValues(bytes: Uint8Array) {
+      assert.equal(bytes.length, 16); calls++; return bytes.fill(calls);
+    } });
+    const current = hostState(action === "advance" ? { reveal: { phase: "ticket-ejects" } } : {});
+    h.render(current);
+    h.setResponder(async () => ({ ok: true, json: async () => current }));
+    await h.login();
+    const delayed = deferredResponse(); h.setResponder(() => delayed.promise);
+    if (action === "draw") {
+      h.$("#player").value = "private-player";
+      h.$("#draw-form").onsubmit({ preventDefault() {} });
+    } else h.$("#advance").onclick();
+    const post = h.requests.find((r) => r.options.method === "POST")!;
+    const input = JSON.parse(post.options.body);
+    assert.match(input.commandId, /^[a-f0-9]{32}$/);
+    assert.equal(input.commandId, "01".repeat(16));
+    assert.equal(calls, 1);
+    delayed.resolve({ error: "connection lost" }, 503); await settle();
+  });
+}
+
+test("missing secure randomness fails closed with a visible recovery instruction", async () => {
+  const h = await harness({}); await h.login();
+  h.$("#player").value = "private-player";
+  assert.doesNotThrow(() => h.$("#draw-form").onsubmit({ preventDefault() {} }));
+  assert.equal(h.requests.filter((r) => r.options.method === "POST").length, 0);
+  assert.match(h.$("#message").textContent, /Secure command IDs are unavailable/);
+  assert.equal(h.inspect("pending"), null);
+});
+
+test("a lost response retries the original random-byte ID without generating another fate command", async () => {
+  let calls=0;
+  const h=await harness({getRandomValues(bytes:Uint8Array){calls++;return bytes.fill(calls);}});
+  await h.login();
+  let posts=0;
+  h.setResponder(async (_path,options)=>{
+    if(options.method==='POST'){
+      posts++;
+      if(posts===1)throw new Error('simulated response loss');
+      return {ok:true,json:async()=>({replayed:true,appliedRevision:1,state:hostState({revision:1,reveal:{phase:'machine-awakens'}})})};
+    }
+    return {ok:true,json:async()=>hostState({revision:1,reveal:{phase:'machine-awakens'}})};
+  });
+  h.$('#player').value='private-player';
+  h.$('#draw-form').onsubmit({preventDefault(){}});await settle();
+  assert.equal(h.$('#retry').hidden,false);
+  await h.$('#retry').onclick();
+  const requests=h.requests.filter(r=>r.options.method==='POST');
+  assert.equal(requests.length,2);assert.equal(requests[0].options.body,requests[1].options.body);
+  assert.equal(calls,1);assert.equal(h.inspect('pending'),null);
+  assert.match(h.$('#message').textContent,/original command was recovered/);
 });

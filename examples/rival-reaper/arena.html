@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/arena.js"></script>
   </head>
-  <body class="arena" data-phase="idle" data-team="none">
+  <body class="arena" data-phase="idle" data-team="none" data-team-count="5">
     <div class="atmosphere" aria-hidden="true">
       <div class="aurora a1"></div>
       <div class="aurora a2"></div>
@@ -54,14 +54,15 @@
         <div class="machine">
           <div class="cabinet-top">
             <span>EST. RIVAL DAY III</span><b>FATE HAS NO FAVORITES.</b
-            ><span>№ 005</span>
+            ><span id="cabinet-count">№ 005</span>
           </div>
           <div class="cabinet-brand">RiVAL REAPER</div>
           <div class="energy-window">
             <div class="energy-ribbons" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
             <div class="badge" id="badge">
+              <span class="badge-art" id="badge-art" hidden></span>
               <span class="badge-symbol" id="badge-symbol">R</span
               ><span id="badge-name">FIVE WORLDS<br />ONE FATE</span
               ><small id="badge-note">BADGE ART PLACEHOLDER</small>
@@ -98,12 +99,12 @@
     </main>
     <section class="war-board" aria-label="Team roster board">
       <div class="board-heading">
-        <span>THE WAR BOARD</span><span>FIVE TEAMS. ALL PRESSURE.</span>
+        <span>THE WAR BOARD</span><span id="board-team-count">FIVE TEAMS. ALL PRESSURE.</span>
       </div>
       <div id="teams" class="board-teams"></div>
     </section>
     <footer class="arena-footer">
-      <span><b>BLACKOUT KREW</b> · GORILLA + DOG / SUPPORT CREW</span
+      <span><img class="support-badge" src="/assets/blackout-krew-support-badge.png" alt="Blackout Krew support badge" /><b>BLACKOUT KREW</b> · GORILLA + DOG / SUPPORT CREW</span
       ><span>REFS · GRILL · MEDIA · SIDELINES <b>OUTSIDE THE DRAW</b></span>
     </footer>
   </body>

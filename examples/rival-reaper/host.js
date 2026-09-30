@@ -243,6 +243,18 @@ async function execute(command) {
     }
   }
 }
+// Command IDs identify replay-safe actions, never choose a player's team.
+// randomUUID is secure-context-only; getRandomValues also supports local HTTP.
+function newCommandId() {
+  try {
+    const bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  } catch {
+    message("Secure command IDs are unavailable in this browser. Use a supported browser before continuing.");
+    return null;
+  }
+}
 $("#draw-form").onsubmit = (event) => {
   event.preventDefault();
   if ($("#draw").disabled) return;
@@ -251,10 +263,12 @@ $("#draw-form").onsubmit = (event) => {
     message("Choose a competitor first.");
     return;
   }
+  const commandId = newCommandId();
+  if (!commandId) return;
   execute({
     path: "/api/host/draw",
     input: {
-      commandId: crypto.randomUUID(),
+      commandId,
       expectedRevision: state.revision,
       expectedSessionId: state.sessionId,
       playerId,
@@ -263,10 +277,12 @@ $("#draw-form").onsubmit = (event) => {
 };
 function advance() {
   if ($("#advance").disabled) return;
+  const commandId = newCommandId();
+  if (!commandId) return;
   execute({
     path: "/api/host/reveal/advance",
     input: {
-      commandId: crypto.randomUUID(),
+      commandId,
       expectedRevision: state.revision,
       expectedSessionId: state.sessionId,
     },

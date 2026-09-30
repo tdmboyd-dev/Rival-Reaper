@@ -1,0 +1,37 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @mgr/rival-reaper@0.2.0 test:integration
+> node --test --import tsx test/rival-reaper-server.test.ts test/rival-reaper-lineup-server.test.ts
+
+✔ six-team fate survives every reveal restart and replay; old/new lineup mismatch never changes saved bytes (254.236012ms)
+✔ complete fictional 47-player six-team HTTP show preserves privacy, terminal rosters and restart (3370.35055ms)
+✔ host routes reject missing, bare, malformed and incorrect auth (72.38571ms)
+✔ malformed body, missing command and oversized request are rejected (28.252195ms)
+✔ reveal without fate and unknown player fail without mutation (26.816935ms)
+✔ parallel identical commands lock once and replay once (17.310707ms)
+✔ parallel different commands and second draw cannot consume another fate (16.282107ms)
+✔ replay advance is idempotent; command reuse and stale revisions fail (22.670014ms)
+✔ presentation redacts fate and private metadata until their authorized phases (79.240753ms)
+✔ restart at every reveal phase preserves fate and command journal (174.051ms)
+✔ SSE initial connection and reconnect supply current authoritative state (21.566652ms)
+✔ audit export is integrity-checkable and encrypted file contains no clear roster (13.372339ms)
+✔ save failure publishes no new fate and disables all further mutations (11.182564ms)
+✔ cross-origin commands are rejected and static traversal is not served (5.889246ms)
+✔ second local writer is refused without touching the existing snapshot (15.968762ms)
+✔ killed CLI process recovers encrypted fate and ink phase without reroll (318.869462ms)
+✔ restart rejects changed roster or teams without rewriting locked fate (28.583731ms)
+✔ host poster modules are served locally with private-input file paths inaccessible (18.140284ms)
+✔ session-bound host commands cannot apply to a different event at the same revision (18.030425ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3785.468362
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.1.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0
+npm notice To update run: npm install -g npm@12.1.0
+npm notice

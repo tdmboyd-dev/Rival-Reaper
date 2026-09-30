@@ -1,0 +1,6 @@
+3920d3494be0d8e63102996d507c7827c48e61e2ae4adf00d4101ce3e571bffc  examples/rival-reaper/host.js
+41ffcdbdbfb05b6c6171d1709d728e86c94fe3caf69c42bda16165d2c6e6f5d4  src/rival-reaper/lock.ts
+660ec901777fbb80687604ecae8524d133fa8e70508457c9f453b706fdf11b99  test/rival-reaper-host.test.ts
+e0b0e7db46a3f8984c934b2b1ec774d3289ba196003f116a4c53ce72105ba9b9  test/rival-reaper-lock.test.ts
+aaf8675f6787189ec3ca46527e8c933f88cba5821474e1fdeeb53ceb35c8de1c  test/rival-reaper-lineup-server.test.ts
+630a81f33d4ca7d30ec9822468cd41e8a2f9fa90184f61ceaed4b633b88996ff  package.json

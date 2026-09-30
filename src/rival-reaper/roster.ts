@@ -14,13 +14,7 @@ export interface PrivateRosterEntry {
   status?: "competitor" | "blackout";
 }
 
-const TEAM_IDENTITIES: Array<[TeamId, string]> = [
-  ["blood-bloom", "Blood Bloom"],
-  ["pressure-gang", "Pressure Gang"],
-  ["high-society", "High Society"],
-  ["heat-mob", "Heat Mob"],
-  ["pink-venom", "Pink Venom"],
-];
+import { lineupTeams, type LineupId } from "./lineup.js";
 
 export function validatePrivateRoster(entries: PrivateRosterEntry[]) {
   if (!Array.isArray(entries) || entries.length > 250)
@@ -58,16 +52,17 @@ export function validatePrivateRoster(entries: PrivateRosterEntry[]) {
   return entries;
 }
 
-export function buildFiveTeamState(entries: PrivateRosterEntry[]): {
+export function buildLineupState(entries: PrivateRosterEntry[], lineup: LineupId = "five-v1"): {
   state: ReaperState;
   blackout: PrivateRosterEntry[];
 } {
   validatePrivateRoster(entries);
   const competitors = entries.filter((e) => e.status !== "blackout");
   const blackout = entries.filter((e) => e.status === "blackout");
-  const base = Math.floor(competitors.length / TEAM_IDENTITIES.length);
-  let remainder = competitors.length % TEAM_IDENTITIES.length;
-  const teams: ReaperTeam[] = TEAM_IDENTITIES.map(([id, name]) => ({
+  const identities = lineupTeams(lineup);
+  const base = Math.floor(competitors.length / identities.length);
+  let remainder = competitors.length % identities.length;
+  const teams: ReaperTeam[] = identities.map(({id, name}) => ({
     id,
     name,
     capacity: base + (remainder-- > 0 ? 1 : 0),
@@ -76,4 +71,9 @@ export function buildFiveTeamState(entries: PrivateRosterEntry[]): {
     ({ id, name, householdId, gender }) => ({ id, name, householdId, gender }),
   );
   return { state: { players, teams, assignments: [] }, blackout };
+}
+
+/** Compatibility entry point: never silently upgrades a five-team event. */
+export function buildFiveTeamState(entries: PrivateRosterEntry[]) {
+  return buildLineupState(entries, "five-v1");
 }

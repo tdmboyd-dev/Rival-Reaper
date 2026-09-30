@@ -5,9 +5,9 @@ import vm from "node:vm";
 
 const source = (await readFile(new URL("../examples/rival-reaper/roster-posters.js", import.meta.url), "utf8")).replaceAll("export ", "");
 const ids = ["blood-bloom", "pressure-gang", "high-society", "heat-mob", "pink-venom"];
-function state(count = 10) {
+function state(count = 10, teamIds = ids) {
   return { sessionId: "fake-session", revision: 100, healthy: true, reveal: { phase: "roster-updated" },
-    teams: ids.map((id, team) => ({ id, capacity: count, assigned: count,
+    teams: teamIds.map((id, team) => ({ id, capacity: count, assigned: count,
       roster: Array.from({length: count}, (_, index) => ({ name: `Fake Player ${team + 1}-${index + 1}`, drawIndex: team * count + index + 1 })) })),
   };
 }
@@ -17,7 +17,7 @@ function pngFile(name = "approved.fake.png", overrides: any = {}) {
   const view = new DataView(header.buffer); view.setUint32(16, 100); view.setUint32(20, 100);
   return { name, size: 32, slice: () => new Blob([header]), ...overrides };
 }
-function harness() {
+function harness(originals = false) {
   const elements: any[] = [], downloads: any[] = [], created: any[] = [], revoked: string[] = [], timers: any[] = [];
   const images: any[] = [], texts: any[] = [], drawnImages: any[] = [];
   let deferImage = false, deferBlob = false;
@@ -32,8 +32,9 @@ function harness() {
       drawImage(...args: any[]) { drawnImages.push(args); },
     };
     constructor(readonly tag: string) { elements.push(this); }
-    append(...children: any[]) { this.children.push(...children); }
-    replaceChildren(...children: any[]) { this.children = children; }
+    parent: any = null;
+    append(...children: any[]) { for(const child of children) if(child && typeof child === "object") child.parent=this; this.children.push(...children); }
+    replaceChildren(...children: any[]) { this.children=[]; this.append(...children); }
     setAttribute(key: string, value: string) { this.attrs[key] = value; }
     removeAttribute(key: string) { delete this.attrs[key]; if (key === "src") this.src = ""; }
     addEventListener(key: string, callback: any) { this.listeners.set(key, callback); }
@@ -50,21 +51,28 @@ function harness() {
     naturalWidth = 100; naturalHeight = 100; width = 100; height = 100;
     onload: any; onerror: any; private value = "";
     constructor() { images.push(this); }
-    set src(value: string) { this.value = value; if (!deferImage) queueMicrotask(() => this.onload()); }
+    set src(value: string) { this.value = value;
+      if (value.startsWith("/assets/")) {this.naturalWidth = value.includes("heat-mob") ? 1374 : 1145;this.naturalHeight = value.includes("heat-mob") ? 1145 : 1374;}
+      if (!deferImage) queueMicrotask(() => this.onload()); }
     get src() { return this.value; }
   }
   const scope = vm.createContext({
     document: { createElement: (tag: string) => new Element(tag), body, fonts: {ready: Promise.resolve()} },
-    Image, Blob, root,
+    Image, Blob, root, originals,
     URL: { createObjectURL: (value: any) => { const url = `blob:fake-${created.length}`; created.push({url,value}); return url; }, revokeObjectURL: (url: string) => revoked.push(url) },
     setTimeout: (callback: any) => timers.push(callback),
   });
-  vm.runInContext(source + "\nthis.controller = createPosterControls(root); this.identities = POSTER_TEAMS;", scope);
+  vm.runInContext(source + "\nthis.controller = createPosterControls(root, {loadOriginals:originals}); this.identities = POSTER_TEAMS;", scope);
   return {
     scope, root, elements, downloads, created, revoked, timers, images, texts, drawnImages, blobCallbacks,
     controller: scope.controller,
     gate: (s: any, id = ids[0], access: any = {authenticated:true,online:true}, art: any = {approved:true,image:{},url:"blob:fake",regionConfirmed:true,region:{x:0,y:0,width:100,height:100}}) => scope.posterGate(s, id, access, art),
-    query: (className: string) => elements.filter((element) => element.className.split(" ").includes(className)),
+    query: (className: string) => elements.filter((element) => {
+      if (!element.className.split(" ").includes(className)) return false;
+      for (let node:any=element; node; node=node.parent)
+        if(node.className.split(" ").includes("poster-card") && node.hidden) return false;
+      return true;
+    }),
     input: (id = ids[0]) => elements.find((element) => element.id === `poster-art-${id}`),
     load: async (id = ids[0]) => { const input = elements.find((element) => element.id === `poster-art-${id}`); input.files = [pngFile()]; await input.dispatch("change"); },
     confirmRegion: async (id = ids[0], region = {x:0,y:0,width:100,height:100}) => {
@@ -256,4 +264,74 @@ test("different team exports are serialized to bound mobile canvas memory", asyn
   await h.query("poster-download")[1].dispatch("click"); assert.equal(h.blobCallbacks.length,1);
   h.blobCallbacks[0](new Blob(["fake png"],{type:"image/png"})); await first;
   assert.equal(h.query("poster-download")[1].disabled,false);
+});
+
+test("recovered original templates load and map all five name panels without user coordinates", async () => {
+  const h=harness(true), full=state(10);
+  h.controller.update({state:full,authenticated:true,online:true}); await settle();
+  assert.equal(h.images.length,5);
+  assert.ok(h.query("poster-download").every(button=>!button.disabled));
+  assert.ok(h.query("poster-region-controls").every(panel=>panel.hidden));
+  assert.equal(h.query("poster-overlay-mask").length>=5,true);
+  assert.ok(h.query("poster-source").length===0); // No private metadata field exists.
+  for (const [index,id] of ids.entries()) {
+    const region=h.scope.originalPosterRegion(id);
+    assert.equal(region.templateId,id);
+    const layout=h.scope.drawPoster(h.canvas(),full.teams[index],h.scope.identities[index],h.images[index],region);
+    assert.equal(layout.columns,2);assert.equal(layout.entries.length,10);
+    assert.ok(layout.entries.every((entry:any)=>entry.numberWidth>0));
+    await h.query("poster-download")[index].dispatch("click");
+  }
+  assert.equal(h.downloads.length,5);
+  h.controller.update({state:full,authenticated:true,online:true});await settle();
+  assert.equal(h.images.length,5); // No duplicate image load on repeated SSE updates.
+});
+
+test("late original-template loads cannot restore posters after locking the host", async () => {
+  const h=harness(true),full=state();h.deferImage();
+  h.controller.update({state:full,authenticated:true,online:true});
+  const pending=[...h.images];assert.equal(pending.length,5);
+  h.controller.update({state:full,authenticated:false,online:true});
+  for(const image of pending) image.onload(); await settle();
+  assert.equal(h.root.hidden,true);assert.equal(h.downloads.length,0);
+  assert.ok(h.query("poster-art").every(image=>!image.src));
+});
+
+test("approved sixth lineup exposes six mapped templates while five-team sessions stay five", async () => {
+  const h=harness(true), five=state(8);h.controller.update({state:five,authenticated:true,online:true});await settle();
+  assert.equal(h.query("poster-card").length,5);
+  const six=state(8,[...ids,"belt-2-ass"]);six.sessionId="new-six-event";
+  h.controller.update({state:six,authenticated:true,online:true});await settle();
+  assert.equal(h.query("poster-card").length,6);assert.equal(h.query("poster-download").length,6);
+  assert.ok(h.query("poster-download").every(button=>!button.disabled));
+  const sixth=h.scope.originalPosterRegion("belt-2-ass");
+  assert.equal(sixth.templateId,"belt-2-ass");
+  await h.query("poster-download")[5].dispatch("click");
+  assert.equal(h.downloads[0].name,"rival-reaper-belt-2-ass-new-six-event-full-team.png");
+  assert.ok(h.query("poster-notice")[5].textContent.includes("all 8 names"));
+});
+
+test("previously completed team remains downloadable while a later different fate is being revealed",()=>{
+ const h=harness();const s:any=state();
+ s.reveal={phase:'machine-awakens',drawIndex:11,teamId:null};
+ assert.equal(h.gate(s,ids[0]).ready,true);
+ assert.equal(h.gate(s,ids[1]).ready,false); // Contains draw indices not terminal yet.
+});
+
+
+test("transient disconnect or unhealthy state permanently cancels pending export but retains art", async () => {
+  for (const loss of ["offline", "unhealthy"]) {
+    const h = harness(), s = state();
+    h.controller.update({state:s,authenticated:true,online:true});
+    await h.load(); await h.confirmRegion();
+    h.deferBlob(); const pending = h.query("poster-download")[0].dispatch("click"); await settle();
+    h.controller.update({state:loss === "unhealthy" ? {...s,healthy:false} : s,authenticated:true,online:loss !== "offline"});
+    h.controller.update({state:s,authenticated:true,online:true});
+    h.blobCallbacks[0](new Blob(["fake png"], {type:"image/png"})); await pending;
+    assert.equal(h.downloads.length,0,loss);
+    assert.equal(h.query("poster-download")[0].disabled,false,"approved art retained for explicit retry");
+    const retry=h.query("poster-download")[0].dispatch("click"); await settle();
+    h.blobCallbacks[1](new Blob(["fake png"], {type:"image/png"})); await retry;
+    assert.equal(h.downloads.length,1,"fresh user request succeeds");
+  }
 });

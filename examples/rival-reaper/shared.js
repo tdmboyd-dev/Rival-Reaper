@@ -1,40 +1,41 @@
 export const $ = (s) => document.querySelector(s);
 export const worlds = [
   {
-    id: "blood-bloom",
+    id: "blood-bloom", tone: 146.83,
     name: "Blood Bloom",
     world: "ROSE PANTHER WORLD",
     symbol: "BB",
     color: "#f34668",
   },
   {
-    id: "pressure-gang",
+    id: "pressure-gang", tone: 196,
     name: "Pressure Gang",
     world: "WATER / PRESSURE WORLD",
     symbol: "PG",
     color: "#43b6ff",
   },
   {
-    id: "high-society",
+    id: "high-society", tone: 164.81,
     name: "High Society",
     world: "GREEN FANTASY / SMOKE",
     symbol: "HS",
     color: "#99e672",
   },
   {
-    id: "heat-mob",
+    id: "heat-mob", tone: 130.81,
     name: "Heat Mob",
     world: "FIRE LION WORLD",
     symbol: "HM",
     color: "#ff954e",
   },
   {
-    id: "pink-venom",
+    id: "pink-venom", tone: 220,
     name: "Pink Venom",
     world: "THE VENOM KINGDOM",
     symbol: "PV",
     color: "#ff78d3",
   },
+  {id:"belt-2-ass",tone:246.94,name:"BELT 2 ASS",world:"PURPLE RAM TITAN",symbol:"B2A",color:"#bd7aff"},
 ];
 export const phases = [
   "idle",
@@ -106,12 +107,22 @@ export function el(tag, cls, text) {
 export function renderTeams(state, host = false) {
   const target = $("#teams");
   target.replaceChildren();
+  target.style.setProperty("--team-count",String(state.teams.length));
   for (const world of worlds) {
     const team = state.teams.find((t) => t.id === world.id);
     if (!team) continue;
     const row = el("div", host ? "host-team" : "board-team");
     row.dataset.team = world.id;
     row.style.setProperty("--team-color", world.color);
+    const names = el("div", "roster-names");
+    if (!host) {
+      if (team.roster.length) {
+        names.setAttribute("role", "list"); names.setAttribute("aria-label", `${world.name} players`);
+        for (const player of team.roster) {
+          const name = el("span", "roster-player", player.name); name.setAttribute("role", "listitem"); names.append(name);
+        }
+      } else names.textContent = "The first name is still out there.";
+    }
     if (host) {
       row.append(
         el("strong", "", world.name),
@@ -131,12 +142,7 @@ export function renderTeams(state, host = false) {
       row.append(
         top,
         el("div", "team-world", world.world),
-        el(
-          "div",
-          "roster-names",
-          team.roster.map((p) => p.name).join(" · ") ||
-            "The first name is still out there.",
-        ),
+        names,
       );
     }
     target.append(row);

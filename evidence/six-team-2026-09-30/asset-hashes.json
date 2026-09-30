@@ -1,0 +1,57 @@
+[
+  {
+    "path": "examples/rival-reaper/assets/blood-bloom-badge.png",
+    "bytes": 2781044,
+    "sha256": "2117e5d8e24145b62dfed96100088a0d5287e98dafe9c8773f98c728c4fc82fc"
+  },
+  {
+    "path": "examples/rival-reaper/assets/heat-mob-badge.png",
+    "bytes": 2711639,
+    "sha256": "417854d5779f05d0c00e70ae54a9979658af60a2a07c308480beb3921152b8ac"
+  },
+  {
+    "path": "examples/rival-reaper/assets/high-society-roster-template.png",
+    "bytes": 3394098,
+    "sha256": "8d96e48a7821740e5b4299d12dace671d099710cc91c56e9fe74293ee147f236"
+  },
+  {
+    "path": "examples/rival-reaper/assets/blood-bloom-roster-template.png",
+    "bytes": 3201650,
+    "sha256": "1b407af0f04c52a2cd7e047ec439ee03ce9da52973f2be0e1eb29d1987165d1d"
+  },
+  {
+    "path": "examples/rival-reaper/assets/belt-2-ass-badge.png",
+    "bytes": 3320800,
+    "sha256": "d6a55819be69a4fb6a11e77d301ac629bf2f4e87bcd9c8ce9dc5f1b6bafd70ce"
+  },
+  {
+    "path": "examples/rival-reaper/assets/blackout-krew-support-badge.png",
+    "bytes": 2834255,
+    "sha256": "9dcb4c7d8c6feb599ad1f15e4c7152199618ba412ecf9800a35cca0b77dc85db"
+  },
+  {
+    "path": "examples/rival-reaper/assets/pressure-gang-roster-template.png",
+    "bytes": 3454281,
+    "sha256": "b29e351c6e04d8b9da0a5e15166485614c9e732477b94201b9e3579ce93129d6"
+  },
+  {
+    "path": "examples/rival-reaper/assets/pink-venom-roster-template.png",
+    "bytes": 3223826,
+    "sha256": "6b0f82e457ebff80af4b77238379af653edea7c8708fa305da4e2ae9f8795c02"
+  },
+  {
+    "path": "examples/rival-reaper/assets/belt-2-ass-roster-template.png",
+    "bytes": 3445274,
+    "sha256": "84cf959db6b10fd05bb085d5d88d35769573de1e887bb3d207d58787535a018b"
+  },
+  {
+    "path": "examples/rival-reaper/assets/heat-mob-roster-template.png",
+    "bytes": 3196093,
+    "sha256": "d9488abb49d2adda94ba36eb7735fd5f0c5405eb2917661221722138d7eefcc9"
+  },
+  {
+    "path": "examples/rival-reaper/assets/pink-venom-badge.png",
+    "bytes": 2933266,
+    "sha256": "60a813f8eacc168ced94010e844bcda47c7fb00da779c6510c17e20f54d26ce9"
+  }
+]

@@ -5,9 +5,15 @@ import { mkdir, mkdtemp, writeFile, rm, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve, join } from "node:path";
 import { createRivalReaperServer } from "../src/rival-reaper/server.js";
-import { fixture } from "../test/fixtures.js";
+import { entries } from "../test/fixtures.js";
+import { buildLineupState } from "../src/rival-reaper/roster.js";
+import { parseLineup } from "../src/rival-reaper/lineup.js";
 import { canonical, verifyReceiptChain } from "../src/rival-reaper/receipts.js";
 import { checkFullTeamPosters, checkPosterCanvasBoundaries } from "./poster-browser-checks.js";
+const rehearsalLineup = parseLineup(process.env.REAPER_TEST_LINEUP ?? "five-v1");
+const rehearsalCount = Number(process.env.REAPER_TEST_COUNT ?? 47);
+if (!Number.isInteger(rehearsalCount) || rehearsalCount < 2 || rehearsalCount > 250) throw new Error("Invalid fake rehearsal count");
+const teamCount = rehearsalLineup === "six-v1" ? 6 : 5;
 const output = resolve(process.env.REAPER_ARTIFACTS ?? "evidence/screenshots");
 await mkdir(output, { recursive: true });
 const data = await mkdtemp(join(tmpdir(), "reaper-browser-"));
@@ -18,7 +24,7 @@ const options = {
   hostToken: token,
   secret,
   dataPath: join(data, "session.enc.json"),
-  initialState: fixture(46),
+  initialState: buildLineupState(entries(rehearsalCount), rehearsalLineup).state,
 };
 let app = await createRivalReaperServer(options);
 await app.listen();
@@ -86,8 +92,8 @@ try {
   await host.locator("#token").fill(token);
   await host.locator("#auth-form button").click();
   await expect(host.locator("#controls")).toBeVisible();
-  await expect(host.locator("#player option")).toHaveCount(47);
-  record("Private mobile host unlock and 46 fake roster options");
+  await expect(host.locator("#player option")).toHaveCount(rehearsalCount + 1);
+  record(`Private mobile host unlock and ${rehearsalCount} fake roster options`);
   await host.locator("#player").selectOption("fake-1");
   await host.locator("#draw").click();
   await phase("machine-awakens");
@@ -191,7 +197,7 @@ try {
   // Complete the same 46-player session through the real HTTP API. First two
   // draws exercised host UI; remaining 44 exercise sustained durable operation.
   const seen = new Set<string>();
-  for (let player = 3; player <= 46; player++) {
+  for (let player = 3; player <= rehearsalCount; player++) {
     let current = await fetch(base + "/api/state").then((r) => r.json());
     const issue = async (path: string) => {
       const r = await fetch(base + path, {
@@ -229,13 +235,14 @@ try {
       }
     }
   }
-  await expect(arena.locator("#draw-number")).toHaveText("46");
+  await expect(arena.locator("#draw-number")).toHaveText(String(rehearsalCount));
   await expect(host.locator("#draw")).toBeDisabled();
+  await expect(arena.locator(".roster-player")).toHaveCount(rehearsalCount);
   const complete = await fetch(base + "/api/state").then((r) => r.json());
-  expect(complete.teams.map((t: any) => t.assigned)).toEqual([10, 9, 9, 9, 9]);
-  expect(seen.size).toBe(5);
+  expect(complete.teams.map((t: any) => t.assigned)).toEqual(Array.from({length:teamCount},(_,i)=>Math.floor(rehearsalCount/teamCount)+(i<rehearsalCount%teamCount?1:0)));
+  expect(seen.size).toBe(teamCount);
   record(
-    "Complete 46-player HTTP rehearsal ends 10/9/9/9/9, all five world effects captured",
+    `Complete ${rehearsalCount}-player ${rehearsalLineup} HTTP rehearsal and all ${teamCount} world effects captured`,
   );
   record(await checkFullTeamPosters(host, complete, output));
   record(await checkPosterCanvasBoundaries(host));
@@ -249,7 +256,7 @@ try {
   expect(bundle.bundleHash).toBe(
     createHash("sha256").update(canonical(bundle.payload)).digest("hex"),
   );
-  expect(bundle.payload.receipts).toHaveLength(46);
+  expect(bundle.payload.receipts).toHaveLength(rehearsalCount);
   await host.keyboard.press("Escape");
   await expect(host.locator("#audit-dialog")).not.toBeVisible();
   await expect(host.locator("#audit-open")).toBeFocused();

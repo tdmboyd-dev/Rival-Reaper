@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { buildFiveTeamState } from "../src/rival-reaper/roster.js";
+import { buildLineupState } from "../src/rival-reaper/roster.js";
+import { parseLineup } from "../src/rival-reaper/lineup.js";
 import { drawPlayer, auditSnapshot } from "../src/rival-reaper/engine.js";
 
 // A throwaway preflight. Never starts a server, creates a session, emits names,
@@ -8,7 +9,7 @@ import { drawPlayer, auditSnapshot } from "../src/rival-reaper/engine.js";
 const path = process.argv[2] ?? process.env.RIVAL_REAPER_ROSTER;
 if (!path) throw new Error("Supply an absolute private roster JSON path: npm run rehearse -- /path/to/roster.json");
 const entries = JSON.parse(await readFile(resolve(path), "utf8"));
-const { state, blackout } = buildFiveTeamState(entries);
+const { state, blackout } = buildLineupState(entries, parseLineup(process.env.RIVAL_REAPER_LINEUP ?? "six-v1"));
 if (!state.players.length) throw new Error("The roster has no competitors");
 for (let seed = 1; seed <= 12; seed++) {
   const copy = structuredClone(state);

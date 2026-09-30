@@ -1,0 +1,47 @@
+[
+  {
+    "task_number": "RR-W4-1",
+    "wave": "2026-09-30 reliability",
+    "category": "host reliability",
+    "capability": "replay-safe command identity",
+    "task": "Repair missing UUID capability and verify draw, advance, fail-closed and original-command retry",
+    "status": "PASS",
+    "evidence": [
+      "test/rival-reaper-host.test.ts",
+      "evidence/reliability-2026-09-30/tests.log"
+    ],
+    "artifact": "research/HOST-COMMAND-IDS-2026-09-30.md",
+    "discovered_follow_up": "Actual intended-phone browser acceptance",
+    "blocker": null
+  },
+  {
+    "task_number": "RR-W4-2",
+    "wave": "2026-09-30 reliability",
+    "category": "state recovery",
+    "capability": "single local writer",
+    "task": "Repair concurrent stale-lock ownership race and prove guarded recovery and idempotent release",
+    "status": "PASS",
+    "evidence": [
+      "test/rival-reaper-lock.test.ts",
+      "evidence/reliability-2026-09-30/tests.log"
+    ],
+    "artifact": "research/LOCK-RECOVERY-2026-09-30.md",
+    "discovered_follow_up": "Inspect interrupted recovery guard before restart; local filesystem scope only",
+    "blocker": null
+  },
+  {
+    "task_number": "RR-W4-3",
+    "wave": "2026-09-30 reliability",
+    "category": "integration verification",
+    "capability": "complete six-team show",
+    "task": "Run 47 fictional participants through 470 HTTP commands with retries, privacy, final rosters, audit and restart checks",
+    "status": "PASS",
+    "evidence": [
+      "test/rival-reaper-lineup-server.test.ts",
+      "evidence/reliability-2026-09-30/full-six-team-http.log"
+    ],
+    "artifact": "evidence/RELIABILITY-2026-09-30.md",
+    "discovered_follow_up": "Actual browser export and physical-device acceptance",
+    "blocker": null
+  }
+]

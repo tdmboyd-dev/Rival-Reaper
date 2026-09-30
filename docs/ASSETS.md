@@ -12,11 +12,11 @@ Edit the just-generated block-party arena artwork. Owner correction is authorita
 
 ## Remaining asset gates
 
-- Approved five team badge images have not been supplied. Initials in the live machine carry BADGE ART PLACEHOLDER labels.
+- Four correctly named competitive standalone badges and a separate support badge are bundled. Blue and green corrections await approval; their missing-art state remains an explicit blocker rather than final artwork.
 - Final owner visual acceptance is open. Generation/integration is not approval.
 - No video, GLB, real crowd recording or official soundtrack is installed. Audio uses small synthesized user-enabled cues; acoustic/device verification remains open.
 - Two built-in image tool calls were used: initial rejected night generation and owner-directed daylight edit. Tool billing was not exposed; no separate paid image API was configured.
 
-## Newer recovered poster-template distinction — 2026-09-30
+## Current recovered poster templates — 2026-09-30
 
-The five existing approved art references are completed-team poster templates, NEVER reveal badges. Earlier language treating those five missing files as badge inputs is superseded. Their embedded artwork, slogans and branding must be preserved; completed names belong in each original roster panel, including a tenth slot when needed. Do not replace them with new art, crop them into machine badges or invent template coordinates. Current host export requires the original image plus an explicitly confirmed on-art name region. Actual image bytes and template-region matching remain unverified here.
+Six approved completed-team poster templates are bundled, separate from reveal badges. Original bytes and source hashes are preserved. Their embedded artwork, slogans and branding remain unchanged outside the mapped original name panels. Approved templates load automatically; users do not supply coordinates. Six fictional native-render exports passed visual review. Actual browser export acceptance remains pending. See `TEAM-POSTERS.md` and `../evidence/SIX-TEAM-2026-09-30.md` for proof and boundaries.

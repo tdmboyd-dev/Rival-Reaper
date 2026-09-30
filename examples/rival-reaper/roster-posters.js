@@ -6,7 +6,24 @@ export const POSTER_TEAMS = [
   { id: "high-society", name: "High Society", color: "#99e672" },
   { id: "heat-mob", name: "Heat Mob", color: "#ff954e" },
   { id: "pink-venom", name: "Pink Venom", color: "#ff78d3" },
+  { id: "belt-2-ass", name: "BELT 2 ASS", color: "#bd7aff" },
 ];
+// Exact original image bytes and name-only panels recovered from the owner's
+// continuation; viewed and independently matched to its provenance hashes.
+export const POSTER_TEMPLATES = {
+  "blood-bloom": {width:1145,height:1374,panel:[29.5,56.4,43.7,9.9]},
+  "pressure-gang": {width:1145,height:1374,panel:[29.3,57.4,44.3,10.6]},
+  "high-society": {width:1145,height:1374,panel:[29.4,55.5,43.7,10.7]},
+  "heat-mob": {width:1374,height:1145,panel:[31.0,56.1,38.7,12.8]},
+  "pink-venom": {width:1145,height:1374,panel:[28.9,56.4,44.5,10.3]},
+  "belt-2-ass": {width:1145,height:1374,panel:[20.09,66.52,59.91,13.97],placeholder:false},
+};
+export function originalPosterRegion(teamId) {
+  const template = POSTER_TEMPLATES[teamId];
+  if (!template) throw new Error("Unknown original poster template");
+  const [x,y,width,height] = template.panel;
+  return {x,y,width,height,templateId:teamId};
+}
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_IMAGE_PIXELS = 32 * 1024 * 1024;
 export const MAX_POSTER_HEIGHT = 10000;
@@ -22,8 +39,6 @@ export function posterGate(state, teamId, access = {}, art = null) {
     return { ready: false, reason: "A team needs 1–50 competitors for a poster." };
   if (team.assigned !== team.capacity || !Array.isArray(team.roster) || team.roster.length !== team.capacity)
     return { ready: false, reason: `Waiting for the full public roster (${team.assigned ?? 0} / ${team.capacity}).` };
-  if (state.reveal?.phase !== "roster-updated")
-    return { ready: false, reason: "Finish the current reveal and put the names on the board first." };
   const draws = new Set();
   for (const player of team.roster) {
     if (!player || typeof player.name !== "string" || !player.name.trim() || player.name.length > 120 ||
@@ -31,6 +46,10 @@ export function posterGate(state, teamId, access = {}, art = null) {
       return { ready: false, reason: "The public roster is invalid; reconnect before exporting." };
     draws.add(player.drawIndex);
   }
+  const terminalRoster = state.reveal?.phase === "roster-updated" ||
+    (Number.isSafeInteger(state.reveal?.drawIndex) && team.roster.every(player => player.drawIndex < state.reveal.drawIndex));
+  if (!terminalRoster)
+    return {ready:false,reason:"Finish revealing every member of this team before exporting."};
   if (!art?.approved || !art.image || !art.url)
     return { ready: false, reason: "Approved team art is missing. Choose the original approved image below." };
   if (!art.regionConfirmed || !validPosterRegion(art.region))
@@ -62,8 +81,8 @@ export function validPosterRegion(region) {
     region.x + region.width <= 100 && region.y + region.height <= 100;
 }
 
-// The owner-selected region is expressed against the WHOLE original image, not
-// a cropped thumbnail. There is deliberately no automatic/default name area.
+// Regions are expressed against the WHOLE original image, not a cropped thumbnail.
+// Approved originals use verified maps; replacement art requires owner confirmation.
 export function layoutPoster(team, measure, options) {
   if (!Array.isArray(team.roster) || team.roster.length < 1 || team.roster.length > 50)
     throw new Error("Poster roster must contain 1–50 names");
@@ -76,30 +95,36 @@ export function layoutPoster(team, measure, options) {
   const region = options.region;
   const box = { x: width * region.x / 100, y: height * region.y / 100,
     width: width * region.width / 100, height: height * region.height / 100 };
-  const padding = 20;
+  const template = POSTER_TEMPLATES[options.region.templateId];
+  const padding = template ? 8 : 20;
   let best = null;
   function candidate(fontSize, columns) {
     const lineHeight = Math.ceil(fontSize * 1.22), gap = Math.ceil(fontSize * .4);
     const columnGap = fontSize;
     const columnWidth = (box.width - padding * 2 - columnGap * (columns - 1)) / columns;
     if (columnWidth <= 0 || box.height <= padding * 2) return null;
+    const numberWidth = template ? measure("00  ", fontSize) : 0;
+    const nameWidth = columnWidth - numberWidth;
+    if (nameWidth <= 0) return null;
     const rows = Math.ceil(team.roster.length / columns), entries = [];
     for (let column = 0; column < columns; column++) {
       let y = box.y + padding;
       for (const [offset, player] of team.roster.slice(column * rows, (column + 1) * rows).entries()) {
         let lines;
-        try { lines = wrapPosterName(player.name, columnWidth, (text) => measure(text, fontSize)); }
+        try { lines = wrapPosterName(player.name, nameWidth, (text) => measure(text, fontSize)); }
         catch { return null; }
         const textHeight = lines.length * lineHeight;
         if (y + textHeight > box.y + box.height - padding) return null;
         entries.push({ name: player.name, number: column * rows + offset + 1, lines,
-          x: box.x + padding + column * (columnWidth + columnGap), y, width: columnWidth, height: textHeight });
+          x: box.x + padding + column * (columnWidth + columnGap) + numberWidth,
+          numberX: box.x + padding + column * (columnWidth + columnGap), numberWidth,
+          y, width: nameWidth, height: textHeight });
         y += textHeight + gap;
       }
     }
     return { width, height, fontSize, lineHeight, entries, columns, region: box };
   }
-  for (const columns of team.roster.length <= 14 ? [1, 2] : [2, 3]) {
+  for (const columns of template ? [2] : team.roster.length <= 14 ? [1, 2] : [2, 3]) {
     // Bounded font search, with 28px floor. Never truncate names to force a fit.
     let low = 28, high = 92, fitted = null;
     while (low <= high) {
@@ -123,14 +148,32 @@ export function drawPoster(canvas, team, identity, image, region) {
   // Preserve the whole approved image and its aspect ratio. Only the explicitly
   // confirmed name region is overlaid; no fabricated art, headers or new panels.
   ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  if (POSTER_TEMPLATES[region.templateId] && POSTER_TEMPLATES[region.templateId].placeholder !== false) {
+    const sourceWidth = image.naturalWidth || image.width, sourceHeight = image.naturalHeight || image.height;
+    const rx = sourceWidth * region.x / 100, ry = sourceHeight * region.y / 100;
+    const rw = sourceWidth * region.width / 100, rh = sourceHeight * region.height / 100;
+    // Reuse the unlettered central gutter of the ORIGINAL panel. Its full
+    // vertical grain avoids copying slogan edges from the bottom name slot.
+    for (let col = 0; col < 8; col++)
+      ctx.drawImage(image, rx + rw * .42, ry + rh * .02, rw * .13, rh * .78,
+        layout.region.x + col * layout.region.width / 8,
+        layout.region.y, layout.region.width / 8, layout.region.height);
+  }
   ctx.textBaseline = "top";
   ctx.fillStyle = "#fff"; ctx.strokeStyle = "#080b12";
   ctx.lineJoin = "round"; ctx.lineWidth = Math.max(3, layout.fontSize / 9);
   ctx.font = `700 ${layout.fontSize}px ${FONT}`;
-  for (const entry of layout.entries) entry.lines.forEach((line, index) => {
+  for (const entry of layout.entries) {
+    if (entry.numberWidth) {
+      ctx.fillStyle = "#d9c891";
+      ctx.fillText(String(entry.number).padStart(2, "0"), entry.numberX, entry.y);
+      ctx.fillStyle = "#fff";
+    }
+    entry.lines.forEach((line, index) => {
     const y = entry.y + index * layout.lineHeight;
     ctx.strokeText(line, entry.x, y); ctx.fillText(line, entry.x, y);
-  });
+    });
+  }
   return layout;
 }
 
@@ -181,13 +224,14 @@ function canvasBlob(canvas) {
   });
 }
 
-export function createPosterControls(root) {
+export function createPosterControls(root, options = {}) {
   if (!root) throw new Error("Poster control mount is missing");
   let current = { state: null, authenticated: false, online: false };
   let generation = 0;
+  let exportEpoch = 0;
   let exporting = null;
   const art = new Map(), cards = new Map(), jobs = new Map();
-  const previewCache = new Map();
+  const previewCache = new Map(), attemptedOriginals = new Set();
   const panel = node("div", "poster-grid");
   root.append(panel);
   function gate(id) { return posterGate(current.state, id, current, art.get(id)); }
@@ -200,6 +244,8 @@ export function createPosterControls(root) {
     for (const identity of POSTER_TEAMS) {
       const card = cards.get(identity.id), approved = art.get(identity.id), status = gate(identity.id);
       const team = current.state?.teams?.find((team) => team.id === identity.id);
+      card.element.hidden = !team;
+      card.download.hidden = !team;
       card.status.textContent = status.reason;
       let layout = null;
       const previewKey = JSON.stringify([fingerprint(identity.id), approved?.url, approved?.region, approved?.regionConfirmed]);
@@ -219,7 +265,22 @@ export function createPosterControls(root) {
       }
       card.download.disabled = !status.ready || !layout || jobs.has(identity.id) || exporting !== null;
       card.overlay.replaceChildren();
+      if (layout && approved?.template && POSTER_TEMPLATES[identity.id].placeholder !== false) {
+        const mask = node("span", "poster-overlay-mask");
+        mask.style.left = `${approved.region.x}%`; mask.style.top = `${approved.region.y}%`;
+        mask.style.width = `${approved.region.width}%`; mask.style.height = `${approved.region.height}%`;
+        mask.style.backgroundImage = `url("/assets/${identity.id}-roster-texture.png")`;
+        mask.style.backgroundSize = "12.5% 100%";
+        card.overlay.append(mask);
+      }
       if (layout) for (const entry of layout.entries) {
+        if (entry.numberWidth) {
+          const number = node("span", "poster-overlay-number", String(entry.number).padStart(2,"0"));
+          number.style.left = `${entry.numberX / layout.width * 100}%`;
+          number.style.top = `${entry.y / layout.height * 100}%`;
+          number.style.fontSize = `${layout.fontSize / layout.width * 100}cqw`;
+          card.overlay.append(number);
+        }
         const name = node("span", "poster-overlay-name");
         name.style.left = `${entry.x / layout.width * 100}%`;
         name.style.top = `${entry.y / layout.height * 100}%`;
@@ -229,7 +290,8 @@ export function createPosterControls(root) {
         card.overlay.append(name);
       }
       const region = approved?.region;
-      card.selection.hidden = !validPosterRegion(region);
+      card.selection.hidden = !!approved?.template || !validPosterRegion(region);
+      card.regionControls.hidden = !!approved?.template;
       if (validPosterRegion(region)) {
         card.selection.style.left = `${region.x}%`; card.selection.style.top = `${region.y}%`;
         card.selection.style.width = `${region.width}%`; card.selection.style.height = `${region.height}%`;
@@ -239,8 +301,8 @@ export function createPosterControls(root) {
       for (const field of card.fields.values()) field.disabled = !approved || jobs.has(identity.id);
       card.download.textContent = jobs.has(identity.id) ? "PREPARING PNG…" : "DOWNLOAD FULL-TEAM PNG";
       card.input.disabled = !current.authenticated || jobs.has(identity.id);
-      card.remove.disabled = !approved || jobs.has(identity.id);
-      card.source.textContent = approved ? `Host-selected approved art: ${approved.name}` : "Approved art not loaded · no replacement artwork will be exported";
+      card.remove.disabled = !current.authenticated || jobs.has(identity.id);
+      card.source.textContent = approved ? (approved.template ? "Original approved template · existing name panel mapped automatically" : `Host-selected approved art: ${approved.name}`) : "Approved art not loaded · no replacement artwork will be exported";
       card.placeholder.hidden = !!approved;
       card.image.hidden = !approved;
       if (approved && card.image.src !== approved.url) card.image.src = approved.url;
@@ -256,11 +318,35 @@ export function createPosterControls(root) {
     for (const value of art.values()) URL.revokeObjectURL(value.url);
     art.clear();
     previewCache.clear();
+    attemptedOriginals.clear();
     exporting = null;
     jobs.clear();
     for (const card of cards.values()) {
       card.input.value = ""; card.notice.textContent = "";
       for (const field of card.fields.values()) field.value = "";
+    }
+  }
+  async function loadOriginal(id) {
+    if (!current.authenticated || art.has(id) || jobs.has(id) || attemptedOriginals.has(id)) return;
+    attemptedOriginals.add(id);
+    const started = generation, job = Symbol();
+    jobs.set(id, job); render();
+    const card = cards.get(id), template = POSTER_TEMPLATES[id];
+    try {
+      const url = `/assets/${id}-roster-template.png`;
+      const image = await loadImage(url);
+      if (started !== generation || !current.authenticated) return;
+      if (image.naturalWidth !== template.width || image.naturalHeight !== template.height)
+        throw new Error("Original template dimensions changed; export blocked until the correct source is restored");
+      const region = originalPosterRegion(id);
+      art.set(id,{image,url,name:`${id}-roster-template.png`,approved:true,region,regionConfirmed:true,template:true});
+      for (const [key,field] of card.fields) field.value = String(region[key]);
+      card.notice.textContent = "Original poster ready. Names replace only its original roster slots, including a tenth slot when needed.";
+    } catch (error) {
+      if (started === generation) card.notice.textContent = error.message;
+    } finally {
+      if (jobs.get(id) === job) jobs.delete(id);
+      if (started === generation) render();
     }
   }
   for (const identity of POSTER_TEAMS) {
@@ -312,13 +398,15 @@ export function createPosterControls(root) {
     const input = node("input", "poster-art-input");
     input.type = "file"; input.accept = "image/png,image/jpeg,image/webp";
     input.id = `poster-art-${identity.id}`; label.htmlFor = input.id;
-    const remove = node("button", "secondary small", "REMOVE ART"); remove.type = "button";
+    const remove = node("button", "secondary small", "RESTORE ORIGINAL TEMPLATE"); remove.type = "button";
     const download = node("button", "poster-download", "DOWNLOAD FULL-TEAM PNG"); download.type = "button";
     const notice = node("p", "poster-notice"); notice.setAttribute("role", "status");
     status.id = `poster-status-${identity.id}`; download.setAttribute("aria-describedby", status.id);
-    card.append(title, status, preview, source, label, input, remove, regionControls, download, notice);
+    const advanced = node("details", "poster-advanced");
+    advanced.append(node("summary", "", "Advanced: replace artwork"), label, input, remove, regionControls);
+    card.append(title, status, preview, source, advanced, download, notice);
     panel.append(card);
-    cards.set(identity.id, { status, image, placeholder, list, empty, source, input, remove, download, notice, fields, confirm, overlay, selection });
+    cards.set(identity.id, { element:card, status, image, placeholder, list, empty, source, input, remove, download, notice, fields, confirm, overlay, selection, regionControls });
     input.addEventListener("change", async () => {
       const file = input.files?.[0];
       if (!file || !current.authenticated || jobs.has(identity.id)) return;
@@ -348,24 +436,26 @@ export function createPosterControls(root) {
       if (jobs.has(identity.id)) return;
       const previous = art.get(identity.id);
       if (previous) URL.revokeObjectURL(previous.url);
-      art.delete(identity.id); notice.textContent = "Approved art removed from this tab."; render();
+      art.delete(identity.id); attemptedOriginals.delete(identity.id);
+      notice.textContent = "Restoring the original poster template…";
+      void loadOriginal(identity.id); render();
     });
     download.addEventListener("click", async () => {
       const allowed = gate(identity.id);
       if (!allowed.ready || jobs.has(identity.id) || exporting !== null) return;
-      const started = generation, expected = fingerprint(identity.id), job = Symbol();
+      const started = generation, epoch = exportEpoch, expected = fingerprint(identity.id), job = Symbol();
       exporting = job;
       jobs.set(identity.id, job); notice.textContent = "Preparing every name at full resolution…"; render();
       let canvas;
       try {
         if (document.fonts?.ready) await document.fonts.ready;
-        if (started !== generation || !gate(identity.id).ready || fingerprint(identity.id) !== expected) return;
+        if (started !== generation || epoch !== exportEpoch || !gate(identity.id).ready || fingerprint(identity.id) !== expected) return;
         canvas = document.createElement("canvas");
         const selected = art.get(identity.id);
         const layout = drawPoster(canvas, allowed.team, allowed.identity, selected.image, selected.region);
         const blob = await canvasBlob(canvas);
         // Lock/logout/navigation/session changes while toBlob runs cannot download.
-        if (started !== generation || !gate(identity.id).ready || fingerprint(identity.id) !== expected) {
+        if (started !== generation || epoch !== exportEpoch || !gate(identity.id).ready || fingerprint(identity.id) !== expected) {
           if (started === generation) notice.textContent = "The live state changed. Reconnect and try again.";
           return;
         }
@@ -388,10 +478,14 @@ export function createPosterControls(root) {
   render();
   return {
     update(value) {
+      if ((current.online && value.online !== true) || (current.state?.healthy && !value.state?.healthy)) exportEpoch++;
       const sessionChanged = current.state && value.state && current.state.sessionId !== value.state.sessionId;
       if (sessionChanged || (current.authenticated && !value.authenticated)) clear();
       current = { state: value.state ?? null, authenticated: value.authenticated === true, online: value.online === true };
       render();
+      if (current.authenticated && options.loadOriginals !== false)
+        for (const identity of POSTER_TEAMS)
+          if (current.state?.teams?.some(team => team.id === identity.id)) void loadOriginal(identity.id);
     },
     lock() { clear(); current = { ...current, authenticated: false }; render(); },
   };

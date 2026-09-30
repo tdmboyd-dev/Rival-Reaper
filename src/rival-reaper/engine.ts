@@ -1,12 +1,8 @@
 import { randomInt } from "node:crypto";
 import { feasibleTeams } from "./fairness.js";
 export type ReaperGender = "male" | "female";
-export type TeamId =
-  | "blood-bloom"
-  | "pressure-gang"
-  | "high-society"
-  | "heat-mob"
-  | "pink-venom";
+import { TEAM_DEFINITIONS, type TeamId } from "./lineup.js";
+export type { TeamId } from "./lineup.js";
 export interface ReaperPlayer {
   id: string;
   name: string;
@@ -35,13 +31,7 @@ export interface DrawResult {
   assignment: ReaperAssignment;
   team: ReaperTeam;
 }
-const identities = new Set([
-  "blood-bloom",
-  "pressure-gang",
-  "high-society",
-  "heat-mob",
-  "pink-venom",
-]);
+const identities = new Set<string>(TEAM_DEFINITIONS.map(t => t.id));
 export function validateState(state: ReaperState) {
   if (
     !state ||

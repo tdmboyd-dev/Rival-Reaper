@@ -19,6 +19,10 @@ Public GET `/api/state` and `/api/events`: capacities/completed rosters, counts 
 
 Host token stays in memory, not storage/URLs. Pending controls disable; uncertain network results offer same-command retry. Native audit dialog handles focus/Escape. Pointer pull and keyboard share the endpoint. Pause/reduced-motion changes presentation only.
 
-No deployment, real device/projector, family roster, approved badge art, external audit anchor or production verification is established. Local proof is distinct from these states.
+No deployment, real device/projector, external audit anchor or production verification is established. Approved original posters and four competitive badge assets are bundled; two badge corrections remain pending. Local proof is distinct from these states.
 
 Current host commands also send `expectedSessionId`: the server rejects a different session even if its revision matches. Legacy local v1 API callers may omit it for compatibility; callers should migrate to the session-bound form. The browser invalidates authentication and pending private work when it observes a different event.
+
+## Current event and saved-data safety
+
+The normal private CLI defaults to `six-v1`, including the approved BELT 2 ASS identity, and requires actual configured input. Internal `five-v1` parsing remains for explicit recovery and tests only. Public state reports a derived lineup identifier, but saved team/roster identity and receipt chains remain unchanged. Different lineup input against the same saved path fails closed without rewriting bytes. Poster and arena registries are checked against backend identities; every active team has a finite audio frequency.

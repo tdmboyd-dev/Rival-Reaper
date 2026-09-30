@@ -11,6 +11,7 @@ import { EncryptedFileStore } from "./persistence.js";
 import { validateState, type ReaperState } from "./engine.js";
 import { RevealController, revealOrder } from "./reveal.js";
 import { canonical, type ReaperSnapshot } from "./receipts.js";
+import { identifyLineup } from "./lineup.js";
 import { acquireSessionLock } from "./lock.js";
 
 export interface ReaperServerOptions {
@@ -129,6 +130,7 @@ export async function createRivalReaperServer(options: ReaperServerOptions) {
       );
       return {
         sessionId: session.sessionId,
+        lineup: identifyLineup(session.state.teams),
         revision,
         healthy: !unhealthy,
         teams: session.state.teams.map((t) => ({
@@ -361,11 +363,28 @@ export async function createRivalReaperServer(options: ReaperServerOptions) {
           "/arena.html": "arena.html",
           "/styles.css": "styles.css",
           "/arena.js": "arena.js",
+          "/badge-art.js": "badge-art.js",
           "/host.js": "host.js",
           "/shared.js": "shared.js",
           "/roster-posters.js": "roster-posters.js",
           "/roster-posters.css": "roster-posters.css",
           "/assets/block-party-daylight.png": "assets/block-party-daylight.png",
+          "/assets/blood-bloom-badge.png": "assets/blood-bloom-badge.png",
+          "/assets/heat-mob-badge.png": "assets/heat-mob-badge.png",
+          "/assets/pink-venom-badge.png": "assets/pink-venom-badge.png",
+          "/assets/blackout-krew-support-badge.png": "assets/blackout-krew-support-badge.png",
+          "/assets/belt-2-ass-roster-template.png": "assets/belt-2-ass-roster-template.png",
+          "/assets/belt-2-ass-badge.png": "assets/belt-2-ass-badge.png",
+          "/assets/blood-bloom-roster-texture.png": "assets/blood-bloom-roster-texture.png",
+          "/assets/pressure-gang-roster-texture.png": "assets/pressure-gang-roster-texture.png",
+          "/assets/high-society-roster-texture.png": "assets/high-society-roster-texture.png",
+          "/assets/heat-mob-roster-texture.png": "assets/heat-mob-roster-texture.png",
+          "/assets/pink-venom-roster-texture.png": "assets/pink-venom-roster-texture.png",
+          "/assets/blood-bloom-roster-template.png": "assets/blood-bloom-roster-template.png",
+          "/assets/pressure-gang-roster-template.png": "assets/pressure-gang-roster-template.png",
+          "/assets/high-society-roster-template.png": "assets/high-society-roster-template.png",
+          "/assets/heat-mob-roster-template.png": "assets/heat-mob-roster-template.png",
+          "/assets/pink-venom-roster-template.png": "assets/pink-venom-roster-template.png",
         };
         if (req.method === "GET" && files[url.pathname]) {
           const file = files[url.pathname];

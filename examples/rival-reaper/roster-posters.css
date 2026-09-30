@@ -33,3 +33,13 @@
 .poster-region-controls label { display: block; margin: .5rem 0; font-size: .8rem; }
 .poster-region-controls input[type="number"] { display: block; width: 100%; min-width: 0; }
 .poster-region-controls input[type="checkbox"] { width: 1.2rem; height: 1.2rem; margin: .4rem; vertical-align: middle; }
+
+.poster-overlay-mask { position:absolute; background:#0b0e0f; }
+.poster-overlay-number { position:absolute; color:#d9c891; font-family:Arial,Helvetica,sans-serif; font-weight:700; }
+.poster-region-controls[hidden] { display:none; }
+
+.poster-belt-2-ass { --poster-accent:#bd7aff; }
+.poster-card[hidden] { display:none; }
+
+.poster-advanced { margin:.7rem 0; font-size:.85rem; }
+.poster-advanced summary { cursor:pointer; color:#d8deeb; }

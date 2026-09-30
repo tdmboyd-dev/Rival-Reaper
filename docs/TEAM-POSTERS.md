@@ -1,93 +1,27 @@
-# Full-team, on-art PNG posters
+# Completed-team poster exports
 
-## Implemented contract
+The six approved roster templates are separate from reveal badges. Their original image files are preserved byte-for-byte. Source hashes are tested; their slogans, branding and surrounding art are retained.
 
-The private host has five separate poster cards, one for each competing team. A
-card unlocks its download only after confirmed host authentication, a healthy
-live connection, the exact team capacity is present in the **public** roster,
-and the active reveal is `roster-updated`. A locked fate or a partially revealed
-name does not qualify. Blackout Krew is never a poster team.
+## Normal host flow
 
-1. Choose the matching original approved PNG, JPEG or WebP in the team's card.
-2. Enter the intended name area's **Left, Top, Width and Height** as percentages
-   of the complete original image. There is deliberately no guessed default.
-3. Confirm that this is the name area on that approved image. The preview shows
-   the bounded name overlay. Check the image and every full name. Changing any
-   coordinate or choosing another image clears the confirmation.
-4. Download that team's PNG with its own button. This saves a local file; it does
-   not publish anything. Review the result before posting it.
+Unlock the private host. The correct original templates load automatically for the active event's five or six teams. Original name panels are already mapped; the owner does not need to supply coordinates.
 
-The complete original image retains its aspect ratio. Names are drawn **on the
-art inside the explicitly confirmed region**, with white fill and a dark outline
-for contrast. There is no cropped replacement image, added roster sheet, invented
-badge or silent below-art fallback. No names are abbreviated or truncated.
+A download requires a healthy connection, confirmed host authentication, a full team and a fully public terminal roster. A previously completed team can still download while a later person is being revealed. Unrevealed names, gender, household metadata and private audit contents never enter the poster.
 
-The renderer selects one to three columns and fits a bounded font size of at
-least 28 output pixels. If the complete names do not fit readably, export is
-blocked and the host must enlarge the intended name area. Output is normally
-3000 pixels wide, bounded by 24 megapixels and 10,000 pixels high. The original
-aspect ratio and selected region, not an extended below-image panel, determine
-its shape. Large exports can take longer on phones; use a desktop if browser
-memory prevents encoding.
+All names are shown in an accessible text list and over the actual template preview. PNG exports retain full names and numbering, including a tenth slot when the capacity requires it. Names are measured and wrapped without truncation; an unsafe fit blocks export rather than silently omitting or compressing someone.
 
-A 46-competitor session's 10-player team and teams up to 50 players are supported.
-Executed layout tests fit all 50 maximum-length 120-character names into a full
-square-image region. That does **not** prove that an arbitrary small region in
-an unseen approved template can fit them. Too-small regions fail closed. The
-accessible name list is retained outside the image preview for easy review.
+The first five templates originally contain placeholder lettering. Their name areas reuse a visually inspected, text-free central-gutter texture from the same original panel. Only that mapped area is reconstructed. The approved purple template already has an empty panel, so its background is untouched. No full poster is regenerated.
 
-## Local data and security
+Downloads are local files, not social posts. The app never uploads a roster or image to an external service. Real completed-team exports are private until the owner chooses where to post them.
 
-Images must be at most 20 MB, 8192 pixels per side and 32 megapixels. File
-signatures are checked; SVG and remote image URLs are rejected. Art stays in
-browser memory and is cleared on host lock, session change or page refresh.
-Nothing is uploaded or committed. The module never receives a host token or
-private roster fields. Only names already on the public board are used; no
-household metadata, gender, internal player IDs or unrevealed names enter the
-image. Downloaded roster images should never enter this public repository.
+## Optional replacement art
 
-File names include the team and session. Duplicate clicks cannot start duplicate
-exports, different teams encode one at a time to bound memory, and async image loads or PNG encodes cannot complete an export after
-host logout, session replacement, lost live connection or a new reveal stage.
+Local file controls remain available for a deliberately chosen replacement PNG/JPEG/WebP. This advanced path requires an explicit on-art region confirmation; the shipped approved originals do not. Replacing or restoring art never changes the locked draw. Restore Original Template returns to the shipped source.
 
-## Exact asset and approval boundary
+Logout, session changes, disconnects and invalidated rosters cancel pending exports. Canvas encodes are serialized to bound memory; image files, dimensions and output canvas size are bounded.
 
-The five original owner-approved team-art files were unavailable to this work
-session. This code does not contain them, replace them, establish their approval,
-or infer their intended name-placement regions. The host selects the original
-file and explicitly identifies its name area. Empty states are clearly labeled
-and cannot be exported. Final integration and visual approval against those five
-actual templates still require the source images and owner review.
+## Proof boundaries
 
-## Verification (2026-09-30)
+Unit/VM regressions cover gates, names, layout, stale operations and default source loading. Native Skia executed the actual application renderer on all six original templates with fake 47-player rosters. V3 outputs preserve all text, and a pixel comparison against the unmodified template at the same output resolution found no changes outside the mapped name panel. Independent visual review accepted the V3 set, including Pink Venom's corrected text-free texture sample.
 
-Executed `node --test --import tsx test/rival-reaper-posters.test.ts`: **14/14
-passed**. Tests execute the actual module in a fake-DOM/canvas VM. They cover five
-unique PNG downloads, full 10/50 rosters, 120-character wrapping, safe names and
-filenames, on-art geometry/aspect ratio, required region confirmation and
-reconfirmation, too-small region rejection, raster signatures and limits,
-full/public/auth gating, lost connection, session changes, duplicate clicks,
-late image decode after logout, and logout during PNG encoding. Canvas draw-call
-and blob-download behavior is tested, not actual raster output.
-
-Real browser acceptance is provided by `scripts/poster-browser-checks.ts`, to be
-invoked from the existing full fake-roster rehearsal. It produces clearly fake
-art only, supplies an explicitly fake test region, verifies five actual PNG
-downloads/signatures/dimensions, captures the host preview and tests real canvas
-10/50 long-name encoding. These new scenarios have **NOT RUN** in this
-environment: browser access was blocked by `ERR_BLOCKED_BY_CLIENT` and Chromium
-sandbox socket restrictions. No bypass was attempted. Actual image rendering,
-mobile save UI, approved-template match and owner visual approval remain
-unverified.
-
-## Integration points
-
-- `host.html`: stylesheet link and `#poster-panel` mount
-- `host.js`: `createPosterControls(...)`, then
-  `update({state, authenticated, online})` on state/control changes; authentication
-  becomes true only after a successful private-host API response
-- `server.ts`: allowlist `/roster-posters.js` and `/roster-posters.css`; CSP
-  `img-src 'self' data: blob:` permits locally selected art previews
-- Optional controller `lock()` clears art and hides the panel immediately
-- No server upload route, external assets, new packages, private files or hosted
-  CI are required
+This is real raster evidence, not a substituted browser run. Final browser download/interaction, phone/projector legibility, acoustic rehearsal and official roster/assignment approval remain separate.

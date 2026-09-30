@@ -1,4 +1,6 @@
 import { $, worlds, connect, renderTeams } from "./shared.js";
+import { createBadgeView } from "./badge-art.js";
+const badgeView=createBadgeView($("#badge-art"),$("#badge-symbol"),$("#badge-note"));
 // Adapted from Julien Thibeaut's MIT Motion Primitives Spotlight, discovered on
 // 21st.dev. See THIRD-PARTY-NOTICES.md. Rewritten as a native DOM enhancement;
 // no React/Motion runtime, touch dependency, frame loop, or draw-state authority.
@@ -43,12 +45,7 @@ const labels = {
 };
 function cue(phase, team) {
   if (!enabled || !audio || audio.state !== "running") return;
-  const base = [146.83, 196, 164.81, 130.81, 220][
-    Math.max(
-      0,
-      worlds.findIndex((w) => w.id === team),
-    )
-  ];
+  const base = worlds.find(world => world.id === team)?.tone ?? 146.83;
   const offsets =
     phase === "team-explosion"
       ? [1, 1.25, 1.5, 2]
@@ -103,14 +100,19 @@ connect((state) => {
   const r = state.reveal,
     world = worlds.find((w) => w.id === r.teamId);
   document.body.dataset.phase = r.phase;
+  document.body.dataset.teamCount = String(state.teams.length);
+  const countLabel = state.teams.length === 6 ? "SIX" : "FIVE";
+  labels["colors-fight"] = `${countLabel} WORLDS. ONE FATE.`;
+  $("#board-team-count").textContent = `${countLabel} TEAMS. ALL PRESSURE.`;
+  $("#cabinet-count").textContent = "№ " + String(state.teams.length).padStart(3,"0");
   document.body.dataset.team = r.teamId ?? "none";
   $("#draw-number").textContent = String(state.drawCount).padStart(2, "0");
   $("#remaining").textContent = `${state.remaining} competitors waiting`;
   $("#phase-label").textContent = state.healthy
     ? labels[r.phase]
     : "SHOW PAUSED · HOST RECOVERY REQUIRED";
-  $("#badge-symbol").textContent = world?.symbol ?? "R";
-  $("#badge-name").textContent = world?.name ?? "FIVE WORLDS / ONE FATE";
+  badgeView.show(world);
+  $("#badge-name").textContent = world?.name ?? `${state.teams.length === 6 ? "SIX" : "FIVE"} WORLDS / ONE FATE`;
   $("#ticket-team").textContent = r.teamName ?? "YOUR WORLD IS WAITING";
   $("#serial").textContent =
     `ADMIT ONE / ${String(r.drawIndex ?? 0).padStart(3, "0")}`;

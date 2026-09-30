@@ -32,3 +32,15 @@ Next batch: owner visual review, official badges, private actual-device rehearsa
 - Poster output: full public team only, authenticated/online host, actual locally selected approved art required; all names retained with overflow fail-closed checks. No substitute official image or invented participant is used for a final export.
 
 Do not call the entire application complete or infer100% from unit-test counts. The remaining gates require real inputs and observed acceptance.
+
+## Six-team scope supersedes the historical five-team percentage
+
+BELT 2 ASS and its separate badge/poster are now approved for an explicit new `six-v1` event. Existing `five-v1` histories remain unchanged. Latest local verification is 78 passing tests; see `evidence/SIX-TEAM-2026-09-30.md` for exact commands and scope.
+
+Current independent denominators: 6/6 approved roster source images; 6/6 V3 fake-roster raster/visual checks; 4/6 correctly named competitive badge assets; 0/4 final browser/phone/projector/speaker acceptance gates; local integration publication pending. The old 80% number is retained only as historical evidence for the earlier scope. It must not be reused as overall six-team readiness.
+
+Current correction after independent review: the normal app now requires actual configured input and uses the single six-team event. The former demo entry no longer creates fictional participants. A transient disconnect/health failure permanently cancels a pending export until an explicit fresh retry. Full local suite now passes 80 tests. Browser/device acceptance and remaining badge approvals are still open.
+
+## Live-event reliability acceptance
+
+Current wave definitions and evidence are in `evidence/RELIABILITY-2026-09-30.md`: command-ID compatibility/retry safety, stale-writer recovery exclusion, and complete fictional six-team HTTP workflow. These are explicitly bounded software requirements, not a replacement overall readiness percentage. The unchanged browser/physical-device and two badge approval gates remain necessary.
