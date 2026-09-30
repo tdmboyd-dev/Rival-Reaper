@@ -24,3 +24,10 @@ Gate9 partial: owner visual acceptance, official badges and physical sound/reada
 Next: review daylight arena with owner, accept approved badge files locally, then rehearse private roster on actual phone/projector/speakers. Keep private data out of Git. Continue this engine; do not restart migration.
 
 Final preview: fake-data demo running on http://127.0.0.1:8787/arena (local exec session70407); opened in Codex. Host token stays in ignored .rival-reaper/demo/host-token. Tested implementation SHA155dafd26443fbfc46fb9732e9a6a943facd8b12.
+
+## Active isolated verification wave — 2026-09-30T06:35Z
+- Session: dot cloud verification worker; branch `finish/reaper-2026-09-30`.
+- Base: `3bd5f474f761c830005574a7d40f8cc4e1c1e0b8`; no open PRs, prior claim released at inspection.
+- Scope: runtime/browser regression repairs, completed-team poster reconstruction, portable local verification, evidence and event runbook. No deployment, merge or hosted CI.
+- Claim: active; owner authorized tested fixes directly in this repository on 2026-09-30. Review by 2026-09-30T10:00:00Z.
+- Initial proof: npm ci (workspace-writable cache), typecheck and 34/34 tests passed under Node24.19.0 Linux. Browser verification pending.
