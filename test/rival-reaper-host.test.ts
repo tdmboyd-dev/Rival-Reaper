@@ -6,7 +6,7 @@ import vm from "node:vm";
 const source = (await readFile(
   new URL("../examples/rival-reaper/host.js", import.meta.url),
   "utf8",
-)).replace(/^import .*\n/gm, "");
+)).replace(/^import .*\r?\n/gm, "");
 function hostState(overrides: Record<string, unknown> = {}) {
   return {
     sessionId: "session-a",

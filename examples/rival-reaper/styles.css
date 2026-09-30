@@ -1942,7 +1942,8 @@ dialog .dialog-actions {
 }
 @media (min-width: 701px) and (max-height: 800px) {
   .machine-stage .machine {
-    scale: 0.66;
+    /* Six full roster columns leave less vertical room than the five-team board. */
+    scale: 0.60;
   }
   .stage-copy h1 {
     font-size: 48px;

@@ -1,4 +1,8 @@
-# AUDIT-LEDGER — RiVAL REAPER
+# AUDIT-LEDGER - RiVAL REAPER
+
+## Connected Windows walkthrough
+
+Reproduced and repaired CRLF import stripping in host VM tests and a 1.36px full-six-team 720p ticket overlap. 94/94 tests and 23/23 browser checks after repairs. Actual Chrome host/arena inspected with isolated fake names. No artwork, private event, deployment or hosted Actions changes. See evidence/CONNECTED-WALKTHROUGH-2026-09-30.md for failures, repairs, outputs and acceptance boundaries.
 
 ## Bootstrap 2026-09-29
 - Standalone repository created by owner.

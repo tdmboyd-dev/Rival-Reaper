@@ -1,4 +1,8 @@
-# BuildList — RiVAL REAPER
+# BuildList - RiVAL REAPER
+
+## Connected Windows walkthrough, September 30
+
+See `evidence/CONNECTED-WALKTHROUGH-2026-09-30.md`. Base 76cffd9 plus two bounded fixes passes 94 tests and 23 browser checks. Actual synthetic host and arena were opened for owner inspection. Six poster downloads verified. Physical/owner approval gates remain open; older source-only readiness claims are not substituted for these receipts.
 
 Persistent scorecard, 2026-09-30 UTC. Before: source implementation claims, no standalone executed proof. After: 8/10 gates meet local acceptance scope (80% complete gates, 20% still open). This measures gates, not time or production readiness. Gates9/10 remain incomplete.
 

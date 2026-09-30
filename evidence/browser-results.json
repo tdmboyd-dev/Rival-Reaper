@@ -1,10 +1,10 @@
 {
-  "date": "2026-09-30T01:39:11.113Z",
+  "date": "2026-09-30T13:43:54.122Z",
   "browser": "153.0.8010.48",
-  "checks": 21,
+  "checks": 23,
   "passed": [
     "Unauthorized host stays locked",
-    "Private mobile host unlock and 45 fake roster options",
+    "Private mobile host unlock and 47 fake roster options",
     "Fate locks once; next draw disabled; arena follows",
     "Badge precedes ticket; name is absent before reveal",
     "Arena reload restores active first-ink phase",
@@ -13,7 +13,9 @@
     "Roster board updates only after terminal reveal",
     "Server stop/restart and live browser reconnect preserve fate and reveal",
     "Lost response recovers by replay without duplicate draw",
-    "Complete 45-player HTTP rehearsal ends 9/9/9/9/9, all five world effects captured",
+    "Complete 47-player six-v1 HTTP rehearsal and all 6 world effects captured",
+    "All 6 original-template PNG downloads contain valid 3000px-wide images and complete public fake name previews",
+    "Real canvas wraps and encodes every 120-character name for 10-person and 50-person team boundaries",
     "Private audit downloads valid chain/bundle; Escape restores focus",
     "Sound opt-in and mute controls toggle successfully (not acoustic verification)",
     "Explicit motion pause available",
@@ -26,5 +28,5 @@
     "No unexpected browser JavaScript or console errors"
   ],
   "errors": [],
-  "artifacts": "C:\\Users\\cool\\Documents\\Codex\\2026-09-29\\work-on-my-tdmboyd-dev-rival\\work\\Rival-Reaper\\evidence\\screenshots"
+  "artifacts": "Local synthetic screenshot and PNG artifacts retained outside the repository"
 }
