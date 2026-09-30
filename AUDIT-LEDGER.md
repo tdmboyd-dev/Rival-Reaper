@@ -1,5 +1,9 @@
 # AUDIT-LEDGER - RiVAL REAPER
 
+## Native-window and badge-on-ticket correction
+
+Observed actual controlled browser state before resizing/navigation. Repaired leftover demo viewport emulation, short-window scrolling, host discoverability and disabled-state explanations; integrated approved standalone badge on physical ticket with slot masking. No new artwork, private data or draw logic changes. 94 tests and 25 browser checks pass; actual native host actions/scrolling verified. See `evidence/NATIVE-WINDOW-REPAIR-2026-09-30.md` for measured dimensions and screenshot limits.
+
 ## Connected Windows walkthrough
 
 Reproduced and repaired CRLF import stripping in host VM tests and a 1.36px full-six-team 720p ticket overlap. 94/94 tests and 23/23 browser checks after repairs. Actual Chrome host/arena inspected with isolated fake names. No artwork, private event, deployment or hosted Actions changes. See evidence/CONNECTED-WALKTHROUGH-2026-09-30.md for failures, repairs, outputs and acceptance boundaries.

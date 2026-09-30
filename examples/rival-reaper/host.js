@@ -56,6 +56,17 @@ function controls() {
     busy || !online || !token || !state?.healthy || !active || !!pending;
   $("#retry").hidden = !pending;
   $("#retry").disabled = busy || !online || !token;
+  $("#host-help").textContent = !online
+    ? "Connection lost. Controls resume when the host reconnects."
+    : pending
+      ? "The result is uncertain. Retry the same command below; do not draw again."
+      : !state?.healthy
+        ? "The show is paused. Host recovery is required before continuing."
+        : active
+          ? "Finish this ticket using the reveal control above. The next draw unlocks after the player reaches the board."
+          : !state?.remaining
+            ? "All competitors are on the board. Full-team posters are available below."
+            : "Choose a competitor and lock their fate, then use the reveal control to eject and yank their ticket.";
   $("#advance-label").textContent = busy
     ? "SAVING THE MOMENT…"
     : state

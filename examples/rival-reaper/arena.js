@@ -1,6 +1,7 @@
 import { $, worlds, connect, renderTeams } from "./shared.js";
 import { createBadgeView } from "./badge-art.js";
 const badgeView=createBadgeView($("#badge-art"),$("#badge-symbol"),$("#badge-note"));
+const ticketBadgeView=createBadgeView($("#ticket-badge-art"),$("#ticket-badge-symbol"),$("#ticket-badge-note"));
 // Adapted from Julien Thibeaut's MIT Motion Primitives Spotlight, discovered on
 // 21st.dev. See THIRD-PARTY-NOTICES.md. Rewritten as a native DOM enhancement;
 // no React/Motion runtime, touch dependency, frame loop, or draw-state authority.
@@ -112,6 +113,7 @@ connect((state) => {
     ? labels[r.phase]
     : "SHOW PAUSED · HOST RECOVERY REQUIRED";
   badgeView.show(world);
+  ticketBadgeView.show(world);
   $("#badge-name").textContent = world?.name ?? `${state.teams.length === 6 ? "SIX" : "FIVE"} WORLDS / ONE FATE`;
   $("#ticket-team").textContent = r.teamName ?? "YOUR WORLD IS WAITING";
   $("#serial").textContent =

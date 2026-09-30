@@ -1,5 +1,9 @@
 # BuildList - RiVAL REAPER
 
+## Actual-window acceptance correction
+
+The earlier screenshots did not establish native-window fit. Current evidence in `evidence/NATIVE-WINDOW-REPAIR-2026-09-30.md` covers 1036x558 native scrolling/control use, approved badge-on-ticket rendering, slot masking and clear host navigation. Automated scope: 94/94 tests, 25/25 browser checks. Across-room readability and owner ticket-motion acceptance remain open.
+
 ## Connected Windows walkthrough, September 30
 
 See `evidence/CONNECTED-WALKTHROUGH-2026-09-30.md`. Base 76cffd9 plus two bounded fixes passes 94 tests and 23 browser checks. Actual synthetic host and arena were opened for owner inspection. Six poster downloads verified. Physical/owner approval gates remain open; older source-only readiness claims are not substituted for these receipts.

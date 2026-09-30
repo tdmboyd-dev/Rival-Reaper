@@ -1,7 +1,7 @@
 {
-  "date": "2026-09-30T13:43:54.122Z",
+  "date": "2026-09-30T14:15:42.791Z",
   "browser": "153.0.8010.48",
-  "checks": 23,
+  "checks": 25,
   "passed": [
     "Unauthorized host stays locked",
     "Private mobile host unlock and 47 fake roster options",
@@ -14,6 +14,7 @@
     "Server stop/restart and live browser reconnect preserve fate and reveal",
     "Lost response recovers by replay without duplicate draw",
     "Complete 47-player six-v1 HTTP rehearsal and all 6 world effects captured",
+    "Ticket contains each released standalone badge or honest pending-art fallback; slot masks paper emergence",
     "All 6 original-template PNG downloads contain valid 3000px-wide images and complete public fake name previews",
     "Real canvas wraps and encodes every 120-character name for 10-person and 50-person team boundaries",
     "Private audit downloads valid chain/bundle; Escape restores focus",
@@ -21,6 +22,7 @@
     "Explicit motion pause available",
     "Arena 1920x1080 no horizontal overflow and screenshot",
     "Arena 1280x720 no horizontal overflow and screenshot",
+    "Arena 1036x558 no horizontal overflow and screenshot",
     "Arena 390x844 no horizontal overflow and screenshot",
     "OS reduced-motion disables energy animation",
     "arena axe WCAG A/AA scan has zero violations",
@@ -28,5 +30,5 @@
     "No unexpected browser JavaScript or console errors"
   ],
   "errors": [],
-  "artifacts": "Local synthetic screenshot and PNG artifacts retained outside the repository"
+  "artifacts": "Current synthetic browser captures retained outside Git"
 }

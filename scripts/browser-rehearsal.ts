@@ -97,6 +97,7 @@ try {
   await host.locator("#player").selectOption("fake-1");
   await host.locator("#draw").click();
   await phase("machine-awakens");
+  await expect(host.locator("#host-help")).toContainText("Finish this ticket");
   await expect(host.locator("#draw")).toBeDisabled();
   record("Fate locks once; next draw disabled; arena follows");
   await advance("colors-fight");
@@ -106,6 +107,8 @@ try {
     fullPage: true,
   });
   await advance("ticket-ejects");
+  await expect(arena.locator(".ticket-identity")).toBeVisible();
+  expect(await arena.locator(".ticket-bay").evaluate(e => getComputedStyle(e).clipPath)).not.toBe("none");
   await expect(arena.locator("#player-name")).toHaveText("IDENTITY SEALED");
   record("Badge precedes ticket; name is absent before reveal");
   await advance("ink-1");
@@ -228,6 +231,15 @@ try {
           "data-team",
           current.reveal.teamId,
         );
+        const machineBadge = arena.locator("#badge-art img");
+        await expect(arena.locator("#badge-note")).not.toHaveText("LOADING TEAM BADGE");
+        const source = await machineBadge.count() ? await machineBadge.getAttribute("src") : null;
+        if (source) {
+          await expect(arena.locator("#ticket-badge-art img")).toBeVisible();
+          await expect(arena.locator("#ticket-badge-art img")).toHaveAttribute("src", source);
+        } else {
+          await expect(arena.locator("#ticket-badge-note")).toContainText("PENDING");
+        }
         await arena.screenshot({
           path: join(output, `world-${current.reveal.teamId}.png`),
           fullPage: true,
@@ -244,6 +256,7 @@ try {
   record(
     `Complete ${rehearsalCount}-player ${rehearsalLineup} HTTP rehearsal and all ${teamCount} world effects captured`,
   );
+  record("Ticket contains each released standalone badge or honest pending-art fallback; slot masks paper emergence");
   record(await checkFullTeamPosters(host, complete, output));
   record(await checkPosterCanvasBoundaries(host));
   await host.locator("#audit-open").click();
@@ -277,6 +290,7 @@ try {
   for (const size of [
     { width: 1920, height: 1080 },
     { width: 1280, height: 720 },
+    { width: 1036, height: 558 },
     { width: 390, height: 844 },
   ]) {
     await arena.setViewportSize(size);
@@ -284,6 +298,11 @@ try {
       () => document.documentElement.scrollWidth > innerWidth,
     );
     expect(overflow).toBe(false);
+    if (size.height < 680 && size.width > 700) {
+      await arena.mouse.wheel(0, 450);
+      await expect.poll(() => arena.evaluate(() => scrollY)).toBeGreaterThan(0);
+      await arena.evaluate(() => scrollTo(0, 0));
+    }
     if (size.width >= 1280) {
       const ticket = await arena.locator(".ticket").boundingBox(),
         board = await arena.locator(".war-board").boundingBox();

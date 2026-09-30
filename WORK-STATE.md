@@ -1,4 +1,8 @@
-# Current engineering checkpoint — September 30, 2026
+# Current engineering checkpoint - September 30, 2026
+
+## Native-window complaint repair
+
+See `evidence/NATIVE-WINDOW-REPAIR-2026-09-30.md`: current-screen observation found leftover emulated viewport settings, ambiguous public/host access and a missing badge on the physical ticket. Native-window recovery, scroll fallback, direct role navigation, disabled-state explanation and ticket badge/slot fixes pass 94 tests and 25 browser checks. This supersedes screenshot-only fit assumptions; owner visual and physical-device acceptance remain open.
 
 Repository: `tdmboyd-dev/Rival-Reaper`, branch `main`.
 Historical integration base: `9503073349b1f60f37c0bba36db436b21f3ab5e8`.
