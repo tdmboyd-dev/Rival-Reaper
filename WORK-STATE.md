@@ -1,47 +1,33 @@
-# CURRENT CHECKPOINT — 2026-09-30T06:57Z
+# Current engineering checkpoint — September 30, 2026
 
-Public product reference: [docs/CONVERSATION-CANON.md](docs/CONVERSATION-CANON.md), read alongside existing local canon. It consolidates both source conversations, separates poster templates from reveal badges, preserves deferred wider work, and records the pending sixth-team proposal without approving it. Latest priority: tonight ASAP.
+Repository: `tdmboyd-dev/Rival-Reaper`, branch `main`.
+Published base: `9503073349b1f60f37c0bba36db436b21f3ab5e8`.
+Local candidate: `895c0a9fd292944c568090ed8c83bd1ca14102b5`.
 
-Target: tdmboyd-dev/Rival-Reaper main. Tested implementation published at60924ad198dfe11a6a37c7138822d66215c3d78d; treeb399a62d1cfbebbccef05904ca350c42a6327a0e. Base3bd5f47; remote scoped claim01a873e. Publication receipt: evidence/FINAL-COMPLETION-RECEIPT.md. Final software-repair/poster wave tested locally: clean install, typecheck,62tests (45unit/VM +17HTTP/process),12complete fake46 rehearsals. Evidence: [final completion](evidence/FINAL-COMPLETION-2026-09-30.md). No hosted Actions, deployment, merge or force update.
+## Bounded local evidence
 
-Current changes: roster-mismatch recovery rejection; logout/private-response and continuation race fixes; session-bound official commands; Back/Forward stream recovery; configurable on-art full-team poster PNG export; preflight and event runbook. Five existing approved images are POSTER TEMPLATES ONLY, NEVER reveal badges. Actual poster pixels, correct original roster-panel regions, and final browser/owner/device/sound acceptance are still missing. Private roster reconciliation has since reached47 named competitors: twelve throwaway current-input rehearsals plus all ten saved reveal-phase recoveries passed outside this public repository. Pending unnamed additions and any new team proposal still need explicit decisions. Do not report complete.
+The local candidate passed clean dependency installation, TypeScript checking, and 78 automated tests. These results describe local software checks only. Interactive browser acceptance and physical-device rehearsal remain pending. Publication of this candidate has not been verified.
 
-Prior unpushed674a8c43 continuation is not available from remote and its old workspace is absent; this poster code is reconstructed, not claimed recovered. Final browser run blocked in this cloud environment; older21-check result below is historical only.
+## Publication work claim
 
-Claim: wave complete for tested software scope; released at handoff. No background build/monitor promised. Next: obtain actual five poster templates, map original name panels without altering artwork, resolve pending roster/team decisions, then run the final browser script and real-device dress rehearsal with current validated private input. Preserve locked fates and never silently reset an event.
+- Engineering session: current Rival-Reaper integration session
+- Local branch: `finish/reaper-2026-09-30`
+- Scope: reconcile the tested candidate against fresh main; publish approved artwork and associated source, tests and documentation
+- Paths: `examples/rival-reaper/`, `src/rival-reaper/`, `scripts/`, `test/`, `docs/`, `evidence/`, and relevant root package/continuity files
+- Base: `9503073349b1f60f37c0bba36db436b21f3ab5e8`; reread if advanced
+- Claimed: 2026-09-30T08:42:00Z
+- Review: 2026-09-30T10:00:00Z
+- Status: prepared for reviewed publication; no remote candidate publication claimed
 
----
-## Historical migration checkpoint (superseded for current readiness)
+## Remaining gates
 
+- Approval and integration of the outstanding standalone artwork corrections
+- Interactive browser acceptance of the changed interface
+- Physical-device rehearsal
+- Successful reviewed publication and verification of the resulting remote commit
 
-Updated 2026-09-30 UTC. Target tdmboyd-dev/Rival-Reaper, main.
+The next batch must preserve unrelated remote work, use a non-forced update and leave hosted Actions and deployment inactive. Private input and runtime data must stay outside public Git.
 
-Reaper-only migration and substantial Gates 7–9 implementation completed locally. Source: MGR-CREATE-Os@feature/rival-reaper-2026-09-29, f2f14f58fb454ea83706bddfc2371fd2a358b947. Source draft PR1 remains unmerged. Target base f9311332070a706f1af000d537e41c33717fa2ca; scoped claim commit d78627c5ca12d1eb8f370574e55e3358ac34007c.
+## References
 
-Standalone package, bounded exact fairness search, transactional host commands, encrypted recovery, idempotency, read-only SSE, private audit export, physical three-yank ticket and five presentation worlds are integrated. Executed: clean npm ci PASS; typecheck PASS; 34/34 unit/integration tests PASS; 21/21 Chrome acceptance checks PASS. See evidence/README.md and BuildList.md for limits.
-
-Latest owner direction: daylight / sunset latest; visible urban block party dominates street; unusual spectacle. Night image removed from product. Current asset: examples/rival-reaper/assets/block-party-daylight.png. Owner acceptance remains open. Five official badges unavailable; marked replaceable placeholders remain.
-
-## Continuity claim
-- Owner/session: Codex / 01a0efd3-3f74-7f31-a73b-1ab11b62ad6f.
-- Scope: Reaper source/tests/examples/research/docs/configuration/evidence.
-- Status: released at handoff; no background build scheduled.
-- Original claim time 2026-09-30T02:00:00Z was inaccurate; work was underway around 01:00Z. Claim commit is the ordering record.
-- Read scope: docs/MIGRATION.md. Source hashes: evidence/migration-manifest.json.
-- Implementation commit: evidence/COMMIT-RECEIPT.md (recorded after creation).
-- Hosted Actions: zero. No workflow, merge or force-push.
-- Private runtime storage and credentials are ignored; all committed fixtures are fake.
-
-## Remaining / exact next action
-Gate9 partial: owner visual acceptance, official badges and physical sound/readability rehearsal. Gate10 partial: fake browser rehearsal/audit passed; private real roster and actual phone/projector did not run. Authenticated 21st MCP unavailable; public source discovery and licensed upstream adaptation used. No GLB/video pipeline or production deployment claimed. Unusual rosters may exceed solver search budget; arbitrary 250-player feasibility not proven.
-
-Next: review daylight arena with owner, accept approved badge files locally, then rehearse private roster on actual phone/projector/speakers. Keep private data out of Git. Continue this engine; do not restart migration.
-
-Historical prior-session preview (not running in this handoff): fake-data demo was running on http://127.0.0.1:8787/arena (local exec session70407); opened in Codex. Host token stays in ignored .rival-reaper/demo/host-token. Tested implementation SHA155dafd26443fbfc46fb9732e9a6a943facd8b12.
-
-## Active isolated verification wave — 2026-09-30T06:35Z
-- Session: dot cloud verification worker; branch `finish/reaper-2026-09-30`.
-- Base: `3bd5f474f761c830005574a7d40f8cc4e1c1e0b8`; no open PRs, prior claim released at inspection.
-- Scope: runtime/browser regression repairs, completed-team poster reconstruction, portable local verification, evidence and event runbook. No deployment, merge or hosted CI.
-- Claim: released at software handoff; owner authorized tested fixes directly in this repository on 2026-09-30.
-- Initial proof: npm ci (workspace-writable cache), typecheck and 34/34 tests passed under Node24.19.0 Linux. Browser verification pending.
+Read `AGENTS.md`, `BEAST-JEV-READ-FIRST.md`, `docs/CONVERSATION-CANON.md`, `BuildList.md` and `AUDIT-LEDGER.md`. Existing evidence records retain their historical scope; they do not establish current browser or device acceptance. Earlier versions of this checkpoint remain in Git history.
