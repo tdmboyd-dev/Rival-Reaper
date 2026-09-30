@@ -21,3 +21,13 @@ The Creation OS prototype reports implemented draw/balance logic, CSPRNG session
 7. Do not merge or trigger repeated hosted CI during the work wave.
 
 No real family roster or secrets may be committed.
+
+## Active work claim — 2026-09-30
+- Task: migrate Reaper-only prototype and execute Gates 7–9 locally.
+- Owner/session: Codex / 01a0efd3-3f74-7f31-a73b-1ab11b62ad6f.
+- Branch: main; inspected base: f9311332070a706f1af000d537e41c33717fa2ca.
+- Source inspected: MGR-CREATE-Os f2f14f58fb454ea83706bddfc2371fd2a358b947.
+- Scope: src/rival-reaper, test/rival-reaper*, examples/rival-reaper, Reaper research/docs, standalone package/config, continuity/evidence.
+- Claimed: 2026-09-30T02:00:00Z; review/expiry: 2026-09-30T12:00:00Z; status: active.
+- Acceptance: CODEX-GATES-7-9.md; local tests/runtime/browser evidence required.
+- No hosted workflows exist at inspected base; claim update does not require hosted evidence.
