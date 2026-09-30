@@ -1,6 +1,6 @@
 # RiVAL REAPER — recovered product decisions
 
-Recovered 2026-09-30 from the owner’s [Flyer Details Needed](https://chatgpt.com/c/6aa6f91a-15a0-83e9-b20d-aac7b7c789c3) conversation and [Branch · Flyer Details Needed](https://chatgpt.com/c/6abc6c50-1c50-83e9-82eb-dd2ed0dc2695) continuation. These source conversations require the owner’s account access. This is a public-safe decision record, not a transcript. Private names, household mappings, personal contact details, addresses, health information, and credentials are deliberately excluded.
+Recovered 2026-09-30 from owner-provided product decisions. This record retains product requirements and implementation history; private source identifiers and roster metadata are omitted.
 
 ## Product and priorities
 
@@ -13,19 +13,16 @@ The later event-date correction supersedes the original weekend schedule: Rival 
 - `tdmboyd-dev/Rival-Reaper` is the standalone application.
 - `tdmboyd-dev/MGR-CREATE-Os`, branch `feature/rival-reaper-2026-09-29`, is the prototype/history source. Its draft PR #1 remains a separate lineage; do not merge it incidentally.
 - Create Loco is a separate product, not Reaper's home.
-- Read canonical `tdmboyd-dev/mgr-perfect-skill@master:BEAST.md` and `CONTINUITY-PROTOCOL.md`, followed by the target repository's current instructions and execution contract.
 - Preserve the existing verified draw authority. Components, animation, generated art, video, or 3D assets never decide or reroll a player's fate.
 - No automatic merges, force-pushes, or overwriting unrelated work.
 
 ## Draw contract
 
-The current documented competing lineup has five teams: Blood Bloom/red, Pressure Gang/blue, High Society/green, Heat Mob/orange, and Pink Venom/pink. Blackout Krew/supporters remain entirely outside competitive counts, gender balancing, household separation, and random selection. This records the current lineup, not a cap on players or a prohibition on future owner-approved team changes. As of this recovery, a possible sixth team and one further competitor are under discussion, not approved input. Await the owner’s team/color/name decision and actual new player details; do not invent or silently activate them.
+The current documented competing lineup has five teams: Blood Bloom/red, Pressure Gang/blue, High Society/green, Heat Mob/orange, and Pink Venom/pink. Blackout Krew/supporters remain entirely outside competitive counts, gender balancing, household separation, and random selection. This records the current lineup, not a cap on players or a prohibition on future owner-approved team changes. Changes to the competing lineup require explicit owner approval; do not invent or silently activate teams or players.
 
 Balance actual input headcount and gender; split households as far as feasible, including honest unavoidable collision handling. Randomness operates among equally valid choices. Keep a private audit trail and immutable locked fate. Do not turn historical practice distributions into official assignments.
 
-Reconcile the roster from explicit user entries and corrections, not assistant cumulative totals. A historical arithmetic error propagated into later summaries; private source reconciliation corrects it. Team capacities and gender quotas must be derived dynamically from the actual validated roster. Two additional unnamed places remain pending and must not become invented players. Current private data and newer owner changes supersede historical snapshots. The operating snapshot on 2026-09-30 is 47 named competitors after the latest separately authorized addition.
-
-Pending owner decision: a sixth competing team was proposed, with the correct arithmetic that 48 competitors would make six teams of eight. This is not yet an approved lineup change; identity/color and the additional competitor remain unconfirmed. Keep the current five-team configuration until the owner decides, and never invent a player merely to reach a divisible total.
+Reconcile the roster from explicit user entries and corrections, not assistant cumulative totals. Team capacities and gender quotas must be derived dynamically from the actual validated roster. Current validated input and newer owner changes supersede historical snapshots. Never invent a player merely to reach a divisible total.
 
 Real roster input, household relations, and private audits stay outside public Git. Committed fixtures and publicly reachable preview sessions use fake identities. Do not expose unrevealed identities or private roster attributes in arena responses or poster exports.
 
@@ -53,7 +50,7 @@ The owner's branch correction is explicit: the five recovered world artworks are
 
 Blackout Krew has its own support identity with the gorilla and dog. Replace invented miniature job labels with member-name slots; preserve helping-cook/referee/support roles elsewhere. It does not become a sixth competing team.
 
-The arena needs dominant urban fantasy/metaverse Game Day presence: daylight or late afternoon, people and block-party life prominent, colors fighting/bleeding into one another instead of isolated boxes. The existing repository’s asset documentation records a rejected night scene and the current daylight direction; that specific rejection is not a direct user quote in the 106-turn corpus. Keep readable names and controls, physical ticket motion, sound opt-in/mute, pause/reduced motion, and accessible fallbacks.
+The arena needs dominant urban fantasy/metaverse Game Day presence: daylight or late afternoon, people and block-party life prominent, colors fighting/bleeding into one another instead of isolated boxes. The existing repository’s asset documentation records a rejected night scene and the current daylight direction; that specific rejection is recorded in repository documentation rather than a direct owner quote. Keep readable names and controls, physical ticket motion, sound opt-in/mute, pause/reduced motion, and accessible fallbacks.
 
 ## Research and verification cost
 
@@ -75,24 +72,6 @@ The Game Book should use clear setup, play, scoring, referee and safety instruct
 
 ## Read and recovery boundary
 
-The branch's 106 pre-recovery-request conversation turns were traversed and their rendered text read: 96 inherited turns plus 10 continuation turns. Accessible work disclosures and nested branch tool panels were expanded; 111 branch raw-tool dialogs exposed label-only metadata rather than underlying code or original bytes. The continuation attachment's full rendered text was read. This does not claim access to hidden tool payloads, every image's original bytes, or omitted server-side state.
+Accessible rendered source text, work disclosures, and the continuation attachment were read during recovery. Some tool dialogs exposed label-only metadata rather than underlying code or original bytes. This does not claim access to hidden tool payloads, every image's original bytes, or omitted server-side state.
 
-Exact approved original files and the local source archive were subsequently requested from the existing ChatGPT conversation under owner authorization, for recovery only. Any newer recovered artifacts need individual provenance and byte verification; do not equate an in-progress recovery statement with a completed download.
-
-
-## Decision source pointers
-
-Turn identifiers are the source UI’s `data-turn-key` values, not public roster data.
-
-- Initial broader event/flyer scope: `517653f3-1701-4c77-8ed9-d27fed4b8d58`; later schedule correction: `c094a97d-2829-4326-9869-567cbc5a0e98`, `32180c0d-269a-460e-bf4d-983c7a2c5f3d`
-- Team balance/private household context: `7ca25bb9-fefe-4cc5-bc51-7a80560f06a4`; October 1 blueprint and private household game submissions: `c512fce7-a889-40b7-98c7-8714233fa2b6`
-- Original badge revisions: `b7252eab-3362-43c2-900e-af23f1c63453`; owner already posted badges: `46ca2e2f-f1d8-4011-a824-9656c725e3da`
-- Roster-world locks: red initial `b29ca159-f3ed-493a-8c69-83a794fc35b5`, blue `9e5f8818-85ef-43de-9c88-5c172e79b4ad`, green `514a77aa-dfd9-435e-94ed-66992aea79fc`, orange and red correction `09066112-f82b-4552-9f25-dfbcb36348d4`, final Rose Panther `a165c91f-c4a8-4286-9fec-3304c8324659`, final Pink Venom `4775a6f9-6eae-4b89-ba62-34570462ef4c`
-- Blackout mascot/name-slot correction: `d4759470-2575-4831-9b6b-e539fb1abe43`
-- Machine/game-book scope: `0bb716c3-a2de-4acb-b018-940ad8785f57`; game-book tone and equipment research: `42ffa1f4-e139-4e43-bfc0-cca7d2c486bf`
-- Research workflow: `254a3d13-77c8-48c2-a141-5e42958c0628`, `100cb961-a00b-4d4e-9441-3b911121cfca`
-- Separate repository / canonical method: `2c205645-ab09-407e-90bf-129476ab3db2`; public repository and Actions-cost constraint: `b7783210-17e4-40e4-b724-7fb6b9b9d5dd`
-- Migration evidence handoff: `e247498d-c12b-4ace-818c-6c96e42cf2ba`; user requires actual browser checkout: `5f1afaad-c074-4cd6-abc8-66cb63441cba`
-- Branch correction establishing posters’ purpose: `dec39120-d302-427c-8d13-46d38f71624a`
-
-The original conversation’s later one-second final source disclosure was separately read by the coordinating session. This record does not claim that unavailable raw payloads or original image bytes were exposed by that disclosure.
+Original asset files and source archives were requested for recovery under owner authorization. Any recovered artifacts need individual provenance and byte verification; an in-progress recovery statement does not establish a completed download. Public implementation receipts are retained above.

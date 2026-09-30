@@ -4,44 +4,6 @@ Recovered: 2026-09-30
 Scope: workflow, approval logic, public-safe art provenance, verification evidence, and unresolved requirements only.  
 Privacy rule: this file intentionally excludes all real player names, genders, households, minor information, private roster paths/links, contact details, addresses, credentials, and private audit contents.
 
-## 1. Owner-directed working method
-
-### Exact owner directives recovered
-
-The owner repeatedly directed the work to use the MGR BEAST method rather than ad-hoc implementation. In the current conversation, the owner explicitly instructed the assistant/Codex to:
-
-- use BEAST logic when a task was unclear;
-- put durable operating knowledge in repositories so other AI windows could recover it;
-- tell Codex exactly where canonical BEAST lives instead of assuming shared hidden context;
-- avoid wasting GitHub Actions minutes on every small change;
-- use local checks first and reserve hosted CI for meaningful convergence;
-- research and use 21st.dev and MotionSites where useful;
-- continue substantial work before reporting rather than narrating every small milestone;
-- keep private roster data out of public Git;
-- preserve the existing draw authority and do not silently reroll or invent assignments.
-
-Canonical BEAST location:
-- repository: `tdmboyd-dev/mgr-perfect-skill`
-- branch: `master`
-- file: `BEAST.md`
-
-Canonical continuity protocol:
-- `tdmboyd-dev/mgr-perfect-skill@master:CONTINUITY-PROTOCOL.md`
-
-The universal CI budget rule is owner-locked in BEAST section 24.
-
-### Full-source / end-to-end reading requirement
-
-Recovered working rule: do not work from summaries alone when the source is available. The implementation workflow was to read the canonical method, repository entry instructions, continuity/source-of-truth records, relevant source/tests/evidence, and the full task-specific execution contract before architectural claims or edits.
-
-Public source evidence:
-- `AGENTS.md`
-- `BEAST-JEV-READ-FIRST.md`
-- `docs/CONVERSATION-CANON.md`
-- `docs/RIVAL-REAPER-CODEX-EXECUTION-PROMPT.md`
-- `CODEX-GATES-7-9.md` where present in history
-- canonical `mgr-perfect-skill/BEAST.md`, especially boot/source-of-truth, research decomposition, research-wave, repository-embedding, verification, and CI-budget sections.
-
 ## 2. Owner approvals and corrections vs assistant suggestions
 
 ### Owner-approved / locked behavior
@@ -58,25 +20,6 @@ The following are owner-approved product rules recovered from source conversatio
 - fate locks before theatrical reveal and cannot be silently rerolled;
 - host controls are private and arena/projector state is read-only.
 
-Public conversation-turn pointers preserved in `docs/CONVERSATION-CANON.md` include:
-- team-balance/private-household context: `7ca25bb9-fefe-4cc5-bc51-7a80560f06a4`
-- October 1 blueprint/private game submissions: `c512fce7-a889-40b7-98c7-8714233fa2b6`
-- original badge revisions: `b7252eab-3362-43c2-900e-af23f1c63453`
-- owner had already posted badges: `46ca2e2f-f1d8-4011-a824-9656c725e3da`
-- blue roster-world lock: `9e5f8818-85ef-43de-9c88-5c172e79b4ad`
-- green roster-world lock: `514a77aa-dfd9-435e-94ed-66992aea79fc`
-- orange/red correction: `09066112-f82b-4552-9f25-dfbcb36348d4`
-- final red correction: `a165c91f-c4a8-4286-9fec-3304c8324659`
-- final pink correction: `4775a6f9-6eae-4b89-ba62-34570462ef4c`
-- Blackout member-slot correction: `d4759470-2575-4831-9b6b-e539fb1abe43`
-- machine/game-book scope: `0bb716c3-a2de-4acb-b018-940ad8785f57`
-- research workflow: `254a3d13-77c8-48c2-a141-5e42958c0628`, `100cb961-a00b-4d4e-9441-3b911121cfca`
-- standalone repo / canonical method: `2c205645-ab09-407e-90bf-129476ab3db2`
-- public repo and Actions-cost constraint: `b7783210-17e4-40e4-b724-7fb6b9b9d5dd`
-- migration evidence handoff: `e247498d-c12b-4ace-818c-6c96e42cf2ba`
-- actual-browser requirement: `5f1afaad-c074-4cd6-abc8-66cb63441cba`
-- poster-purpose correction: `dec39120-d302-427c-8d13-46d38f71624a`
-
 ### Assistant suggestions / proposals, not owner approval by themselves
 
 The following were assistant-originated implementation recommendations and must not be treated as owner approval unless later explicitly accepted:
@@ -90,7 +33,7 @@ The following were assistant-originated implementation recommendations and must 
 
 ## 3. Tests vs VERIFIED evidence
 
-BEAST status contract remains:
+Recorded status labels:
 `QUEUED -> RESEARCHED -> SPECIFIED -> IMPLEMENTED -> TESTED -> VERIFIED`.
 
 A test file existing is not TESTED. A passing test is not automatically full-product VERIFIED. VERIFIED requires an acceptance criterion, executed method, observed result, and evidence pointer.
@@ -136,17 +79,13 @@ That wave records clean install, typecheck, 62 passing Node/HTTP/VM tests, and r
 
 ## 4. Canonical source-of-truth layout
 
-Universal:
-- `tdmboyd-dev/mgr-perfect-skill@master:BEAST.md`
-- `tdmboyd-dev/mgr-perfect-skill@master:CONTINUITY-PROTOCOL.md`
-
 RiVAL REAPER:
 - `AGENTS.md` — entry/boot pointer
-- `BEAST-JEV-READ-FIRST.md` — local method/product boundary
+- `PROJECT-READ-FIRST.md` — local method/product boundary
 - `WORK-STATE.md` — current resume/continuity state
 - `BuildList.md` — implementation/gate truth
 - `AUDIT-LEDGER.md` — defect/repair truth
-- `docs/CONVERSATION-CANON.md` — recovered owner decisions and source-turn pointers
+- `docs/CONVERSATION-CANON.md` — recovered owner decisions and public implementation receipts
 - `docs/EVENT-RUNBOOK.md` — event/recovery procedure
 - `docs/ASSETS.md` and visual research files — asset/provenance truth
 - `evidence/` — executed test/runtime receipts

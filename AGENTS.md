@@ -1,11 +1,11 @@
 # AGENTS.md — RiVAL REAPER boot
 
+Read `MGR-Beast-Pack/MGR-BEAST-PACK.md` as the current MGR BEAST operating handbook. Preserve this repository's product requirements and existing work records.
+
 Before substantial work:
-1. Read canonical Universal BEAST v2.1 at `tdmboyd-dev/mgr-perfect-skill`, branch `master`, file `BEAST.md`.
-2. Read `tdmboyd-dev/mgr-perfect-skill`, branch `master`, file `CONTINUITY-PROTOCOL.md`.
-3. Read this repo's `BEAST-JEV-READ-FIRST.md`, `WORK-STATE.md`, `BuildList.md`, `AUDIT-LEDGER.md`, and [recovered conversation canon](docs/CONVERSATION-CANON.md), then relevant research/evidence.
-4. Inspect fresh HEAD and actual code before architecture claims.
-5. Preserve newer explicit owner decisions.
+1. Read this repo's `PROJECT-READ-FIRST.md`, `WORK-STATE.md`, `BuildList.md`, `AUDIT-LEDGER.md`, and [recovered conversation canon](docs/CONVERSATION-CANON.md), then relevant research/evidence.
+2. Inspect fresh HEAD and actual code before architecture claims.
+3. Preserve newer explicit owner decisions.
 
 ## CI budget — owner locked
 Hosted GitHub Actions are evidence, not a slot machine. Do NOT trigger hosted CI for every small edit/commit.

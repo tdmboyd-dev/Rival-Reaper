@@ -1,7 +1,7 @@
-# BEAST + RiVAL REAPER Read First
+# RiVAL REAPER Read First
 
-Canonical BEAST: `tdmboyd-dev/mgr-perfect-skill@master:BEAST.md`.
-Canonical continuity protocol: `tdmboyd-dev/mgr-perfect-skill@master:CONTINUITY-PROTOCOL.md`.
+Read `MGR-Beast-Pack/MGR-BEAST-PACK.md` as the current MGR BEAST operating handbook. Preserve this repository's product requirements and existing work records.
+
 
 RiVAL REAPER is a standalone Rival Day team-draw application. It may consume MGR Creation OS contracts, research and adapters, but it is not Create Loco and is not owned by Create Loco.
 
@@ -14,6 +14,6 @@ Locked rules:
 - host controls are private; arena/projector output is read-only;
 - visual goal is urban fantasy/metaverse Game Day, not generic SaaS.
 
-CI budget is owner locked: obey BEAST section 24 and AGENTS.md. Local checks first; hosted GitHub Actions only at meaningful convergence gates.
+CI budget is owner locked: obey AGENTS.md. Local checks first; hosted GitHub Actions only at meaningful convergence gates.
 
 Newer recovered owner requirement (2026-09-30): the five approved image references are COMPLETED-TEAM POSTER TEMPLATES ONLY, never reveal badges. Preserve embedded slogans/branding and overlay every completed roster name in the template's existing roster area (including a tenth name when needed). Do not put these poster templates into the draw machine's badge reveal. Region placement and template matching require the actual images and visual acceptance.

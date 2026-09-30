@@ -18,7 +18,7 @@ Persistent scorecard, 2026-09-30 UTC. Before: source implementation claims, no s
 ## Completed wave outcomes
 Scoped22-artifact migration; standalone package/lockfile; fairness completion repair; roster/state/receipt validation; transactional/idempotent commands; encrypted stage/journal persistence; single-writer/killed-process recovery; private public projection; physical ticket/mobile host; audit download; 21st source adaptation; MotionSites prompt/camera research; daylight party replacing rejected night; five effects/audio hooks/motion alternatives; full browser/reconnect/lost-response/accessibility proof; projector overlap repair; repository truth/evidence handoff.
 
-Next batch: owner visual review, official badges, private actual-device rehearsal. CI remains local-first/convergence-only under BEAST24.
+Next batch: owner visual review, official badges, private actual-device rehearsal. CI remains local-first/convergence-only.
 
 ## Final-completion wave (supersedes current-readiness claims above)
 
