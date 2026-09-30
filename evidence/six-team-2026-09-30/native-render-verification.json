@@ -1,0 +1,107 @@
+{
+  "kind": "Native Skia canvas executes actual app drawPoster; NOT browser/device acceptance; all names fake",
+  "results": [
+    {
+      "team": "blood-bloom",
+      "fakeNames": 8,
+      "width": 3000,
+      "height": 3600,
+      "fontSize": 55,
+      "panel": {
+        "x": 29.5,
+        "y": 56.4,
+        "width": 43.7,
+        "height": 9.9,
+        "templateId": "blood-bloom"
+      },
+      "outsidePanelPixelChanges": 0,
+      "sha256": "858209d47a5b8456adbd6af6d6467e57c8b1a8a49d36365fc1cd7f2affbb1c1f",
+      "filename": "FAKE47-blood-bloom.png"
+    },
+    {
+      "team": "pressure-gang",
+      "fakeNames": 8,
+      "width": 3000,
+      "height": 3600,
+      "fontSize": 59,
+      "panel": {
+        "x": 29.3,
+        "y": 57.4,
+        "width": 44.3,
+        "height": 10.6,
+        "templateId": "pressure-gang"
+      },
+      "outsidePanelPixelChanges": 0,
+      "sha256": "0b2acd85e4749a6762ad16ff5c94d24616e3b191862b1a4b1218d5b326e7e853",
+      "filename": "FAKE47-pressure-gang.png"
+    },
+    {
+      "team": "high-society",
+      "fakeNames": 8,
+      "width": 3000,
+      "height": 3600,
+      "fontSize": 60,
+      "panel": {
+        "x": 29.4,
+        "y": 55.5,
+        "width": 43.7,
+        "height": 10.7,
+        "templateId": "high-society"
+      },
+      "outsidePanelPixelChanges": 0,
+      "sha256": "4c4c529f81755076af48d3e36175dbf6439983874698565b146a3dd6c63e9e3b",
+      "filename": "FAKE47-high-society.png"
+    },
+    {
+      "team": "heat-mob",
+      "fakeNames": 8,
+      "width": 3000,
+      "height": 2500,
+      "fontSize": 50,
+      "panel": {
+        "x": 31,
+        "y": 56.1,
+        "width": 38.7,
+        "height": 12.8,
+        "templateId": "heat-mob"
+      },
+      "outsidePanelPixelChanges": 0,
+      "sha256": "c6c065e121c0dd2c10ee8992995bc6dae6768d45d8f882caab7df0798f18c92c",
+      "filename": "FAKE47-heat-mob.png"
+    },
+    {
+      "team": "pink-venom",
+      "fakeNames": 8,
+      "width": 3000,
+      "height": 3600,
+      "fontSize": 57,
+      "panel": {
+        "x": 28.9,
+        "y": 56.4,
+        "width": 44.5,
+        "height": 10.3,
+        "templateId": "pink-venom"
+      },
+      "outsidePanelPixelChanges": 0,
+      "sha256": "abbb22960c01c9becf48642f0e024c8a358efeb94983d990394e4d103d704c18",
+      "filename": "FAKE47-pink-venom.png"
+    },
+    {
+      "team": "belt-2-ass",
+      "fakeNames": 7,
+      "width": 3000,
+      "height": 3600,
+      "fontSize": 79,
+      "panel": {
+        "x": 20.09,
+        "y": 66.52,
+        "width": 59.91,
+        "height": 13.97,
+        "templateId": "belt-2-ass"
+      },
+      "outsidePanelPixelChanges": 0,
+      "sha256": "cf978596e44fda6691d0dce4976c0e6f581a9b9c980bc56e514be73ae9b8a0cd",
+      "filename": "FAKE47-belt-2-ass.png"
+    }
+  ]
+}
