@@ -6,21 +6,11 @@ Target branch: `main`
 
 You are not starting a new design exercise. You are continuing an existing RiVAL REAPER implementation and migrating its product-owned code out of MGR Creation OS into its correct standalone repository.
 
-## 1. MANDATORY BEAST BOOT — DO THIS BEFORE EDITING
-
-The canonical MGR Universal BEAST is NOT conversation memory. Fetch/read it from GitHub:
-
-- Repository: `tdmboyd-dev/mgr-perfect-skill`
-- Branch: `master`
-- File: `BEAST.md`
-- Canonical path: `tdmboyd-dev/mgr-perfect-skill@master:BEAST.md`
-
-Then fetch/read:
-- `tdmboyd-dev/mgr-perfect-skill@master:CONTINUITY-PROTOCOL.md`
+## 1. REPOSITORY RECORDS
 
 Then in `tdmboyd-dev/Rival-Reaper` read, in order:
 1. `AGENTS.md`
-2. `BEAST-JEV-READ-FIRST.md`
+2. `PROJECT-READ-FIRST.md`
 3. `WORK-STATE.md`
 4. `BuildList.md`
 5. `AUDIT-LEDGER.md`
@@ -31,7 +21,6 @@ Treat the newest explicit owner decisions as product authority and executed evid
 
 The owner is explicitly ordering you NOT to burn GitHub Actions minutes on every small commit.
 
-Canonical BEAST section 24 now contains the universal CI budget law. Obey it.
 
 Rules:
 - run local typecheck/lint/unit/integration/browser checks first whenever possible;
@@ -43,7 +32,6 @@ Rules:
 - if hosted CI finds a defect, reproduce and repair locally first, then rerun the affected consolidated gate;
 - never weaken final verification to save money.
 
-Do not modify the universal BEAST to weaken this rule. The canonical BEAST update is already installed at `mgr-perfect-skill@master:BEAST.md`.
 
 ## 3. SOURCE IMPLEMENTATION TO MIGRATE
 
@@ -80,7 +68,7 @@ Blackout Krew:
 - NEVER enters the competitive raffle;
 - NEVER affects five-team size/gender balancing.
 
-Current known competitive target from owner conversation was 45 competitors at the last update, which mathematically permits 9/9/9/9/9. DO NOT hard-code 45: roster counts can change.
+Derive team capacities from the actual validated roster. Do not hard-code a historical headcount: roster counts can change.
 
 Privacy:
 - repository is public;
@@ -139,7 +127,7 @@ Add/execute tests for:
 - second draw blocked until reveal terminal state
 - audit export integrity
 
-Use BEAST BREAK methodology. Fix proven defects and add regression tests.
+Fix proven defects and add regression tests.
 
 Do not mark TESTED unless tests actually ran.
 Do not mark VERIFIED without acceptance criterion + observed result + evidence pointer.
@@ -239,7 +227,7 @@ If the approved badge image files are not present, create clearly labeled replac
 
 ## 8. RESEARCH / ASSET RULE
 
-Do not assume this prompt contains everything. Use BEAST Backwards–Forwards:
+Do not assume this prompt contains everything:
 - inspect what already exists;
 - research current official docs where uncertain;
 - use primary sources;

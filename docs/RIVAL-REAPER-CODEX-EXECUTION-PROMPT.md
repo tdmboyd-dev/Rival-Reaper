@@ -10,12 +10,11 @@ Draft PR: #1
 
 ## Mandatory boot
 1. Read AGENTS.md.
-2. Read tdmboyd-dev/mgr-perfect-skill/BEAST.md and CONTINUITY-PROTOCOL.md.
-3. Read WORK-STATE.md, BEAST-JEV-READ-FIRST.md, BuildList.md and AUDIT-LEDGER.md.
-4. Read all files under src/rival-reaper/, test/rival-reaper*.test.ts, examples/rival-reaper/, and:
+2. Read WORK-STATE.md, PROJECT-READ-FIRST.md, BuildList.md and AUDIT-LEDGER.md.
+3. Read all files under src/rival-reaper/, test/rival-reaper*.test.ts, examples/rival-reaper/, and:
    - research/RIVAL-REAPER-MOTIONSITES-2026-09-29.md
    - research/RIVAL-REAPER-21ST-CODEX-2026-09-29.md
-5. Inspect fresh branch HEAD and PR diff before edits. Preserve unrelated work.
+4. Inspect fresh branch HEAD and PR diff before edits. Preserve unrelated work.
 
 ## Owner-locked product rules
 - Five competitive teams only:
@@ -98,7 +97,7 @@ Use fake badge placeholders if approved image files are not actually in the repo
 When using a reference, copy/adapt the detailed prompt structure, replace its video/image/GLB references with Rival Reaper assets, preserve explicit camera beats, and make focused changes rather than repeatedly redesigning the entire page. Realtime raffle interaction remains code-driven; cinematic media is a shell.
 
 ## Completion
-Work in a substantial BEAST wave. Update BuildList/AUDIT/WORK-STATE with exact truth. Commit coherent changes to this feature branch only. Do not merge PR #1. Do not trigger expensive hosted CI unless necessary; prefer local execution first.
+Work in a substantial wave. Update BuildList/AUDIT/WORK-STATE with exact truth. Commit coherent changes to this feature branch only. Do not merge PR #1. Do not trigger expensive hosted CI unless necessary; prefer local execution first.
 At handoff report:
 - exact HEAD
 - files changed

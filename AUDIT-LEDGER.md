@@ -5,7 +5,7 @@
 - Source prototype remains in `MGR-CREATE-Os@feature/rival-reaper-2026-09-29`.
 - Migration has not yet been runtime-verified here.
 - Public-repo privacy rule: nicknames may be product data only if owner intentionally supplies them, but no private roster file, phone numbers, secrets, tokens, addresses or sensitive household metadata belong in Git history.
-- CI cost rule: no per-small-commit hosted workflow churn; follow canonical BEAST section 24.
+- CI cost rule: no per-small-commit hosted workflow churn.
 
 ## 2026-09-30 migration / implementation wave
 - Canonical BEAST and continuity read fully, followed target read order/full execution contract. Source fresh SHA f2f14f58fb454ea83706bddfc2371fd2a358b947; migrated22 Reaper-owned artifacts only. See docs/MIGRATION.md and evidence/migration-manifest.json.

@@ -30,4 +30,4 @@ The next batch must preserve unrelated remote work, use a non-forced update and 
 
 ## References
 
-Read `AGENTS.md`, `BEAST-JEV-READ-FIRST.md`, `docs/CONVERSATION-CANON.md`, `BuildList.md` and `AUDIT-LEDGER.md`. Existing evidence records retain their historical scope; they do not establish current browser or device acceptance. Earlier versions of this checkpoint remain in Git history.
+Read `AGENTS.md`, `PROJECT-READ-FIRST.md`, `docs/CONVERSATION-CANON.md`, `BuildList.md` and `AUDIT-LEDGER.md`. Existing evidence records retain their historical scope; they do not establish current browser or device acceptance. Earlier versions of this checkpoint remain in Git history.
