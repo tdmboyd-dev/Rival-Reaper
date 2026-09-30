@@ -1,0 +1,129 @@
+{
+  "version": 2,
+  "plan_name": "tonight-hybrid-10",
+  "aspect_ratio": "16:9",
+  "sound": "off",
+  "recommended_first_pass_usd": 1.9635,
+  "two_take_ceiling_usd": 3.927,
+  "scenes": [
+    {
+      "id": "01-idle-field-day",
+      "model": "kling-video/v2.5-turbo/standard/image-to-video",
+      "rate": 0.0231,
+      "duration": 5,
+      "refs": [
+        "FIELD_DAY_MASTER_URL"
+      ],
+      "purpose": "seamless-ish ambient Field Day loop behind live UI",
+      "prompt": "Locked cinematic hero camera at a loud late-afternoon urban Family & Friends Field Day. The exact Rival Reaper machine is the focal object while adults laugh, grills smoke, flags move, DJ speakers pulse subtly and the crowd stays alive. No camera spin, no ticket movement, no readable generated text, no player names. Preserve machine geometry and leave ticket/name zone clean. End composition should closely match the start for loop editing."
+    },
+    {
+      "id": "02-machine-awakens",
+      "model": "kling-video/v2.5-turbo/standard/image-to-video",
+      "rate": 0.0231,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL"
+      ],
+      "purpose": "machine wakes after fate locks",
+      "prompt": "Begin from the exact approved Rival Reaper machine hero. Slow physical dolly forward, side lights wake sequentially, speaker cones flex once, gauges rise, hydraulics tense and internal rollers wake. The official Rival Reaper logo remains stable and readable as an image reference, but do not invent new words. No ticket ejection and no team winner yet. End completely steady and powered on."
+    },
+    {
+      "id": "03-ticket-bay-closeup",
+      "model": "kling-video/v2.5-turbo/standard/image-to-video",
+      "rate": 0.0231,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL"
+      ],
+      "purpose": "mechanical closeup under live DOM ticket",
+      "prompt": "50mm mechanical close-up on the exact Rival Reaper ticket slot, rollers, chains and gauges. Camera lowers and settles. Brass rollers engage with two heavy jerky motions and a blank paper edge advances slightly, then stops. Preserve geometry exactly. No names, no generated team text, no full ticket reveal. End on a stable reading plane so the application can animate the real ticket and three yanks over it."
+    },
+    {
+      "id": "04-colors-fight",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "FIELD_DAY_MASTER_URL",
+        "RIVAL_REAPER_LOGO_URL"
+      ],
+      "purpose": "all six team energies fight before badge reveal",
+      "prompt": "Around the exact neutral Rival Reaper machine at the same late-afternoon Field Day, six equal team energies collide inside and around the glass chamber without declaring a winner: crimson Blood Bloom rose-thorn energy, cobalt Pressure Gang water-pressure rings, emerald High Society smoke, molten orange Heat Mob fire, hot-pink Pink Venom serpent liquid, and purple BELT 2 ASS crystal-ram force. Slow 10-degree camera orbit, heavy physical cabinet, crowd reacting in the background. No player identity and no replacement team logos. End with all six energies sucked toward the center, ready for the live badge reveal."
+    },
+    {
+      "id": "05-blood-bloom-celebration",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "examples/rival-reaper/assets/blood-bloom-roster-template.png"
+      ],
+      "purpose": "Blood Bloom team explosion",
+      "prompt": "Exact Rival Reaper machine, same camera world. Blood Bloom wins the visual phase: crimson rose petals, black thorn-vines, red-gold energy and a fleeting Rose Panther silhouette erupt around but never cover the ticket/name safe zone. Preserve the official roster-world reference as style only; do not generate player names or replacement badge text. Crowd catches red reflections. End clearing toward the machine."
+    },
+    {
+      "id": "06-pressure-gang-celebration",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "examples/rival-reaper/assets/pressure-gang-roster-template.png"
+      ],
+      "purpose": "Pressure Gang team explosion",
+      "prompt": "Exact Rival Reaper machine, same camera world. Pressure Gang celebration: cobalt hydraulic pressure rings, compressed water shockwaves and dark blue chrome light explode around the cabinet. Use the approved Water/Pressure King roster-world art strictly as visual style reference, not as a reveal badge. No generated player names or invented team lettering. End with pressure rings dissipating."
+    },
+    {
+      "id": "07-high-society-celebration",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "examples/rival-reaper/assets/high-society-roster-template.png"
+      ],
+      "purpose": "High Society team explosion",
+      "prompt": "Exact Rival Reaper machine, same camera world. High Society celebration: emerald smoke, gold sparks and elevated green haze bloom outward with street-luxury fantasy energy. Use the approved Smoke King roster-world art as style reference only, never as a replacement standalone badge. No generated player names or invented words. End with smoke thinning to a clean machine view."
+    },
+    {
+      "id": "08-heat-mob-celebration",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "examples/rival-reaper/assets/heat-mob-roster-template.png"
+      ],
+      "purpose": "Heat Mob team explosion",
+      "prompt": "Exact Rival Reaper machine, same camera world. Heat Mob celebration: molten orange metal light, heat distortion, flying embers and a powerful Fire Lion-shaped flame silhouette erupt from vents and seams. Keep the daylight environment readable and the ticket/name safe zone clear. No generated player names or replacement text. End with heat shimmer receding."
+    },
+    {
+      "id": "09-pink-venom-celebration",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "examples/rival-reaper/assets/pink-venom-roster-template.png"
+      ],
+      "purpose": "Pink Venom team explosion",
+      "prompt": "Exact Rival Reaper machine, same camera world. Pink Venom celebration: hot-pink venom, black chrome serpent-liquid ribbons and sharp magenta reflections whip around the machine with powerful gender-neutral danger. Use the approved Venom Kingdom roster-world art as style reference only. No generated player names or replacement badge lettering. End as venom snaps back into the cabinet."
+    },
+    {
+      "id": "10-belt-2-ass-celebration",
+      "model": "kling-video/o3/image-reference",
+      "rate": 0.0462,
+      "duration": 5,
+      "refs": [
+        "REAPER_MACHINE_URL",
+        "examples/rival-reaper/assets/belt-2-ass-roster-template.png",
+        "examples/rival-reaper/assets/belt-2-ass-badge.png"
+      ],
+      "purpose": "BELT 2 ASS team explosion",
+      "prompt": "Exact Rival Reaper machine, same camera world. BELT 2 ASS celebration uses the owner-approved purple ram/crystal identity as one equal competitive team: purple crystal shockwaves, gold belt hardware gleam and curling ram-horn energy erupt around the cabinet, then slam back inward. Preserve the approved badge and roster-world references; do not regenerate their lettering and do not add player names."
+    }
+  ]
+}
