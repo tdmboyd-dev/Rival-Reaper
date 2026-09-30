@@ -1,6 +1,6 @@
 # CURRENT CHECKPOINT — 2026-09-30T06:57Z
 
-Target: tdmboyd-dev/Rival-Reaper main. Base3bd5f47; remote scoped claim01a873e. Final software-repair/poster wave tested locally: clean install, typecheck,62tests (45unit/VM +17HTTP/process),12complete fake46 rehearsals. Evidence: [final completion](evidence/FINAL-COMPLETION-2026-09-30.md). No hosted Actions, deployment, merge or force update.
+Target: tdmboyd-dev/Rival-Reaper main. Tested implementation published at60924ad198dfe11a6a37c7138822d66215c3d78d; treeb399a62d1cfbebbccef05904ca350c42a6327a0e. Base3bd5f47; remote scoped claim01a873e. Publication receipt: evidence/FINAL-COMPLETION-RECEIPT.md. Final software-repair/poster wave tested locally: clean install, typecheck,62tests (45unit/VM +17HTTP/process),12complete fake46 rehearsals. Evidence: [final completion](evidence/FINAL-COMPLETION-2026-09-30.md). No hosted Actions, deployment, merge or force update.
 
 Current changes: roster-mismatch recovery rejection; logout/private-response and continuation race fixes; session-bound official commands; Back/Forward stream recovery; configurable on-art full-team poster PNG export; preflight and event runbook. Five existing approved images are POSTER TEMPLATES ONLY, NEVER reveal badges. Actual pixels, correct original roster-panel regions, private roster, final browser/owner/device/sound acceptance are still missing. Do not report complete.
 
