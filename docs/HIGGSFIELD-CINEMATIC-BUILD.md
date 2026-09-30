@@ -1,94 +1,120 @@
-# Higgsfield production runbook — RiVAL REAPER cinematic shell
+# Higgsfield production runbook — RiVAL REAPER (tonight plan)
 
-Status: prepared, not executed. This branch contains prompts and a local API worker only. No paid request has been sent and no credential is stored in Git.
+Status: prepared, not executed from ChatGPT. No API credential is stored in Git and no paid generation has been submitted.
 
-## Why Higgsfield is a shell, not the raffle brain
+## The simple version
 
-The authoritative server phases remain:
+We need **10 short cinematic clips**, each **5 seconds**. Total media generated: **50 seconds**.
+
+The actual raffle remains native code. Higgsfield does **not** choose a team, reveal a real player name, operate the three yanks, update the roster, or hold private data.
+
+### Three cheap global clips — 720p
+Use Kling 2.5 Turbo Standard Image-to-Video:
+1. Field Day idle loop
+2. machine awakens
+3. ticket-bay closeup
+
+Current displayed API rate: $0.0231/sec.
+
+### Seven consistency-heavy clips
+Use Kling O3 Image Reference because it can take multiple image references:
+4. six colors fight
+5. Blood Bloom celebration
+6. Pressure Gang celebration
+7. High Society celebration
+8. Heat Mob celebration
+9. Pink Venom celebration
+10. BELT 2 ASS celebration
+
+Current displayed API rate: $0.0462/sec.
+
+Planning arithmetic:
+- 15 Standard seconds = $0.3465
+- 35 O3 seconds = $1.6170
+- **one full 10-clip pass ≈ $1.9635**
+- **two full takes of all 10 ≈ $3.9270**
+- API minimum funding is $5; unused balance remains balance, not generation usage.
+
+Always run the authenticated estimate before paid generation because account-specific pricing/discounts may differ.
+
+## Why not make every interaction a video?
+
+The existing server already controls:
 `idle → machine-awakens → colors-fight → badge-selected → ticket-ejects → ink-1 → ink-2 → ink-3 → name-revealed → team-explosion → roster-updated`.
 
-Generated video never selects a team, never contains a participant name, and never advances state. The host/server still owns every transition. Higgsfield produces reusable non-personal ambient clips that the arena may play behind editable DOM/3D layers.
+Keep exact badge overlays, ticket text, physical pull interaction, all ink masks, real participant name and roster in code. That makes the app immediate, replay-safe and cheap. Decorative clips can fail and the draw still works.
 
-## Prepared media pack
+## Why not stop tonight for a GLB?
 
-Twelve 5-second 16:9 silent scenes are defined in `config/higgsfield-scenes.json`.
+A real GLB/Three.js machine remains the premium long-term upgrade. It is not the fastest safe route for tonight because it adds modeling, rigging, UV/material, animation and GPU acceptance work. This prompt pack deliberately leaves the architecture compatible with a later GLB swap.
 
-- 6 reusable global clips: crowd approach, idle loop, machine wake, six-color fight, ticket-bay closeup, reset.
-- 6 team celebration shells: Blood Bloom, Pressure Gang, High Society, Heat Mob, Pink Venom, BELT 2 ASS.
-- Ticket ejection, all three physical yanks, invisible-ink removal, exact badge placement, exact team/player text and roster update remain code/3D driven.
+## Local approved reference folder
 
-At Higgsfield's currently published Kling O3 Image Reference base rate of **$0.0462 per generated second**, one complete 60-second pack costs **$2.772** if each of the 12 first takes succeeds. Two complete takes cost **$5.544**. Three complete takes cost **$8.316**. The API minimum top-up is $5. These are generation-usage amounts before tax and before any account-specific discount; the authenticated estimate response is the final authority before each paid request.
+Create this ignored folder:
 
-## Local input images
+`private/higgsfield-inputs/`
 
-Place approved local references in ignored folder `private/higgsfield-inputs/`:
+Copy the four approved images from the downloadable prompt pack into it with these exact names:
+- `rival-reaper-owner-logo.png`
+- `rival-reaper-machine-hero.png`
+- `field-day-machine-wide.png`
+- `rival-reaper-control-room-reference.png`
 
-- `reaper-machine.png` — generated cinematic machine concept, SHA-256 `5e9109828992fd03893fa50e23cc5d25165d200ab39e081f88f743a3e1882a09`.
-- `field-day-master.png` — generated late-afternoon Field Day master environment, SHA-256 `b81201ca39ed344c69665cccde1cb3ab8e4c41dc2ffe0fca63fcc031ed2dcd09`.
-- optional `control-room-reference.png` — generated host-console visual reference, SHA-256 `60937596d79e5ea0b18ee955ba8d71dc83a74e2b43187ed60d7f8dc3c9d96b21`.
+The script automatically uploads those references using Higgsfield's documented signed-upload flow. Repo-native team poster/badge files are uploaded directly from their existing paths.
 
-These images contain no private roster data. The approved BELT 2 ASS badge already exists in repository assets; uploaded owner copy SHA-256 observed in this session: `3567cc47158b68d99c13786c1f105d136633ab18909916618f8be3a97db53bfb`.
+## Put the API key here
 
-Pressure Gang and High Society do not currently have proven historical standalone badge originals under their final names. Their approved roster-world templates may be used as *style reference only*. The cinematic clips deliberately do not bake reveal badges; live badge artwork remains a replaceable application layer.
+Create:
 
-## How to provide the API key safely
+`private/higgsfield.env`
 
-Do **not** send the key in ChatGPT.
+with:
 
-1. Open Open Higgsfield → API Keys and copy the complete key once.
-2. On your own computer create an ignored file such as `private/higgsfield.env`.
-3. Put one line in it: `HF_API_KEY=<paste-complete-key-here>`.
-4. Do not commit, screenshot, or paste the file into chat.
+`HF_API_KEY=<paste the complete key copied from open.higgsfield.ai>`
 
-The official quick start says the copied API key is one complete credential and REST uses:
-`Authorization: Key <complete-api-key>`.
+Higgsfield's current Quick Start says to paste the complete copied API key as-is. Never paste it into chat or commit it.
 
-## Estimate first
-
-The worker supports an estimate-only mode. It uploads the approved non-personal reference images, asks Higgsfield for the scene estimates, prints the total, and does not submit paid generations.
-
-Run locally after dependencies are installed:
+## Step 1 — estimate only, no paid generations
 
 `node --env-file=private/higgsfield.env --import tsx scripts/higgsfield-build.ts --estimate-only`
 
-Review the returned USD total. If it differs materially from this plan, stop.
+The script:
+- securely requests signed reference uploads;
+- uploads the non-private approved images;
+- requests a USD estimate for each of the 10 scenes;
+- writes `private/higgsfield-output/estimate-report.json`;
+- submits **zero** paid generation jobs.
 
-## Generate
+## Step 2 — set a hard spending cap
 
-Only after the estimate is acceptable:
+For the first run, use $2.50 if the estimate is close to the current plan.
 
+On Windows PowerShell:
+`$env:HIGGSFIELD_MAX_USD="2.50"`
+
+Then:
 `node --env-file=private/higgsfield.env --import tsx scripts/higgsfield-build.ts --generate`
 
-Outputs download to `private/higgsfield-output/`, not public Git. Review each clip for stable geometry, readable safe zones, camera continuity, no invented text, no morphing machine, no distorted people, no early identity exposure. Promote only approved clips into public assets later.
+The worker estimates the entire pack again first and refuses to send paid jobs if the total exceeds the cap.
 
-## MotionSites lessons adapted
+## Review
 
-- separate cinematic media from editable UI/text;
-- use a detailed asset/composition/behavior/fallback/acceptance prompt rather than one vague visual sentence;
-- use MP4 for easy playback or image sequences when precise scrubbing is truly useful;
-- use GLB + Three.js for the machine if real spatial interaction is desired;
-- keep the live raffle event-driven. Scroll-scrubbing belongs to optional intro/exploration, never the authoritative draw.
+Generated MP4s stay under ignored `private/higgsfield-output/`.
 
-## 21st.dev component strategy
+Reject/retry any clip with:
+- changing/melting machine geometry;
+- fake/misspelled logos or team names;
+- player identities;
+- ticket/name safe zone blocked;
+- weird duplicate people;
+- rapid camera spin;
+- full-screen flashes;
+- incorrect team visual identity.
 
-Study/adapt, do not pile components together:
-- Scroll Locked Video Hero / Hero Scroll Video Pin Reveal — optional intro only;
-- Scroll Choreography — reference for camera/section timing;
-- Spotlight — cheap pointer enhancement for desktop machine glass;
-- Liquid/metal buttons — reference for the physical host controls, but touch/keyboard must remain obvious;
-- shader/particle backgrounds — useful for contained team effects with reduced-motion fallback.
+Promote only selected clips into public application assets.
 
-The current app is native HTML/CSS/JS, not React. Do not install a React/Tailwind component tree solely to imitate a visual. Port the useful interaction idea or source technique when licensing permits.
+## Sources checked 2026-09-30
 
-## Success criteria
-
-- arena looks like Field Day first, website second;
-- humans/cookout/music/game activity stay visible;
-- machine feels physically heavy and consistent between clips;
-- all six team energies exist when the backend lineup is six-v1;
-- exact team badge and participant name remain live app layers;
-- 1920×1080 and 1280×720 preserve the ticket/name safe area;
-- reduced-motion can skip every decorative clip and still show the exact state;
-- sound is opt-in and independent of raffle truth;
-- reload/reconnect jumps to the final pose of the current phase rather than replaying suspense;
-- no paid regeneration is used as a runtime dependency.
+- Higgsfield Quick Start: complete-key auth, submit/poll/cancel and signed file uploads.
+- Kling 2.5 Turbo Standard Image-to-Video: 720p, 5/10 seconds, current displayed $0.0231/sec.
+- Kling O3 Image Reference: multiple image references, std/pro/4k modes, 3–15 seconds, current displayed from $0.0462/sec.
