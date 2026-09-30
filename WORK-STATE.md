@@ -1,12 +1,14 @@
 # CURRENT CHECKPOINT — 2026-09-30T06:57Z
 
+Public product reference: [docs/CONVERSATION-CANON.md](docs/CONVERSATION-CANON.md), read alongside existing local canon. It consolidates both source conversations, separates poster templates from reveal badges, preserves deferred wider work, and records the pending sixth-team proposal without approving it. Latest priority: tonight ASAP.
+
 Target: tdmboyd-dev/Rival-Reaper main. Tested implementation published at60924ad198dfe11a6a37c7138822d66215c3d78d; treeb399a62d1cfbebbccef05904ca350c42a6327a0e. Base3bd5f47; remote scoped claim01a873e. Publication receipt: evidence/FINAL-COMPLETION-RECEIPT.md. Final software-repair/poster wave tested locally: clean install, typecheck,62tests (45unit/VM +17HTTP/process),12complete fake46 rehearsals. Evidence: [final completion](evidence/FINAL-COMPLETION-2026-09-30.md). No hosted Actions, deployment, merge or force update.
 
-Current changes: roster-mismatch recovery rejection; logout/private-response and continuation race fixes; session-bound official commands; Back/Forward stream recovery; configurable on-art full-team poster PNG export; preflight and event runbook. Five existing approved images are POSTER TEMPLATES ONLY, NEVER reveal badges. Actual pixels, correct original roster-panel regions, private roster, final browser/owner/device/sound acceptance are still missing. Do not report complete.
+Current changes: roster-mismatch recovery rejection; logout/private-response and continuation race fixes; session-bound official commands; Back/Forward stream recovery; configurable on-art full-team poster PNG export; preflight and event runbook. Five existing approved images are POSTER TEMPLATES ONLY, NEVER reveal badges. Actual poster pixels, correct original roster-panel regions, and final browser/owner/device/sound acceptance are still missing. Private roster reconciliation has since reached47 named competitors: twelve throwaway current-input rehearsals plus all ten saved reveal-phase recoveries passed outside this public repository. Pending unnamed additions and any new team proposal still need explicit decisions. Do not report complete.
 
 Prior unpushed674a8c43 continuation is not available from remote and its old workspace is absent; this poster code is reconstructed, not claimed recovered. Final browser run blocked in this cloud environment; older21-check result below is historical only.
 
-Claim: wave complete for tested software scope; released at handoff. No background build/monitor promised. Next: obtain actual five poster templates and reconciled private roster, map original name panels without altering artwork, run the final browser script and real-device dress rehearsal. Preserve locked fates and never silently reset an event.
+Claim: wave complete for tested software scope; released at handoff. No background build/monitor promised. Next: obtain actual five poster templates, map original name panels without altering artwork, resolve pending roster/team decisions, then run the final browser script and real-device dress rehearsal with current validated private input. Preserve locked fates and never silently reset an event.
 
 ---
 ## Historical migration checkpoint (superseded for current readiness)
