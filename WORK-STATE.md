@@ -1,4 +1,16 @@
-# WORK-STATE — RiVAL REAPER
+# CURRENT CHECKPOINT — 2026-09-30T06:57Z
+
+Target: tdmboyd-dev/Rival-Reaper main. Base3bd5f47; remote scoped claim01a873e. Final software-repair/poster wave tested locally: clean install, typecheck,62tests (45unit/VM +17HTTP/process),12complete fake46 rehearsals. Evidence: [final completion](evidence/FINAL-COMPLETION-2026-09-30.md). No hosted Actions, deployment, merge or force update.
+
+Current changes: roster-mismatch recovery rejection; logout/private-response and continuation race fixes; session-bound official commands; Back/Forward stream recovery; configurable on-art full-team poster PNG export; preflight and event runbook. Five existing approved images are POSTER TEMPLATES ONLY, NEVER reveal badges. Actual pixels, correct original roster-panel regions, private roster, final browser/owner/device/sound acceptance are still missing. Do not report complete.
+
+Prior unpushed674a8c43 continuation is not available from remote and its old workspace is absent; this poster code is reconstructed, not claimed recovered. Final browser run blocked in this cloud environment; older21-check result below is historical only.
+
+Claim: wave complete for tested software scope; released at handoff. No background build/monitor promised. Next: obtain actual five poster templates and reconciled private roster, map original name panels without altering artwork, run the final browser script and real-device dress rehearsal. Preserve locked fates and never silently reset an event.
+
+---
+## Historical migration checkpoint (superseded for current readiness)
+
 
 Updated 2026-09-30 UTC. Target tdmboyd-dev/Rival-Reaper, main.
 
@@ -23,11 +35,11 @@ Gate9 partial: owner visual acceptance, official badges and physical sound/reada
 
 Next: review daylight arena with owner, accept approved badge files locally, then rehearse private roster on actual phone/projector/speakers. Keep private data out of Git. Continue this engine; do not restart migration.
 
-Final preview: fake-data demo running on http://127.0.0.1:8787/arena (local exec session70407); opened in Codex. Host token stays in ignored .rival-reaper/demo/host-token. Tested implementation SHA155dafd26443fbfc46fb9732e9a6a943facd8b12.
+Historical prior-session preview (not running in this handoff): fake-data demo was running on http://127.0.0.1:8787/arena (local exec session70407); opened in Codex. Host token stays in ignored .rival-reaper/demo/host-token. Tested implementation SHA155dafd26443fbfc46fb9732e9a6a943facd8b12.
 
 ## Active isolated verification wave — 2026-09-30T06:35Z
 - Session: dot cloud verification worker; branch `finish/reaper-2026-09-30`.
 - Base: `3bd5f474f761c830005574a7d40f8cc4e1c1e0b8`; no open PRs, prior claim released at inspection.
 - Scope: runtime/browser regression repairs, completed-team poster reconstruction, portable local verification, evidence and event runbook. No deployment, merge or hosted CI.
-- Claim: active; owner authorized tested fixes directly in this repository on 2026-09-30. Review by 2026-09-30T10:00:00Z.
+- Claim: released at software handoff; owner authorized tested fixes directly in this repository on 2026-09-30.
 - Initial proof: npm ci (workspace-writable cache), typecheck and 34/34 tests passed under Node24.19.0 Linux. Browser verification pending.

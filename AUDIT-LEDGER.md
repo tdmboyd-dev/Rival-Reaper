@@ -16,3 +16,11 @@
 - Executed clean npm ci/typecheck/34 tests/21 browser checks; final evidence indexed in evidence/README.md. Browser included complete45, restart/reconnect, response-loss replay, audit, axe, mobile/projector. Real devices and audible sound not verified.
 - Proven defects and failed attempts retained in intermediate logs: solver budget, test auth helper, axe import, ink aria role, favicon404, 720p overlap and Windows locked esbuild clean-install issue. All affected local checks rerun successfully.
 - Hosted Actions used:0. No workflow added; no merge/force-push. Public fixtures fake; private storage ignored. Gate score8/10 local; Gate9/10 open boundaries in BuildList.
+
+## 2026-09-30 final-completion wave
+- RR-RECOVERY-01: restored session silently ignored changed roster/team input, risking removed/support competitors being drawn. Repaired normalized configuration check; mismatch stops startup without changing encrypted bytes; original roster (including reordered input rows) resumes same fate.
+- RR-HOST-02: delayed private/audit/auth HTTP responses could restore private data after logout or act in another authentication generation. Repaired abort/generation guards, private data clearing and new-event reauthentication. Nine host VM regressions, including properly bound third-yank continuation.
+- RR-LIFECYCLE-03: pagehide permanently closed SSE for Back/Forward-restored documents. Repaired one-stream reopen, offline controls and old callback rejection. Executed VM lifecycle regression; physical mobile navigation remains unverified.
+- RR-EVENT-04: official host commands now carry expectedSessionId so delayed commands cannot apply to a different event at the same revision. Server rejects a supplied mismatched identity; old local API callers omitting it remain compatible, as documented.
+- RR-POSTER-05: remote main had no completed-team poster export despite recovered requirement. Reconstructed local-art full-team PNG export. Artwork unavailable is an explicit blocking state, not a fabricated replacement. Poster layout/pixel/physical approval remains owner-dependent.
+- Current source/test/evidence wave used no hosted Actions, workflow additions, merge, deployment or force update. Fresh remote source was3bd5f47; scoped remote claim01a873e. Final evidence details and verification limits are in evidence/FINAL-COMPLETION-2026-09-30.md.

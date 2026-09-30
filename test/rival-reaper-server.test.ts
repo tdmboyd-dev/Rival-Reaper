@@ -417,3 +417,74 @@ test("killed CLI process recovers encrypted fate and ink phase without reroll", 
   assert.equal(replay.replayed, true);
   assert.equal(replay.state.drawCount, 1);
 });
+
+test("restart rejects changed roster or teams without rewriting locked fate", async (t) => {
+  const dir = await mkdtemp(join(tmpdir(), "reaper-roster-mismatch-"));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const options = { port: 0, hostToken: token, secret,
+    dataPath: join(dir, "session.enc.json"), initialState: fixture(10) };
+  const app = await createRivalReaperServer(options);
+  await app.listen();
+  const base = `http://127.0.0.1:${(app.server.address() as any).port}`;
+  const response = await fetch(base + "/api/host/draw", {
+    method: "POST", headers: { authorization: "Bearer " + token, "content-type": "application/json" },
+    body: JSON.stringify({ playerId: "fake-1", commandId: "locked-first", expectedRevision: 0 }),
+  });
+  assert.equal(response.status, 200);
+  const original = await response.json();
+  await app.close();
+  const encrypted = await readFile(options.dataPath);
+  const changes = [
+    (s: ReturnType<typeof fixture>) => { s.players[0].name = "Changed name"; },
+    (s: ReturnType<typeof fixture>) => { s.players[0].gender = "female"; },
+    (s: ReturnType<typeof fixture>) => { s.players[0].householdId = "changed-home"; },
+    (s: ReturnType<typeof fixture>) => { s.players[0].id = "replacement-person"; },
+    (s: ReturnType<typeof fixture>) => { s.players.pop(); s.teams[4].capacity--; },
+    (s: ReturnType<typeof fixture>) => { s.teams[0].name = "Changed team"; },
+    (s: ReturnType<typeof fixture>) => { s.teams[0].capacity++; s.teams[1].capacity--; },
+  ];
+  for (const change of changes) {
+    const initialState = fixture(10);
+    change(initialState);
+    await assert.rejects(createRivalReaperServer({ ...options, initialState }), /differs from the saved session/);
+    assert.deepEqual(await readFile(options.dataPath), encrypted);
+  }
+  // File row order does not change roster identity. Failed starts released the lock.
+  const initialState = fixture(10);
+  initialState.players.reverse();
+  const resumed = await createRivalReaperServer({ ...options, initialState });
+  await resumed.listen();
+  try {
+    const current = await fetch(`http://127.0.0.1:${(resumed.server.address() as any).port}/api/state`).then(r => r.json());
+    assert.deepEqual(current, original.state);
+    assert.equal(resumed.session.receipts.length, 1);
+  } finally { await resumed.close(); }
+});
+
+test("host poster modules are served locally with private-input file paths inaccessible", async (t) => {
+  const x = await setup(t);
+  for (const [path, contentType] of [["/roster-posters.js", "text/javascript"], ["/roster-posters.css", "text/css"], ["/host", "text/html"]]) {
+    const response = await fetch(x.base + path);
+    assert.equal(response.status, 200);
+    assert.ok(response.headers.get("content-type")?.startsWith(contentType));
+    assert.equal(response.headers.get("cache-control"), "no-store");
+    assert.ok(response.headers.get("content-security-policy")?.includes("img-src 'self' data: blob:"));
+  }
+  for (const path of ["/.rival-reaper/demo/host-token", "/roster.sample.json", "/private/roster.json"])
+    assert.equal((await fetch(x.base + path)).status, 404);
+});
+
+test("session-bound host commands cannot apply to a different event at the same revision", async (t) => {
+  const x = await setup(t);
+  const current = await x.state();
+  const input = { commandId: "session-bound-01", expectedRevision: 0,
+    expectedSessionId: "previous-event", playerId: "fake-1" };
+  assert.equal((await x.post("/api/host/draw", input)).status, 409);
+  assert.equal((await x.state()).drawCount, 0);
+  input.expectedSessionId = current.sessionId;
+  assert.equal((await x.post("/api/host/draw", input)).status, 200);
+  const replay = await x.post("/api/host/draw", input);
+  assert.equal(replay.status, 200);
+  assert.equal((await replay.json()).replayed, true);
+  assert.equal((await x.state()).drawCount, 1);
+});

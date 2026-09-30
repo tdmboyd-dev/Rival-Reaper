@@ -16,3 +16,7 @@ Edit the just-generated block-party arena artwork. Owner correction is authorita
 - Final owner visual acceptance is open. Generation/integration is not approval.
 - No video, GLB, real crowd recording or official soundtrack is installed. Audio uses small synthesized user-enabled cues; acoustic/device verification remains open.
 - Two built-in image tool calls were used: initial rejected night generation and owner-directed daylight edit. Tool billing was not exposed; no separate paid image API was configured.
+
+## Newer recovered poster-template distinction — 2026-09-30
+
+The five existing approved art references are completed-team poster templates, NEVER reveal badges. Earlier language treating those five missing files as badge inputs is superseded. Their embedded artwork, slogans and branding must be preserved; completed names belong in each original roster panel, including a tenth slot when needed. Do not replace them with new art, crop them into machine badges or invent template coordinates. Current host export requires the original image plus an explicitly confirmed on-art name region. Actual image bytes and template-region matching remain unverified here.

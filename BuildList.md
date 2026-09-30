@@ -19,3 +19,16 @@ Persistent scorecard, 2026-09-30 UTC. Before: source implementation claims, no s
 Scoped22-artifact migration; standalone package/lockfile; fairness completion repair; roster/state/receipt validation; transactional/idempotent commands; encrypted stage/journal persistence; single-writer/killed-process recovery; private public projection; physical ticket/mobile host; audit download; 21st source adaptation; MotionSites prompt/camera research; daylight party replacing rejected night; five effects/audio hooks/motion alternatives; full browser/reconnect/lost-response/accessibility proof; projector overlap repair; repository truth/evidence handoff.
 
 Next batch: owner visual review, official badges, private actual-device rehearsal. CI remains local-first/convergence-only under BEAST24.
+
+## Final-completion wave (supersedes current-readiness claims above)
+
+2026-09-30: official codebase remains this repository. A reported newer unpushed continuation was not retrievable; completed-team poster support is reconstructed here, not represented as recovered code. Recovered requirement: five downloadable full-team posters using the actual approved completed-team poster templates, never reveal badges, including a ten-person team at 46 competitors. Final art bytes and complete private roster were not available in this environment.
+
+- Gates1–5: expanded current Node/HTTP tests cover46 competitors, changed-roster fail-closed recovery, authenticated private response races and event-bound commands. No real roster used.
+- Gates6/8: existing authoritative theatrical sequence retained; VM regression covers third-yank continuation and Back/Forward connection lifecycle. Final-code browser interaction remains unverified here.
+- Gate7: current clean install/typecheck/Node/HTTP/VM evidence in `evidence/FINAL-COMPLETION-2026-09-30.md`. Final rendered-browser check is blocked by this environment, so earlier Chrome21-check proof does not certify the changed frontend.
+- Gate9: original daylight arena retained; real approved poster-template positioning and final owner visual acceptance remain open. Poster previews/download logic cannot establish final visual quality without actual files and browser inspection.
+- Gate10: twelve complete46-person fake roster preflights executed. Actual phone/projector/speakers and private roster rehearsal remain open. Owner can follow `docs/EVENT-RUNBOOK.md` without placing private data in Git.
+- Poster output: full public team only, authenticated/online host, actual locally selected approved art required; all names retained with overflow fail-closed checks. No substitute official image or invented participant is used for a final export.
+
+Do not call the entire application complete or infer100% from unit-test counts. The remaining gates require real inputs and observed acceptance.

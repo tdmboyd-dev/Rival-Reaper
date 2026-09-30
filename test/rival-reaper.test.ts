@@ -8,14 +8,14 @@ import {
 import { fixture, entries } from "./fixtures.js";
 import { buildFiveTeamState } from "../src/rival-reaper/roster.js";
 
-for (const count of [43, 45])
+for (const count of [43, 45, 46])
   test(`${count} complete draws enforce capacities, gender quotas and household separation`, () => {
     const state = fixture(count);
     for (const p of state.players) drawPlayer(state, p.id, () => 0.73);
     const audit = auditSnapshot(state);
     assert.deepEqual(
       audit.map((t) => t.size),
-      count === 45 ? [9, 9, 9, 9, 9] : [9, 9, 9, 8, 8],
+      count === 46 ? [10, 9, 9, 9, 9] : count === 45 ? [9, 9, 9, 9, 9] : [9, 9, 9, 8, 8],
     );
     assert.ok(
       Math.max(...audit.map((t) => t.male)) -

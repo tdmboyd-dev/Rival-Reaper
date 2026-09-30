@@ -3,19 +3,20 @@
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "RiVAL REAPER — authoritative local team draw and synchronized arena",
+  "description": "RiVAL REAPER \u2014 authoritative local team draw and synchronized arena",
   "engines": {
     "node": ">=22.19.0"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --test --import tsx test/*.test.ts",
-    "test:unit": "node --test --import tsx test/rival-reaper.test.ts test/rival-reaper-session.test.ts test/rival-reaper-roster.test.ts test/rival-reaper-reveal.test.ts test/rival-reaper-receipts.test.ts test/rival-reaper-persistence.test.ts",
+    "test:unit": "node --test --import tsx test/rival-reaper.test.ts test/rival-reaper-session.test.ts test/rival-reaper-roster.test.ts test/rival-reaper-reveal.test.ts test/rival-reaper-receipts.test.ts test/rival-reaper-persistence.test.ts test/rival-reaper-connection.test.ts test/rival-reaper-host.test.ts test/rival-reaper-posters.test.ts",
     "test:integration": "node --test --import tsx test/rival-reaper-server.test.ts",
     "test:browser": "node --import tsx scripts/browser-rehearsal.ts",
-    "start": "tsx src/rival-reaper/cli.ts",
-    "rival-reaper": "tsx src/rival-reaper/cli.ts",
-    "demo": "tsx scripts/demo.ts"
+    "start": "node --import tsx src/rival-reaper/cli.ts",
+    "rival-reaper": "node --import tsx src/rival-reaper/cli.ts",
+    "demo": "node --import tsx scripts/demo.ts",
+    "rehearse": "node --import tsx scripts/rehearse-roster.ts"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",

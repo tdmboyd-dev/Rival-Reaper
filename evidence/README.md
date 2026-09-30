@@ -33,3 +33,7 @@ Local: npm install; npm run test:unit; npm run test:integration; npm run demo; n
 Migration-manifest.json records22 source paths/blob IDs/SHA256. Research limitations and exact asset prompts are in research/VISUAL-PRODUCTION-2026-09-30.md and docs/ASSETS.md. COMMIT-RECEIPT.md pins implementation SHA and exact file manifest after commit creation. No production/deployment/real-roster claim.
 
 Log whitespace was normalized at handoff (trailing spaces/blank EOF lines only); result text was preserved.
+
+## Newer software completion wave
+
+See [FINAL-COMPLETION-2026-09-30.md](FINAL-COMPLETION-2026-09-30.md) for62current tests and explicit final-browser limits. The Windows/Chrome21-check evidence above remains historical, not proof of the changed frontend or approved poster-template placement.

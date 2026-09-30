@@ -7,6 +7,7 @@ import { resolve, join } from "node:path";
 import { createRivalReaperServer } from "../src/rival-reaper/server.js";
 import { fixture } from "../test/fixtures.js";
 import { canonical, verifyReceiptChain } from "../src/rival-reaper/receipts.js";
+import { checkFullTeamPosters, checkPosterCanvasBoundaries } from "./poster-browser-checks.js";
 const output = resolve(process.env.REAPER_ARTIFACTS ?? "evidence/screenshots");
 await mkdir(output, { recursive: true });
 const data = await mkdtemp(join(tmpdir(), "reaper-browser-"));
@@ -17,13 +18,22 @@ const options = {
   hostToken: token,
   secret,
   dataPath: join(data, "session.enc.json"),
-  initialState: fixture(45),
+  initialState: fixture(46),
 };
 let app = await createRivalReaperServer(options);
 await app.listen();
 const port = (app.server.address() as any).port;
 const base = `http://127.0.0.1:${port}`;
-const browser = await chromium.launch({ channel: "chrome", headless: true });
+const browser = await chromium.launch({
+  ...(process.env.REAPER_BROWSER_EXECUTABLE
+    ? { executablePath: process.env.REAPER_BROWSER_EXECUTABLE }
+    : { channel: "chrome" }),
+  headless: true,
+}).catch(async (error) => {
+  await app.close();
+  await rm(data, { recursive: true, force: true });
+  throw error;
+});
 const context = await browser.newContext({
   viewport: { width: 1440, height: 900 },
 });
@@ -76,8 +86,8 @@ try {
   await host.locator("#token").fill(token);
   await host.locator("#auth-form button").click();
   await expect(host.locator("#controls")).toBeVisible();
-  await expect(host.locator("#player option")).toHaveCount(46);
-  record("Private mobile host unlock and 45 fake roster options");
+  await expect(host.locator("#player option")).toHaveCount(47);
+  record("Private mobile host unlock and 46 fake roster options");
   await host.locator("#player").selectOption("fake-1");
   await host.locator("#draw").click();
   await phase("machine-awakens");
@@ -178,10 +188,10 @@ try {
     "roster-updated",
   ])
     await advance(p);
-  // Complete the same 45-player session through the real HTTP API. First two
-  // draws exercised host UI; remaining 43 exercise sustained durable operation.
+  // Complete the same 46-player session through the real HTTP API. First two
+  // draws exercised host UI; remaining 44 exercise sustained durable operation.
   const seen = new Set<string>();
-  for (let player = 3; player <= 45; player++) {
+  for (let player = 3; player <= 46; player++) {
     let current = await fetch(base + "/api/state").then((r) => r.json());
     const issue = async (path: string) => {
       const r = await fetch(base + path, {
@@ -193,6 +203,7 @@ try {
         body: JSON.stringify({
           commandId: randomBytes(12).toString("hex"),
           expectedRevision: current.revision,
+          expectedSessionId: current.sessionId,
           ...(path.endsWith("/draw") ? { playerId: `fake-${player}` } : {}),
         }),
       });
@@ -218,14 +229,16 @@ try {
       }
     }
   }
-  await expect(arena.locator("#draw-number")).toHaveText("45");
+  await expect(arena.locator("#draw-number")).toHaveText("46");
   await expect(host.locator("#draw")).toBeDisabled();
   const complete = await fetch(base + "/api/state").then((r) => r.json());
-  expect(complete.teams.map((t: any) => t.assigned)).toEqual([9, 9, 9, 9, 9]);
+  expect(complete.teams.map((t: any) => t.assigned)).toEqual([10, 9, 9, 9, 9]);
   expect(seen.size).toBe(5);
   record(
-    "Complete 45-player HTTP rehearsal ends 9/9/9/9/9, all five world effects captured",
+    "Complete 46-player HTTP rehearsal ends 10/9/9/9/9, all five world effects captured",
   );
+  record(await checkFullTeamPosters(host, complete, output));
+  record(await checkPosterCanvasBoundaries(host));
   await host.locator("#audit-open").click();
   await expect(host.locator("#audit-dialog")).toBeVisible();
   const download = host.waitForEvent("download");
@@ -236,7 +249,7 @@ try {
   expect(bundle.bundleHash).toBe(
     createHash("sha256").update(canonical(bundle.payload)).digest("hex"),
   );
-  expect(bundle.payload.receipts).toHaveLength(45);
+  expect(bundle.payload.receipts).toHaveLength(46);
   await host.keyboard.press("Escape");
   await expect(host.locator("#audit-dialog")).not.toBeVisible();
   await expect(host.locator("#audit-open")).toBeFocused();

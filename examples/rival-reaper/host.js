@@ -1,11 +1,30 @@
 import { $, connect, renderTeams, phases } from "./shared.js";
+import { createPosterControls } from "./roster-posters.js";
 let token = "",
   state = null,
   busy = false,
   online = false,
   pending = null,
   bundle = null,
+  privateRevision = -1,
+  authGeneration = 0,
+  hostAuthConfirmed = false;
+const posters = createPosterControls(document.querySelector("#poster-panel"));
+const privateRequests = new Set();
+function staleAuthentication() {
+  const error = new Error("Host authentication changed");
+  error.stale = true;
+  return error;
+}
+function invalidatePrivateRequests() {
+  authGeneration++;
+  hostAuthConfirmed = false;
+  for (const controller of privateRequests) controller.abort();
+  privateRequests.clear();
   privateRevision = -1;
+  pending = null;
+  bundle = null;
+}
 const nextLabels = {
   "machine-awakens": "LET THE COLORS FIGHT",
   "colors-fight": "REVEAL THE TEAM BADGE",
@@ -21,6 +40,7 @@ function message(text) {
   $("#message").textContent = text;
 }
 function controls() {
+  posters.update({ state, authenticated: hostAuthConfirmed, online });
   const active =
     state && !["idle", "roster-updated"].includes(state.reveal.phase);
   $("#draw").disabled =
@@ -55,26 +75,47 @@ function controls() {
   }
 }
 async function api(path, options = {}) {
-  const res = await fetch(path, {
-    ...options,
-    headers: {
-      "content-type": "application/json",
-      authorization: "Bearer " + token,
-      ...options.headers,
-    },
-    signal: AbortSignal.timeout(10000),
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    const error = new Error(data.error ?? "Request failed");
-    error.status = res.status;
+  if (!token) throw staleAuthentication();
+  const generation = authGeneration;
+  const controller = new AbortController();
+  privateRequests.add(controller);
+  try {
+    const res = await fetch(path, {
+      ...options,
+      headers: {
+        "content-type": "application/json",
+        authorization: "Bearer " + token,
+        ...options.headers,
+      },
+      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)]),
+    });
+    if (generation !== authGeneration) throw staleAuthentication();
+    const data = await res.json();
+    if (generation !== authGeneration) throw staleAuthentication();
+    if (!res.ok) {
+      const error = new Error(data.error ?? "Request failed");
+      error.status = res.status;
+      throw error;
+    }
+    return data;
+  } catch (error) {
+    if (generation !== authGeneration) throw staleAuthentication();
     throw error;
+  } finally {
+    privateRequests.delete(controller);
   }
-  return data;
+}
+function checkSession(sessionId) {
+  if (state && sessionId !== state.sessionId) {
+    logout();
+    message("The server session changed. Unlock the host again to continue.");
+    throw staleAuthentication();
+  }
 }
 async function privateState() {
-  if (!token) return;
+  if (!token) throw staleAuthentication();
   const value = await api("/api/host/state");
+  checkSession(value.sessionId);
   if (value.revision < privateRevision) return;
   privateRevision = value.revision;
   const chosen = $("#player").value;
@@ -83,7 +124,8 @@ async function privateState() {
   if (value.players.some((p) => p.id === chosen)) $("#player").value = chosen;
   $("#receipt").textContent = value.lastReceiptHash ?? "No fate locked yet.";
   if (!state || value.revision >= state.revision) {
-    state = value;
+    const { players, lastReceiptHash, ...publicValue } = value;
+    state = publicValue;
     renderTeams(state, true);
   }
   controls();
@@ -91,11 +133,15 @@ async function privateState() {
 $("#auth-form").onsubmit = async (event) => {
   event.preventDefault();
   if (busy) return;
+  invalidatePrivateRequests();
+  const generation = authGeneration;
   busy = true;
   token = $("#token").value;
   controls();
   try {
     await privateState();
+    if (generation !== authGeneration) return;
+    hostAuthConfirmed = true;
     $("#auth-panel").hidden = true;
     $("#controls").hidden = false;
     $("#audit-panel").hidden = false;
@@ -103,21 +149,27 @@ $("#auth-form").onsubmit = async (event) => {
     message("Host unlocked. The arena stays read-only.");
     $("#player").focus();
   } catch (error) {
-    token = "";
+    if (error.stale || generation !== authGeneration) return;
+    logout();
     message(error.message);
   } finally {
-    busy = false;
-    controls();
+    if (generation === authGeneration) {
+      busy = false;
+      controls();
+    }
   }
 };
 function logout() {
+  invalidatePrivateRequests();
   token = "";
-  bundle = null;
+  busy = false;
   $("#controls").hidden = true;
   $("#audit-panel").hidden = true;
   $("#auth-panel").hidden = false;
   $("#receipt").textContent = "";
   $("#audit-text").textContent = "";
+  $("#audit-status").textContent = "";
+  $("#token").value = "";
   $("#player").replaceChildren();
   $("#audit-dialog").close();
   message("Host locked. Reveal state is safely held by the machine.");
@@ -126,6 +178,8 @@ function logout() {
 }
 $("#logout").onclick = logout;
 async function execute(command) {
+  if (!token) return;
+  const generation = authGeneration;
   busy = true;
   pending = command;
   controls();
@@ -135,6 +189,7 @@ async function execute(command) {
       method: "POST",
       body: JSON.stringify(command.input),
     });
+    checkSession(result.state.sessionId);
     pending = null;
     if (!state || result.state.revision >= state.revision) state = result.state;
     message(
@@ -143,14 +198,22 @@ async function execute(command) {
         : "Saved. Fate stays locked.",
     );
     await privateState();
+    if (generation !== authGeneration) return;
     // Third physical yank breaks the last ink, then reveals the name. Each durable
     // beat still has its own revision and replay-safe command; reload can resume ink-3.
-    if (state.reveal.phase === "ink-3" && command.path.endsWith("/advance")) {
+    if (
+      command.path.endsWith("/advance") &&
+      result.state.reveal.phase === "ink-3" &&
+      result.appliedRevision === result.state.revision &&
+      state.revision === result.appliedRevision &&
+      state.reveal.phase === "ink-3"
+    ) {
       const continuation = {
         path: command.path,
         input: {
           commandId: command.input.commandId + "_name",
           expectedRevision: state.revision,
+          expectedSessionId: state.sessionId,
         },
       };
       busy = false;
@@ -158,18 +221,26 @@ async function execute(command) {
       return;
     }
   } catch (error) {
+    if (error.stale || generation !== authGeneration) return;
     if (error.status) {
       pending = null;
-      if (error.status === 401) logout();
+      if (error.status === 401) {
+        logout();
+        message(error.message);
+        return;
+      }
       await privateState().catch(() => {});
+      if (generation !== authGeneration) return;
       message(error.message);
     } else
       message(
         "Connection interrupted. Retry this SAME command to recover its result safely.",
       );
   } finally {
-    busy = false;
-    controls();
+    if (generation === authGeneration) {
+      busy = false;
+      controls();
+    }
   }
 }
 $("#draw-form").onsubmit = (event) => {
@@ -185,6 +256,7 @@ $("#draw-form").onsubmit = (event) => {
     input: {
       commandId: crypto.randomUUID(),
       expectedRevision: state.revision,
+      expectedSessionId: state.sessionId,
       playerId,
     },
   });
@@ -193,7 +265,11 @@ function advance() {
   if ($("#advance").disabled) return;
   execute({
     path: "/api/host/reveal/advance",
-    input: { commandId: crypto.randomUUID(), expectedRevision: state.revision },
+    input: {
+      commandId: crypto.randomUUID(),
+      expectedRevision: state.revision,
+      expectedSessionId: state.sessionId,
+    },
   });
 }
 $("#advance").onclick = advance;
@@ -230,8 +306,11 @@ $("#advance").addEventListener("pointercancel", () => {
   $("#advance .pull-grip").style.transform = "";
 });
 $("#audit-open").onclick = async () => {
+  const generation = authGeneration;
   try {
-    bundle = await api("/api/host/audit");
+    const value = await api("/api/host/audit");
+    checkSession(value.payload.sessionId);
+    bundle = value;
     $("#audit-text").textContent = JSON.stringify(
       {
         sessionId: bundle.payload.sessionId,
@@ -248,12 +327,14 @@ $("#audit-open").onclick = async () => {
       "Export is a snapshot of the current locked state.";
     $("#audit-dialog").showModal();
   } catch (error) {
+    if (error.stale || generation !== authGeneration) return;
+    if (error.status === 401) logout();
     message(error.message);
   }
 };
 $("#audit-close").onclick = () => $("#audit-dialog").close();
 $("#export").onclick = () => {
-  if (!bundle) return;
+  if (!token || !bundle) return;
   const url = URL.createObjectURL(
     new Blob([JSON.stringify(bundle, null, 2)], { type: "application/json" }),
   );
@@ -266,6 +347,10 @@ $("#export").onclick = () => {
 };
 connect(
   (value) => {
+    if (state && value.sessionId !== state.sessionId) {
+      logout();
+      message("The server session changed. Unlock the host again to continue.");
+    }
     if (
       state &&
       value.sessionId === state.sessionId &&
@@ -277,6 +362,7 @@ connect(
     controls();
     if (token)
       privateState().catch((error) => {
+        if (error.stale) return;
         if (error.status === 401) logout();
         else
           message(

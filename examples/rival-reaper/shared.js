@@ -55,32 +55,47 @@ export function connection(ok) {
   e.classList.toggle("offline", !ok);
 }
 export function connect(render, onConnection = () => {}) {
-  const es = new EventSource("/api/events");
-  let revision = -1,
-    session;
-  es.addEventListener("state", (event) => {
-    try {
-      const state = JSON.parse(event.data);
-      if (state.sessionId !== session) {
-        revision = -1;
-        session = state.sessionId;
+  let es = null, revision = -1, session;
+  function open() {
+    if (es) return;
+    const stream = new EventSource("/api/events");
+    es = stream;
+    stream.addEventListener("state", (event) => {
+      if (stream !== es) return;
+      try {
+        const state = JSON.parse(event.data);
+        if (state.sessionId !== session) {
+          revision = -1;
+          session = state.sessionId;
+        }
+        if (state.revision < revision) return;
+        revision = state.revision;
+        connection(true);
+        onConnection(true);
+        render(state);
+      } catch {
+        connection(false);
+        onConnection(false);
       }
-      if (state.revision < revision) return;
-      revision = state.revision;
-      connection(true);
-      onConnection(true);
-      render(state);
-    } catch {
+    });
+    stream.onerror = () => {
+      if (stream !== es) return;
       connection(false);
       onConnection(false);
-    }
-  });
-  es.onerror = () => {
+    };
+  }
+  function close() {
+    if (es) es.close();
+    es = null;
     connection(false);
     onConnection(false);
-  };
-  window.addEventListener("pagehide", () => es.close(), { once: true });
-  return es;
+  }
+  // Back/Forward can restore this same document without rerunning its module.
+  // Reopen the closed stream and await fresh state before enabling controls.
+  window.addEventListener("pagehide", close);
+  window.addEventListener("pageshow", open);
+  open();
+  return { close };
 }
 export function el(tag, cls, text) {
   const n = document.createElement(tag);

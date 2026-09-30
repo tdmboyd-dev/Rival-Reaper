@@ -44,4 +44,10 @@ CSPRNG sessions produce canonical SHA-256 receipt chains. These detect alteratio
 
 ## Visual direction
 
-Owner correction: visible daylight/late-afternoon urban block party, surreal/unorthodox energy, people more prominent than pavement. Rejected night art is not shipped. Generated atmosphere sits behind editable machine, badges, ticket and name. Approved badges were absent; labeled initials remain replaceable placeholders. See [assets](docs/ASSETS.md), [research](research/VISUAL-PRODUCTION-2026-09-30.md), and [attribution](THIRD-PARTY-NOTICES.md).
+Owner correction: visible daylight/late-afternoon urban block party, surreal/unorthodox energy, people more prominent than pavement. Rejected night art is not shipped. Generated atmosphere sits behind editable machine, badges, ticket and name. The five approved images are completed-team poster templates only, never reveal badges. They are not present in this checkout; the arena retains its separate labeled initials. See [assets](docs/ASSETS.md), [research](research/VISUAL-PRODUCTION-2026-09-30.md), and [attribution](THIRD-PARTY-NOTICES.md).
+
+## Final event preparation
+
+Follow [the event and recovery runbook](docs/EVENT-RUNBOOK.md). `npm run rehearse -- /absolute/private/roster.json` runs twelve throwaway complete draws without modifying an event or outputting participant names. A changed input roster now stops startup when it disagrees with a saved session, rather than silently drawing from stale input.
+
+For an already installed Chromium instead of Chrome, set `REAPER_BROWSER_EXECUTABLE` to its executable before `npm run test:browser`. Browser/physical acceptance must run against the final code; historical screenshots are not proof of newer changes.

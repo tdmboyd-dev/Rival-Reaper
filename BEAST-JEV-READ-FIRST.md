@@ -15,3 +15,5 @@ Locked rules:
 - visual goal is urban fantasy/metaverse Game Day, not generic SaaS.
 
 CI budget is owner locked: obey BEAST section 24 and AGENTS.md. Local checks first; hosted GitHub Actions only at meaningful convergence gates.
+
+Newer recovered owner requirement (2026-09-30): the five approved image references are COMPLETED-TEAM POSTER TEMPLATES ONLY, never reveal badges. Preserve embedded slogans/branding and overlay every completed roster name in the template's existing roster area (including a tenth name when needed). Do not put these poster templates into the draw machine's badge reveal. Region placement and template matching require the actual images and visual acceptance.

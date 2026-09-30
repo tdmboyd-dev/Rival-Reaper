@@ -8,7 +8,7 @@ import { resolve } from "node:path";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { RivalReaperSession } from "./session.js";
 import { EncryptedFileStore } from "./persistence.js";
-import type { ReaperState } from "./engine.js";
+import { validateState, type ReaperState } from "./engine.js";
 import { RevealController, revealOrder } from "./reveal.js";
 import { canonical, type ReaperSnapshot } from "./receipts.js";
 import { acquireSessionLock } from "./lock.js";
@@ -73,6 +73,19 @@ export async function createRivalReaperServer(options: ReaperServerOptions) {
     let session = restored
       ? RivalReaperSession.restore(restored)
       : new RivalReaperSession(options.initialState);
+    // The saved fate is authoritative, but a corrected input roster must never be
+    // silently ignored (especially competitors moved into support/Blackout).
+    validateState(options.initialState);
+    const rosterIdentity = (state: ReaperState) => canonical({
+      players: [...state.players].sort((a, b) => a.id.localeCompare(b.id)),
+      teams: [...state.teams].sort((a, b) => a.id.localeCompare(b.id)),
+    });
+    if (restored && rosterIdentity(session.state) !== rosterIdentity(options.initialState))
+      throw new Error(
+        "Input roster or team configuration differs from the saved session. " +
+        "Restore the original roster to resume its locked fates, or use a NEW data path " +
+        "for a separately rehearsed session. The existing session has not been changed.",
+      );
     let reveal = new RevealController();
     let revision = restored?.revision ?? 0;
     let commands = restored?.commands ?? [];
@@ -175,6 +188,11 @@ export async function createRivalReaperServer(options: ReaperServerOptions) {
         Number(input.expectedRevision) < 0
       )
         throw new HttpError(400, "expectedRevision required");
+      // Current host clients bind pending commands to the event as well as its
+      // revision. A new event can legitimately restart at revision zero.
+      // Omission remains compatible with the existing local v1 API callers.
+      if (input.expectedSessionId !== undefined && input.expectedSessionId !== session.sessionId)
+        throw new HttpError(409, "Session changed; unlock the host again before issuing a command");
       const fingerprint = createHash("sha256")
         .update(canonical({ path, ...input }))
         .digest("hex");
@@ -256,7 +274,7 @@ export async function createRivalReaperServer(options: ReaperServerOptions) {
       res.setHeader("referrer-policy", "no-referrer");
       res.setHeader(
         "content-security-policy",
-        "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+        "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
       );
       try {
         const url = new URL(req.url ?? "/", "http://localhost");
@@ -345,6 +363,8 @@ export async function createRivalReaperServer(options: ReaperServerOptions) {
           "/arena.js": "arena.js",
           "/host.js": "host.js",
           "/shared.js": "shared.js",
+          "/roster-posters.js": "roster-posters.js",
+          "/roster-posters.css": "roster-posters.css",
           "/assets/block-party-daylight.png": "assets/block-party-daylight.png",
         };
         if (req.method === "GET" && files[url.pathname]) {
