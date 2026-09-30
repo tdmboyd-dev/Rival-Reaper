@@ -1,0 +1,26 @@
+
+> @mgr/rival-reaper@0.2.0 test:browser
+> node --import tsx scripts/browser-rehearsal.ts
+
+PASS Unauthorized host stays locked
+PASS Private mobile host unlock and 45 fake roster options
+PASS Fate locks once; next draw disabled; arena follows
+PASS Badge precedes ticket; name is absent before reveal
+PASS Arena reload restores active first-ink phase
+PASS Host reload requires reauthentication and resumes same reveal
+PASS Third physical yank reveals exact locked name
+PASS Roster board updates only after terminal reveal
+PASS Server stop/restart and live browser reconnect preserve fate and reveal
+PASS Lost response recovers by replay without duplicate draw
+PASS Complete 45-player HTTP rehearsal ends 9/9/9/9/9, all five world effects captured
+PASS Private audit downloads valid chain/bundle; Escape restores focus
+PASS Sound opt-in and mute controls toggle successfully (not acoustic verification)
+PASS Explicit motion pause available
+PASS Arena 1920x1080 no horizontal overflow and screenshot
+PASS Arena 1280x720 no horizontal overflow and screenshot
+PASS Arena 390x844 no horizontal overflow and screenshot
+PASS OS reduced-motion disables energy animation
+PASS arena axe WCAG A/AA scan has zero violations
+PASS host axe WCAG A/AA scan has zero violations
+PASS No unexpected browser JavaScript or console errors
+BROWSER RESULT: 21/21 checks passed

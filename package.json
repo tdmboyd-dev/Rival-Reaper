@@ -1,0 +1,27 @@
+{
+  "name": "@mgr/rival-reaper",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "RiVAL REAPER — authoritative local team draw and synchronized arena",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --import tsx test/*.test.ts",
+    "test:unit": "node --test --import tsx test/rival-reaper.test.ts test/rival-reaper-session.test.ts test/rival-reaper-roster.test.ts test/rival-reaper-reveal.test.ts test/rival-reaper-receipts.test.ts test/rival-reaper-persistence.test.ts",
+    "test:integration": "node --test --import tsx test/rival-reaper-server.test.ts",
+    "test:browser": "node --import tsx scripts/browser-rehearsal.ts",
+    "start": "tsx src/rival-reaper/cli.ts",
+    "rival-reaper": "tsx src/rival-reaper/cli.ts",
+    "demo": "tsx scripts/demo.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "@playwright/test": "^1.55.1",
+    "@axe-core/playwright": "^4.10.2"
+  }
+}

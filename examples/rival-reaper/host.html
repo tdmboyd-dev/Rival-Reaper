@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RiVAL REAPER · Private host</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/host.js"></script>
+  </head>
+  <body class="host">
+    <main class="host-shell">
+      <header>
+        <a class="back" href="/">← RIVAL DAY III</a
+        ><span id="connection" role="status">CONNECTING</span>
+        <p class="eyebrow">PRIVATE HOST CONTROL ROOM</p>
+        <h1>RUN THE<br /><em>REAPER.</em></h1>
+        <p>Set the fate. Make them wait.</p>
+      </header>
+      <section id="auth-panel" class="host-panel">
+        <h2>01 / UNLOCK THE CONTROLS</h2>
+        <form id="auth-form">
+          <label for="token">Private host token</label
+          ><input
+            id="token"
+            type="password"
+            required
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Enter your local host token"
+          /><button type="submit">UNLOCK HOST</button>
+        </form>
+        <p class="fine">
+          Your token stays in this tab's memory. Refreshing locks the controls.
+        </p>
+      </section>
+      <section id="controls" class="host-panel" hidden>
+        <div class="panel-top">
+          <h2>02 / CONTROL THE SHOW</h2>
+          <button id="logout" class="small">LOCK HOST</button>
+        </div>
+        <div class="host-phase">
+          <span id="host-phase">IDLE</span><span id="host-draw">DRAW 00</span>
+        </div>
+        <form id="draw-form">
+          <label for="player">Choose the next competitor</label
+          ><select id="player" required>
+            <option value="">Select a competitor</option></select
+          ><button id="draw" type="submit">LOCK THE NEXT FATE ↗</button>
+        </form>
+        <button id="advance" class="pull-control" disabled>
+          <span class="pull-grip" aria-hidden="true">▰</span
+          ><span id="advance-label">WAITING FOR A LOCKED FATE</span
+          ><small>Press Enter, tap, or pull down</small>
+        </button>
+        <div class="ink-progress" role="group" aria-label="Ink reveal progress">
+          <i></i><i></i><i></i>
+        </div>
+        <p class="fine" id="host-help">
+          One receipt. One fate. The show can pause; the result cannot change.
+        </p>
+        <button id="retry" class="secondary" hidden>
+          RETRY THE SAME COMMAND
+        </button>
+      </section>
+      <p id="message" role="alert" class="message"></p>
+      <section class="host-panel">
+        <h2>THE FIVE WORLDS</h2>
+        <div id="teams" class="host-teams"></div>
+      </section>
+      <section class="host-panel" id="audit-panel" hidden>
+        <h2>THE MACHINE KEEPS RECEIPTS.</h2>
+        <p id="receipt" class="receipt">No fate locked yet.</p>
+        <button id="audit-open" class="secondary">OPEN PRIVATE AUDIT</button>
+      </section>
+      <footer class="fine">
+        Blackout Krew stays outside the raffle. Real roster and audit exports
+        stay private and local.
+      </footer>
+    </main>
+    <dialog id="audit-dialog" aria-labelledby="audit-title">
+      <h2 id="audit-title">PRIVATE AUDIT</h2>
+      <p>
+        Contains roster and household information. Keep this export outside
+        public repositories.
+      </p>
+      <p id="audit-status" role="status"></p>
+      <pre id="audit-text"></pre>
+      <div class="dialog-actions">
+        <button id="export">SAVE PRIVATE AUDIT</button
+        ><button id="audit-close" class="secondary">CLOSE</button>
+      </div>
+    </dialog>
+  </body>
+</html>

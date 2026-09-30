@@ -1,0 +1,6 @@
+@mgr/rival-reaper@0.2.0 C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper
+├── @axe-core/playwright@4.13.0
+├── @playwright/test@1.63.0
+├── @types/node@22.20.4
+├── tsx@4.23.15
+└── typescript@5.9.3

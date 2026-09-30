@@ -1,0 +1,103 @@
+
+> @mgr/rival-reaper@0.2.0 test:integration
+> node --test --import tsx test/rival-reaper-server.test.ts
+
+TAP version 13
+# Subtest: host routes reject missing, bare, malformed and incorrect auth
+not ok 1 - host routes reject missing, bare, malformed and incorrect auth
+  ---
+  duration_ms: 232.3961
+  type: 'test'
+  location: 'C:\\Users\\cool\\Documents\\Codex\\2026-09-29\\work-on-my-tdmboyd-dev-rival\\work\\Rival-Reaper\\test\\rival-reaper-server.test.ts:1:1874'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    400 !== 401
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 401
+  actual: 400
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\test\rival-reaper-server.test.ts:28:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: malformed body, missing command and oversized request are rejected
+ok 2 - malformed body, missing command and oversized request are rejected
+  ---
+  duration_ms: 106.1714
+  type: 'test'
+  ...
+# Subtest: reveal without fate and unknown player fail without mutation
+ok 3 - reveal without fate and unknown player fail without mutation
+  ---
+  duration_ms: 141.0537
+  type: 'test'
+  ...
+# Subtest: parallel identical commands lock once and replay once
+ok 4 - parallel identical commands lock once and replay once
+  ---
+  duration_ms: 96.757
+  type: 'test'
+  ...
+# Subtest: parallel different commands and second draw cannot consume another fate
+ok 5 - parallel different commands and second draw cannot consume another fate
+  ---
+  duration_ms: 96.9291
+  type: 'test'
+  ...
+# Subtest: replay advance is idempotent; command reuse and stale revisions fail
+ok 6 - replay advance is idempotent; command reuse and stale revisions fail
+  ---
+  duration_ms: 84.2624
+  type: 'test'
+  ...
+# Subtest: presentation redacts fate and private metadata until their authorized phases
+ok 7 - presentation redacts fate and private metadata until their authorized phases
+  ---
+  duration_ms: 245.2146
+  type: 'test'
+  ...
+# Subtest: restart at every reveal phase preserves fate and command journal
+ok 8 - restart at every reveal phase preserves fate and command journal
+  ---
+  duration_ms: 549.2557
+  type: 'test'
+  ...
+# Subtest: SSE initial connection and reconnect supply current authoritative state
+ok 9 - SSE initial connection and reconnect supply current authoritative state
+  ---
+  duration_ms: 90.0193
+  type: 'test'
+  ...
+# Subtest: audit export is integrity-checkable and encrypted file contains no clear roster
+ok 10 - audit export is integrity-checkable and encrypted file contains no clear roster
+  ---
+  duration_ms: 55.8568
+  type: 'test'
+  ...
+# Subtest: save failure publishes no new fate and disables all further mutations
+ok 11 - save failure publishes no new fate and disables all further mutations
+  ---
+  duration_ms: 31.4079
+  type: 'test'
+  ...
+# Subtest: cross-origin commands are rejected and static traversal is not served
+ok 12 - cross-origin commands are rejected and static traversal is not served
+  ---
+  duration_ms: 33.3024
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3187.2478

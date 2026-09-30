@@ -1,0 +1,60 @@
+
+> @mgr/rival-reaper@0.2.0 test:browser
+> node --import tsx scripts/browser-rehearsal.ts
+
+PASS Unauthorized host stays locked
+PASS Private mobile host unlock and 45 fake roster options
+PASS Fate locks once; next draw disabled; arena follows
+PASS Badge precedes ticket; name is absent before reveal
+PASS Arena reload restores active first-ink phase
+PASS Host reload requires reauthentication and resumes same reveal
+PASS Third physical yank reveals exact locked name
+PASS Roster board updates only after terminal reveal
+PASS Server stop/restart and live browser reconnect preserve fate and reveal
+PASS Lost response recovers by replay without duplicate draw
+PASS Private audit downloads valid chain/bundle; Escape restores focus
+PASS Sound opt-in and mute controls toggle successfully (not acoustic verification)
+PASS Explicit motion pause available
+PASS Arena 1920x1080 no horizontal overflow and screenshot
+PASS Arena 1280x720 no horizontal overflow and screenshot
+PASS Arena 390x844 no horizontal overflow and screenshot
+PASS OS reduced-motion disables energy animation
+PASS arena axe WCAG A/AA scan has zero violations
+PASS host axe WCAG A/AA scan has zero violations
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 1
++ Received  + 3
+
+- Array []
++ Array [
++   "Failed to load resource: the server responded with a status of 404 (Not Found)",
++ ]
+    at captureRawStack (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\node_modules\playwright-core\lib\coreBundle.js:8588:17)
+    at callMatcherAsStep (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toEqual (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\node_modules\playwright\lib\matchers\expect.js:13302:23)
+    at <anonymous> (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\scripts\browser-rehearsal.ts:66:17) {
+  matcherResult: {
+    actual: [
+      'Failed to load resource: the server responded with a status of 404 (Not Found)'
+    ],
+    expected: [],
+    message: 'expect(received).toEqual(expected) // deep equality\n' +
+      '\n' +
+      '- Expected  - 1\n' +
+      '+ Received  + 3\n' +
+      '\n' +
+      '- Array []\n' +
+      '+ Array [\n' +
+      '+   "Failed to load resource: the server responded with a status of 404 (Not Found)",\n' +
+      '+ ]',
+    name: 'toEqual',
+    pass: false
+  }
+}
+
+Node.js v22.19.0

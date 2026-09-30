@@ -1,0 +1,218 @@
+
+> @mgr/rival-reaper@0.2.0 test
+> node --test --import tsx test/*.test.ts
+
+TAP version 13
+# Subtest: corrupt snapshot ciphertext and unsupported envelope are rejected
+ok 1 - corrupt snapshot ciphertext and unsupported envelope are rejected
+  ---
+  duration_ms: 25.964
+  type: 'test'
+  ...
+# Subtest: encrypted snapshot round-trips and rejects wrong secret
+ok 2 - encrypted snapshot round-trips and rejects wrong secret
+  ---
+  duration_ms: 2.7282
+  type: 'test'
+  ...
+# Subtest: receipt chain verifies and detects tampering
+ok 3 - receipt chain verifies and detects tampering
+  ---
+  duration_ms: 23.4657
+  type: 'test'
+  ...
+# Subtest: reveal refuses missing fate, wrong team, forged receipt and invalid restored phase
+ok 4 - reveal refuses missing fate, wrong team, forged receipt and invalid restored phase
+  ---
+  duration_ms: 28.5873
+  type: 'test'
+  ...
+# Subtest: reveal walks the locked fate through every theatrical phase
+ok 5 - reveal walks the locked fate through every theatrical phase
+  ---
+  duration_ms: 2.7826
+  type: 'test'
+  ...
+# Subtest: malformed roster and duplicate IDs fail closed
+ok 6 - malformed roster and duplicate IDs fail closed
+  ---
+  duration_ms: 2.0773
+  type: 'test'
+  ...
+# Subtest: 45 competitors become five teams of nine and blackout stays outside
+ok 7 - 45 competitors become five teams of nine and blackout stays outside
+  ---
+  duration_ms: 1.7722
+  type: 'test'
+  ...
+# Subtest: uneven counts distribute capacities by at most one
+ok 8 - uneven counts distribute capacities by at most one
+  ---
+  duration_ms: 0.483
+  type: 'test'
+  ...
+# Subtest: host routes reject missing, bare, malformed and incorrect auth
+ok 9 - host routes reject missing, bare, malformed and incorrect auth
+  ---
+  duration_ms: 104.9005
+  type: 'test'
+  ...
+# Subtest: malformed body, missing command and oversized request are rejected
+ok 10 - malformed body, missing command and oversized request are rejected
+  ---
+  duration_ms: 30.3857
+  type: 'test'
+  ...
+# Subtest: reveal without fate and unknown player fail without mutation
+ok 11 - reveal without fate and unknown player fail without mutation
+  ---
+  duration_ms: 46.157
+  type: 'test'
+  ...
+# Subtest: parallel identical commands lock once and replay once
+ok 12 - parallel identical commands lock once and replay once
+  ---
+  duration_ms: 96.5008
+  type: 'test'
+  ...
+# Subtest: parallel different commands and second draw cannot consume another fate
+ok 13 - parallel different commands and second draw cannot consume another fate
+  ---
+  duration_ms: 45.1992
+  type: 'test'
+  ...
+# Subtest: replay advance is idempotent; command reuse and stale revisions fail
+ok 14 - replay advance is idempotent; command reuse and stale revisions fail
+  ---
+  duration_ms: 38.33
+  type: 'test'
+  ...
+# Subtest: presentation redacts fate and private metadata until their authorized phases
+ok 15 - presentation redacts fate and private metadata until their authorized phases
+  ---
+  duration_ms: 95.0499
+  type: 'test'
+  ...
+# Subtest: restart at every reveal phase preserves fate and command journal
+ok 16 - restart at every reveal phase preserves fate and command journal
+  ---
+  duration_ms: 214.847
+  type: 'test'
+  ...
+# Subtest: SSE initial connection and reconnect supply current authoritative state
+ok 17 - SSE initial connection and reconnect supply current authoritative state
+  ---
+  duration_ms: 35.4996
+  type: 'test'
+  ...
+# Subtest: audit export is integrity-checkable and encrypted file contains no clear roster
+ok 18 - audit export is integrity-checkable and encrypted file contains no clear roster
+  ---
+  duration_ms: 20.0195
+  type: 'test'
+  ...
+# Subtest: save failure publishes no new fate and disables all further mutations
+ok 19 - save failure publishes no new fate and disables all further mutations
+  ---
+  duration_ms: 10.5896
+  type: 'test'
+  ...
+# Subtest: cross-origin commands are rejected and static traversal is not served
+ok 20 - cross-origin commands are rejected and static traversal is not served
+  ---
+  duration_ms: 13.047
+  type: 'test'
+  ...
+# Subtest: second local writer is refused without touching the existing snapshot
+ok 21 - second local writer is refused without touching the existing snapshot
+  ---
+  duration_ms: 22.4461
+  type: 'test'
+  ...
+# Subtest: killed CLI process recovers encrypted fate and ink phase without reroll
+ok 22 - killed CLI process recovers encrypted fate and ink phase without reroll
+  ---
+  duration_ms: 751.3586
+  type: 'test'
+  ...
+# Subtest: restore rejects assignments diverging from valid receipts
+ok 23 - restore rejects assignments diverging from valid receipts
+  ---
+  duration_ms: 21.8705
+  type: 'test'
+  ...
+# Subtest: snapshots and constructor input cannot mutate locked session
+ok 24 - snapshots and constructor input cannot mutate locked session
+  ---
+  duration_ms: 2.1384
+  type: 'test'
+  ...
+# Subtest: session can snapshot and restore locked draw history
+ok 25 - session can snapshot and restore locked draw history
+  ---
+  duration_ms: 1.7115
+  type: 'test'
+  ...
+# Subtest: 43 complete draws enforce capacities, gender quotas and household separation
+ok 26 - 43 complete draws enforce capacities, gender quotas and household separation
+  ---
+  duration_ms: 256.5162
+  type: 'test'
+  ...
+# Subtest: 45 complete draws enforce capacities, gender quotas and household separation
+ok 27 - 45 complete draws enforce capacities, gender quotas and household separation
+  ---
+  duration_ms: 227.5197
+  type: 'test'
+  ...
+# Subtest: unavoidable household collision is minimized across the complete draw
+ok 28 - unavoidable household collision is minimized across the complete draw
+  ---
+  duration_ms: 2.1592
+  type: 'test'
+  ...
+# Subtest: duplicate, unknown and no-capacity attempts do not mutate assignments
+ok 29 - duplicate, unknown and no-capacity attempts do not mutate assignments
+  ---
+  duration_ms: 0.6382
+  type: 'test'
+  ...
+# Subtest: invalid random values fail before assignment
+ok 30 - invalid random values fail before assignment
+  ---
+  duration_ms: 1.5007
+  type: 'test'
+  ...
+# Subtest: full teams are excluded while other capacity remains
+ok 31 - full teams are excluded while other capacity remains
+  ---
+  duration_ms: 0.5482
+  type: 'test'
+  ...
+# Subtest: Rival Reaper fills balanced teams without duplicates
+ok 32 - Rival Reaper fills balanced teams without duplicates
+  ---
+  duration_ms: 3.6173
+  type: 'test'
+  ...
+# Subtest: Black/support crew never enters engine unless explicitly supplied as players
+ok 33 - Black/support crew never enters engine unless explicitly supplied as players
+  ---
+  duration_ms: 0.2327
+  type: 'test'
+  ...
+# Subtest: seeded adversarial draw order preserves fairness across twelve full rehearsals
+ok 34 - seeded adversarial draw order preserves fairness across twelve full rehearsals
+  ---
+  duration_ms: 2022.9418
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3422.2134

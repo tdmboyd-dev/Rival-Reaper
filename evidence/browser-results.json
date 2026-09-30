@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-30T01:39:11.113Z",
+  "browser": "153.0.8010.48",
+  "checks": 21,
+  "passed": [
+    "Unauthorized host stays locked",
+    "Private mobile host unlock and 45 fake roster options",
+    "Fate locks once; next draw disabled; arena follows",
+    "Badge precedes ticket; name is absent before reveal",
+    "Arena reload restores active first-ink phase",
+    "Host reload requires reauthentication and resumes same reveal",
+    "Third physical yank reveals exact locked name",
+    "Roster board updates only after terminal reveal",
+    "Server stop/restart and live browser reconnect preserve fate and reveal",
+    "Lost response recovers by replay without duplicate draw",
+    "Complete 45-player HTTP rehearsal ends 9/9/9/9/9, all five world effects captured",
+    "Private audit downloads valid chain/bundle; Escape restores focus",
+    "Sound opt-in and mute controls toggle successfully (not acoustic verification)",
+    "Explicit motion pause available",
+    "Arena 1920x1080 no horizontal overflow and screenshot",
+    "Arena 1280x720 no horizontal overflow and screenshot",
+    "Arena 390x844 no horizontal overflow and screenshot",
+    "OS reduced-motion disables energy animation",
+    "arena axe WCAG A/AA scan has zero violations",
+    "host axe WCAG A/AA scan has zero violations",
+    "No unexpected browser JavaScript or console errors"
+  ],
+  "errors": [],
+  "artifacts": "C:\\Users\\cool\\Documents\\Codex\\2026-09-29\\work-on-my-tdmboyd-dev-rival\\work\\Rival-Reaper\\evidence\\screenshots"
+}

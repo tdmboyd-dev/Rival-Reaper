@@ -1,0 +1,118 @@
+{
+  "sourceRepository": "tdmboyd-dev/MGR-CREATE-Os",
+  "sourceBranch": "feature/rival-reaper-2026-09-29",
+  "sourceCommit": "f2f14f58fb454ea83706bddfc2371fd2a358b947",
+  "count": 22,
+  "files": [
+    {
+      "path": "docs/RIVAL-REAPER-CODEX-EXECUTION-PROMPT.md",
+      "blob": "ecea23e3320728e520a81a79fb4b94aea2be4d16",
+      "sha256": "25d5cd618289786a1681d7b51229745905537ceb3f0b4c55c7341c3c4ac1162b"
+    },
+    {
+      "path": "examples/rival-reaper/README.md",
+      "blob": "2fe9cb7fef9bb6713c4ed9b94be7ab9fa4e5cfeb",
+      "sha256": "51a027fe91235d2230dffa1d524314fc5d4465d1ca049df1d3b4ccfa9c76d026"
+    },
+    {
+      "path": "examples/rival-reaper/arena.html",
+      "blob": "56b2b9b3fdec4cc568594386b109c56b5f032cfa",
+      "sha256": "0633da06094221e1308f8e8df6c34285f564d8ce38b3106114dfa5a912855c01"
+    },
+    {
+      "path": "examples/rival-reaper/host.html",
+      "blob": "e7a049bbb73c216a3698235304c58e1b272d945b",
+      "sha256": "fb5a9a54a7233dd6084e4258542e6498e602a2eccbd5e1c05f1efa2f87c7290f"
+    },
+    {
+      "path": "examples/rival-reaper/index.html",
+      "blob": "11b71837e9ce2f7226243cf07c678c5f49c6dcb6",
+      "sha256": "2fa42ed3fda66ceca0a3bb4e6422e3f617eec54dde1bfe6a27e1f8815cf24e74"
+    },
+    {
+      "path": "examples/rival-reaper/roster.sample.json",
+      "blob": "1deb2697e2d88b9bbc2106964bd8d4acf886e74f",
+      "sha256": "6e8a1d56c0d0981cf69b91c6092bdd4ab04d6634b8b8fb3b79beec0ca6d3beff"
+    },
+    {
+      "path": "research/RIVAL-REAPER-21ST-CODEX-2026-09-29.md",
+      "blob": "fd03db4d8d4568d063ad8187d382238c7960c187",
+      "sha256": "afcfc7738a65ec76ed0787d5c5f7a941d6dd4478953d992dea9eae5840c7bec9"
+    },
+    {
+      "path": "research/RIVAL-REAPER-MOTIONSITES-2026-09-29.md",
+      "blob": "2453e5884dc2ae8d2b2c043e76cc3166467bbbda",
+      "sha256": "1dd4c88d16b0027d9bd8f64863690e12432528333f836b9b7327ed5ba793e901"
+    },
+    {
+      "path": "src/rival-reaper/cli.ts",
+      "blob": "d83473b8b4818a5b9492cba6da29400d933cb563",
+      "sha256": "db81d6216b6a38a3c6bf996a5e4b37de030034bdc80ebe8b9c457ecb62950e7a"
+    },
+    {
+      "path": "src/rival-reaper/engine.ts",
+      "blob": "122a451059e30d12a6994b266fa335ad096a15b9",
+      "sha256": "8ce28daf5c1875fa13000cb68da65c60a1995680bd516607fa685e87f6c74a59"
+    },
+    {
+      "path": "src/rival-reaper/persistence.ts",
+      "blob": "f772a03d38254a0c28fa1bb67c472345de6aff1b",
+      "sha256": "6b9c511e0a64729c509b55d6d77b069c1c47fb5e9879ee3209a88f8a4ed53a2c"
+    },
+    {
+      "path": "src/rival-reaper/receipts.ts",
+      "blob": "9013e070fc1019b7ce311ad602f4d3f9a3f6588c",
+      "sha256": "5b6c76378d5c0ca889d21c60d81ea9b3db96d5b072b24a06a00ffd7cfab82612"
+    },
+    {
+      "path": "src/rival-reaper/reveal.ts",
+      "blob": "8f42d88a8f759c402856ac0325b43d70d6d61112",
+      "sha256": "6c3079dc55b0f14ff73f224af869805df643affcf6cf585d16045b107888675c"
+    },
+    {
+      "path": "src/rival-reaper/roster.ts",
+      "blob": "87606cdb03f424b06603b49d592cba4a0be9e02c",
+      "sha256": "bd92bbaaff8ce6628eea07fd5a35239488e8ab6ca760a118f0e29bc0cc7ec059"
+    },
+    {
+      "path": "src/rival-reaper/server.ts",
+      "blob": "b9e34054a6a2031c951b3f007803a0e61839a1ea",
+      "sha256": "c0c9f5c75cf33366cd8f8d6fb0b2046b5c330f8506400c2f33efebfd88557d1a"
+    },
+    {
+      "path": "src/rival-reaper/session.ts",
+      "blob": "91a8422e3fdf3215f705e4247c40624087d3991a",
+      "sha256": "19054261f82dbd832f4d74e81922f1a059ff906795485353680fb1634ed8732f"
+    },
+    {
+      "path": "test/rival-reaper-persistence.test.ts",
+      "blob": "f22815738276f7646264fe13908e28e7028ca652",
+      "sha256": "d3dd1785140ab8a071ed68cff0acd422f08eb6c3f99a48d09303fbf255d1c538"
+    },
+    {
+      "path": "test/rival-reaper-receipts.test.ts",
+      "blob": "ed63b6ba27eacac52405ae7b50b05930fd986e21",
+      "sha256": "3978ce34b43f212fd0d870162d5bf333f2ca7bd515c161a8fb0182490a996fea"
+    },
+    {
+      "path": "test/rival-reaper-reveal.test.ts",
+      "blob": "fa74826603c084fcb31ede53616ca2d8c9828b62",
+      "sha256": "21a620a881f1a3f201ccc87b1dbb594a0071301116bbabf81f63f43cea662298"
+    },
+    {
+      "path": "test/rival-reaper-roster.test.ts",
+      "blob": "e5aa9d488a246e0e109378c76a36fe52e9076949",
+      "sha256": "b234b756914564d4e47e58d8c0854f617c49b6067d9c63683c161c4d860a23a9"
+    },
+    {
+      "path": "test/rival-reaper-session.test.ts",
+      "blob": "63de7a47cd5dc3b930d73706ffa34b3b4754aaab",
+      "sha256": "2b27e9a78287b7f0fb50c445c33694a16df607214d03377947d36481ca4b781e"
+    },
+    {
+      "path": "test/rival-reaper.test.ts",
+      "blob": "965ac15b16dc001960a711e1160ebdcc6e8ddfb7",
+      "sha256": "9deeb087c900ae04dd21ea24384fb24a14be0101184615accaa73a13ba961225"
+    }
+  ]
+}

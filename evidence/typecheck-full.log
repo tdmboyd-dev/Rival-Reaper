@@ -1,0 +1,8 @@
+
+> @mgr/rival-reaper@0.2.0 typecheck
+> tsc --noEmit
+
+scripts/browser-rehearsal.ts(63,26): error TS2351: This expression is not constructable.
+  Type 'typeof import("C:/Users/cool/Documents/Codex/2026-09-29/work-on-my-tdmboyd-dev-rival/work/Rival-Reaper/node_modules/@axe-core/playwright/dist/index")' has no construct signatures.
+scripts/browser-rehearsal.ts(64,32): error TS7006: Parameter 'v' implicitly has an 'any' type.
+scripts/browser-rehearsal.ts(64,79): error TS7006: Parameter 'n' implicitly has an 'any' type.

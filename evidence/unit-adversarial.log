@@ -1,0 +1,149 @@
+
+> @mgr/rival-reaper@0.2.0 test:unit
+> node --test --import tsx test/rival-reaper.test.ts test/rival-reaper-session.test.ts test/rival-reaper-roster.test.ts test/rival-reaper-reveal.test.ts test/rival-reaper-receipts.test.ts test/rival-reaper-persistence.test.ts
+
+TAP version 13
+# Subtest: corrupt snapshot ciphertext and unsupported envelope are rejected
+ok 1 - corrupt snapshot ciphertext and unsupported envelope are rejected
+  ---
+  duration_ms: 30.8429
+  type: 'test'
+  ...
+# Subtest: encrypted snapshot round-trips and rejects wrong secret
+ok 2 - encrypted snapshot round-trips and rejects wrong secret
+  ---
+  duration_ms: 3.0203
+  type: 'test'
+  ...
+# Subtest: receipt chain verifies and detects tampering
+ok 3 - receipt chain verifies and detects tampering
+  ---
+  duration_ms: 25.4637
+  type: 'test'
+  ...
+# Subtest: reveal refuses missing fate, wrong team, forged receipt and invalid restored phase
+ok 4 - reveal refuses missing fate, wrong team, forged receipt and invalid restored phase
+  ---
+  duration_ms: 31.7469
+  type: 'test'
+  ...
+# Subtest: reveal walks the locked fate through every theatrical phase
+ok 5 - reveal walks the locked fate through every theatrical phase
+  ---
+  duration_ms: 2.0993
+  type: 'test'
+  ...
+# Subtest: malformed roster and duplicate IDs fail closed
+ok 6 - malformed roster and duplicate IDs fail closed
+  ---
+  duration_ms: 2.9509
+  type: 'test'
+  ...
+# Subtest: 45 competitors become five teams of nine and blackout stays outside
+ok 7 - 45 competitors become five teams of nine and blackout stays outside
+  ---
+  duration_ms: 2.2875
+  type: 'test'
+  ...
+# Subtest: uneven counts distribute capacities by at most one
+ok 8 - uneven counts distribute capacities by at most one
+  ---
+  duration_ms: 0.5302
+  type: 'test'
+  ...
+# Subtest: restore rejects assignments diverging from valid receipts
+ok 9 - restore rejects assignments diverging from valid receipts
+  ---
+  duration_ms: 31.7966
+  type: 'test'
+  ...
+# Subtest: snapshots and constructor input cannot mutate locked session
+ok 10 - snapshots and constructor input cannot mutate locked session
+  ---
+  duration_ms: 1.7816
+  type: 'test'
+  ...
+# Subtest: session can snapshot and restore locked draw history
+ok 11 - session can snapshot and restore locked draw history
+  ---
+  duration_ms: 1.582
+  type: 'test'
+  ...
+# Subtest: 43 complete draws enforce capacities, gender quotas and household separation
+ok 12 - 43 complete draws enforce capacities, gender quotas and household separation
+  ---
+  duration_ms: 163.943
+  type: 'test'
+  ...
+# Subtest: 45 complete draws enforce capacities, gender quotas and household separation
+ok 13 - 45 complete draws enforce capacities, gender quotas and household separation
+  ---
+  duration_ms: 70.2936
+  type: 'test'
+  ...
+# Subtest: unavoidable household collision is minimized across the complete draw
+ok 14 - unavoidable household collision is minimized across the complete draw
+  ---
+  duration_ms: 1.2837
+  type: 'test'
+  ...
+# Subtest: duplicate, unknown and no-capacity attempts do not mutate assignments
+ok 15 - duplicate, unknown and no-capacity attempts do not mutate assignments
+  ---
+  duration_ms: 0.7105
+  type: 'test'
+  ...
+# Subtest: invalid random values fail before assignment
+ok 16 - invalid random values fail before assignment
+  ---
+  duration_ms: 0.5573
+  type: 'test'
+  ...
+# Subtest: full teams are excluded while other capacity remains
+ok 17 - full teams are excluded while other capacity remains
+  ---
+  duration_ms: 0.3901
+  type: 'test'
+  ...
+# Subtest: Rival Reaper fills balanced teams without duplicates
+ok 18 - Rival Reaper fills balanced teams without duplicates
+  ---
+  duration_ms: 1.4957
+  type: 'test'
+  ...
+# Subtest: Black/support crew never enters engine unless explicitly supplied as players
+ok 19 - Black/support crew never enters engine unless explicitly supplied as players
+  ---
+  duration_ms: 0.2344
+  type: 'test'
+  ...
+# Subtest: seeded adversarial draw order preserves fairness across twelve full rehearsals
+not ok 20 - seeded adversarial draw order preserves fairness across twelve full rehearsals
+  ---
+  duration_ms: 2495.9254
+  type: 'test'
+  location: 'C:\\Users\\cool\\Documents\\Codex\\2026-09-29\\work-on-my-tdmboyd-dev-rival\\work\\Rival-Reaper\\test\\rival-reaper.test.ts:1:3309'
+  failureType: 'testCodeFailure'
+  error: 'Fairness search budget exhausted; no draw was made'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:26:35)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+    search (C:\Users\cool\Documents\Codex\2026-09-29\work-on-my-tdmboyd-dev-rival\work\Rival-Reaper\src\rival-reaper\fairness.ts:51:18)
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 19
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3587.3309

@@ -1,33 +1,24 @@
 # WORK-STATE — RiVAL REAPER
 
-Updated: 2026-09-29.
-Repository: `tdmboyd-dev/Rival-Reaper`
-Branch: `main`
-Status: new standalone repo bootstrap.
+Updated 2026-09-30 UTC. Target tdmboyd-dev/Rival-Reaper, main.
 
-## Origin
-Prototype implementation currently exists in `tdmboyd-dev/MGR-CREATE-Os` branch `feature/rival-reaper-2026-09-29`, draft PR #1. Migrate/copy only RiVAL REAPER-owned code/docs/research; do not drag unrelated Creation OS source into this repo.
+Reaper-only migration and substantial Gates 7–9 implementation completed locally. Source: MGR-CREATE-Os@feature/rival-reaper-2026-09-29, f2f14f58fb454ea83706bddfc2371fd2a358b947. Source draft PR1 remains unmerged. Target base f9311332070a706f1af000d537e41c33717fa2ca; scoped claim commit d78627c5ca12d1eb8f370574e55e3358ac34007c.
 
-## Current truth
-The Creation OS prototype reports implemented draw/balance logic, CSPRNG sessions, chained receipts, encrypted local persistence, private roster parsing, local host API, SSE arena sync, separate host/arena screens and staged reveal state machine. Those claims must be reconciled against source and executed locally here before TESTED/VERIFIED status.
+Standalone package, bounded exact fairness search, transactional host commands, encrypted recovery, idempotency, read-only SSE, private audit export, physical three-yank ticket and five presentation worlds are integrated. Executed: clean npm ci PASS; typecheck PASS; 34/34 unit/integration tests PASS; 21/21 Chrome acceptance checks PASS. See evidence/README.md and BuildList.md for limits.
 
-## Next batch
-1. Migrate scoped Reaper artifacts from the Creation OS feature branch.
-2. Establish standalone package/build/test configuration.
-3. Execute Gate 7 locally; repair defects.
-4. Finish Gate 8 synchronized reveal/recovery.
-5. Gate 9 visual production with 21st.dev + MotionSites research, preserving draw authority.
-6. Update BuildList/AUDIT/evidence.
-7. Do not merge or trigger repeated hosted CI during the work wave.
+Latest owner direction: daylight / sunset latest; visible urban block party dominates street; unusual spectacle. Night image removed from product. Current asset: examples/rival-reaper/assets/block-party-daylight.png. Owner acceptance remains open. Five official badges unavailable; marked replaceable placeholders remain.
 
-No real family roster or secrets may be committed.
-
-## Active work claim — 2026-09-30
-- Task: migrate Reaper-only prototype and execute Gates 7–9 locally.
+## Continuity claim
 - Owner/session: Codex / 01a0efd3-3f74-7f31-a73b-1ab11b62ad6f.
-- Branch: main; inspected base: f9311332070a706f1af000d537e41c33717fa2ca.
-- Source inspected: MGR-CREATE-Os f2f14f58fb454ea83706bddfc2371fd2a358b947.
-- Scope: src/rival-reaper, test/rival-reaper*, examples/rival-reaper, Reaper research/docs, standalone package/config, continuity/evidence.
-- Claimed: 2026-09-30T02:00:00Z; review/expiry: 2026-09-30T12:00:00Z; status: active.
-- Acceptance: CODEX-GATES-7-9.md; local tests/runtime/browser evidence required.
-- No hosted workflows exist at inspected base; claim update does not require hosted evidence.
+- Scope: Reaper source/tests/examples/research/docs/configuration/evidence.
+- Status: released at handoff; no background build scheduled.
+- Original claim time 2026-09-30T02:00:00Z was inaccurate; work was underway around 01:00Z. Claim commit is the ordering record.
+- Read scope: docs/MIGRATION.md. Source hashes: evidence/migration-manifest.json.
+- Implementation commit: evidence/COMMIT-RECEIPT.md (recorded after creation).
+- Hosted Actions: zero. No workflow, merge or force-push.
+- Private runtime storage and credentials are ignored; all committed fixtures are fake.
+
+## Remaining / exact next action
+Gate9 partial: owner visual acceptance, official badges and physical sound/readability rehearsal. Gate10 partial: fake browser rehearsal/audit passed; private real roster and actual phone/projector did not run. Authenticated 21st MCP unavailable; public source discovery and licensed upstream adaptation used. No GLB/video pipeline or production deployment claimed. Unusual rosters may exceed solver search budget; arbitrary 250-player feasibility not proven.
+
+Next: review daylight arena with owner, accept approved badge files locally, then rehearse private roster on actual phone/projector/speakers. Keep private data out of Git. Continue this engine; do not restart migration.

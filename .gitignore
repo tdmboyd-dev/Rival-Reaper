@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.rival-reaper/
+.env
+.env.*
+!.env.example
+*.enc.json
+*.tmp
+private/
+*private-roster*
+playwright-report/
+test-results/
+evidence/screenshots/

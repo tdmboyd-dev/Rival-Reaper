@@ -1,0 +1,129 @@
+export const $ = (s) => document.querySelector(s);
+export const worlds = [
+  {
+    id: "blood-bloom",
+    name: "Blood Bloom",
+    world: "ROSE PANTHER WORLD",
+    symbol: "BB",
+    color: "#f34668",
+  },
+  {
+    id: "pressure-gang",
+    name: "Pressure Gang",
+    world: "WATER / PRESSURE WORLD",
+    symbol: "PG",
+    color: "#43b6ff",
+  },
+  {
+    id: "high-society",
+    name: "High Society",
+    world: "GREEN FANTASY / SMOKE",
+    symbol: "HS",
+    color: "#99e672",
+  },
+  {
+    id: "heat-mob",
+    name: "Heat Mob",
+    world: "FIRE LION WORLD",
+    symbol: "HM",
+    color: "#ff954e",
+  },
+  {
+    id: "pink-venom",
+    name: "Pink Venom",
+    world: "THE VENOM KINGDOM",
+    symbol: "PV",
+    color: "#ff78d3",
+  },
+];
+export const phases = [
+  "idle",
+  "machine-awakens",
+  "colors-fight",
+  "badge-selected",
+  "ticket-ejects",
+  "ink-1",
+  "ink-2",
+  "ink-3",
+  "name-revealed",
+  "team-explosion",
+  "roster-updated",
+];
+export function connection(ok) {
+  const e = $("#connection");
+  e.textContent = ok ? "● LIVE / CONNECTED" : "○ OFFLINE / RECONNECTING";
+  e.classList.toggle("offline", !ok);
+}
+export function connect(render, onConnection = () => {}) {
+  const es = new EventSource("/api/events");
+  let revision = -1,
+    session;
+  es.addEventListener("state", (event) => {
+    try {
+      const state = JSON.parse(event.data);
+      if (state.sessionId !== session) {
+        revision = -1;
+        session = state.sessionId;
+      }
+      if (state.revision < revision) return;
+      revision = state.revision;
+      connection(true);
+      onConnection(true);
+      render(state);
+    } catch {
+      connection(false);
+      onConnection(false);
+    }
+  });
+  es.onerror = () => {
+    connection(false);
+    onConnection(false);
+  };
+  window.addEventListener("pagehide", () => es.close(), { once: true });
+  return es;
+}
+export function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+export function renderTeams(state, host = false) {
+  const target = $("#teams");
+  target.replaceChildren();
+  for (const world of worlds) {
+    const team = state.teams.find((t) => t.id === world.id);
+    if (!team) continue;
+    const row = el("div", host ? "host-team" : "board-team");
+    row.dataset.team = world.id;
+    row.style.setProperty("--team-color", world.color);
+    if (host) {
+      row.append(
+        el("strong", "", world.name),
+        el("span", "", `${team.assigned} / ${team.capacity}`),
+      );
+    } else {
+      const top = el("div", "team-top");
+      const count = el(
+        "span",
+        "team-count",
+        String(team.assigned).padStart(2, "0"),
+      );
+      count.append(
+        el("small", "", ` / ${String(team.capacity).padStart(2, "0")}`),
+      );
+      top.append(el("span", "team-title", world.name), count);
+      row.append(
+        top,
+        el("div", "team-world", world.world),
+        el(
+          "div",
+          "roster-names",
+          team.roster.map((p) => p.name).join(" · ") ||
+            "The first name is still out there.",
+        ),
+      );
+    }
+    target.append(row);
+  }
+}

@@ -1,0 +1,5 @@
+[
+  {"id":"fake-01","name":"Fake Player 01","householdId":"fake-house-a","gender":"male","status":"competitor"},
+  {"id":"fake-02","name":"Fake Player 02","householdId":"fake-house-b","gender":"female","status":"competitor"},
+  {"id":"fake-black-01","name":"Fake Support 01","householdId":"fake-house-c","gender":"female","status":"blackout"}
+]

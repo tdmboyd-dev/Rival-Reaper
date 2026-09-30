@@ -1,0 +1,128 @@
+
+> @mgr/rival-reaper@0.2.0 test
+> node --test --import tsx test/*.test.ts
+
+TAP version 13
+# Subtest: corrupt snapshot ciphertext and unsupported envelope are rejected
+ok 1 - corrupt snapshot ciphertext and unsupported envelope are rejected
+  ---
+  duration_ms: 36.1087
+  type: 'test'
+  ...
+# Subtest: encrypted snapshot round-trips and rejects wrong secret
+ok 2 - encrypted snapshot round-trips and rejects wrong secret
+  ---
+  duration_ms: 2.4846
+  type: 'test'
+  ...
+# Subtest: receipt chain verifies and detects tampering
+ok 3 - receipt chain verifies and detects tampering
+  ---
+  duration_ms: 26.9632
+  type: 'test'
+  ...
+# Subtest: reveal refuses missing fate, wrong team, forged receipt and invalid restored phase
+ok 4 - reveal refuses missing fate, wrong team, forged receipt and invalid restored phase
+  ---
+  duration_ms: 32.9388
+  type: 'test'
+  ...
+# Subtest: reveal walks the locked fate through every theatrical phase
+ok 5 - reveal walks the locked fate through every theatrical phase
+  ---
+  duration_ms: 1.6979
+  type: 'test'
+  ...
+# Subtest: malformed roster and duplicate IDs fail closed
+ok 6 - malformed roster and duplicate IDs fail closed
+  ---
+  duration_ms: 2.2159
+  type: 'test'
+  ...
+# Subtest: 45 competitors become five teams of nine and blackout stays outside
+ok 7 - 45 competitors become five teams of nine and blackout stays outside
+  ---
+  duration_ms: 2.0758
+  type: 'test'
+  ...
+# Subtest: uneven counts distribute capacities by at most one
+ok 8 - uneven counts distribute capacities by at most one
+  ---
+  duration_ms: 0.5541
+  type: 'test'
+  ...
+# Subtest: restore rejects assignments diverging from valid receipts
+ok 9 - restore rejects assignments diverging from valid receipts
+  ---
+  duration_ms: 25.6844
+  type: 'test'
+  ...
+# Subtest: snapshots and constructor input cannot mutate locked session
+ok 10 - snapshots and constructor input cannot mutate locked session
+  ---
+  duration_ms: 1.7737
+  type: 'test'
+  ...
+# Subtest: session can snapshot and restore locked draw history
+ok 11 - session can snapshot and restore locked draw history
+  ---
+  duration_ms: 1.5097
+  type: 'test'
+  ...
+# Subtest: 43 complete draws enforce capacities, gender quotas and household separation
+ok 12 - 43 complete draws enforce capacities, gender quotas and household separation
+  ---
+  duration_ms: 130.8049
+  type: 'test'
+  ...
+# Subtest: 45 complete draws enforce capacities, gender quotas and household separation
+ok 13 - 45 complete draws enforce capacities, gender quotas and household separation
+  ---
+  duration_ms: 63.8286
+  type: 'test'
+  ...
+# Subtest: unavoidable household collision is minimized across the complete draw
+ok 14 - unavoidable household collision is minimized across the complete draw
+  ---
+  duration_ms: 2.0264
+  type: 'test'
+  ...
+# Subtest: duplicate, unknown and no-capacity attempts do not mutate assignments
+ok 15 - duplicate, unknown and no-capacity attempts do not mutate assignments
+  ---
+  duration_ms: 0.9941
+  type: 'test'
+  ...
+# Subtest: invalid random values fail before assignment
+ok 16 - invalid random values fail before assignment
+  ---
+  duration_ms: 0.9172
+  type: 'test'
+  ...
+# Subtest: full teams are excluded while other capacity remains
+ok 17 - full teams are excluded while other capacity remains
+  ---
+  duration_ms: 0.5733
+  type: 'test'
+  ...
+# Subtest: Rival Reaper fills balanced teams without duplicates
+ok 18 - Rival Reaper fills balanced teams without duplicates
+  ---
+  duration_ms: 2.0733
+  type: 'test'
+  ...
+# Subtest: Black/support crew never enters engine unless explicitly supplied as players
+ok 19 - Black/support crew never enters engine unless explicitly supplied as players
+  ---
+  duration_ms: 0.1796
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 958.7868

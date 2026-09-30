@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RiVAL REAPER · Arena</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/arena.js"></script>
+  </head>
+  <body class="arena" data-phase="idle" data-team="none">
+    <div class="atmosphere" aria-hidden="true">
+      <div class="aurora a1"></div>
+      <div class="aurora a2"></div>
+      <div class="aurora a3"></div>
+      <div class="stadium-lines"></div>
+      <div class="spotlight left"></div>
+      <div class="spotlight right"></div>
+      <div class="skyline"></div>
+      <div class="crowd"></div>
+    </div>
+    <header class="arena-header">
+      <a href="/" class="wordmark" aria-label="RiVAL REAPER home"
+        >RiVAL <strong>REAPER</strong
+        ><span>RIVAL DAY III / MANY SIPZ OF TEA</span></a
+      >
+      <div class="arena-tools">
+        <span id="connection" role="status">CONNECTING</span
+        ><button id="sound" class="small" aria-pressed="false">SOUND OFF</button
+        ><button id="motion" class="small" aria-pressed="false">
+          PAUSE MOTION</button
+        ><button id="fullscreen" class="small">FULL SCREEN</button>
+      </div>
+    </header>
+    <main class="arena-main">
+      <section class="stage-copy" aria-label="Draw status">
+        <p class="eyebrow">THE BLOCK IS WATCHING.</p>
+        <h1>YOU DON'T<br />PICK THE<br /><em>COLOR.</em></h1>
+        <p class="stage-line">The machine does.</p>
+        <div class="draw-meter">
+          <strong id="draw-number">00</strong>
+          <div>
+            FATES LOCKED<br /><span id="remaining">Waiting for connection</span>
+          </div>
+        </div>
+        <p class="phase-label" id="phase-label" aria-live="polite">
+          THE MACHINE IS WAITING
+        </p>
+      </section>
+      <section class="machine-stage" aria-label="Reaper reveal machine">
+        <div class="portal" aria-hidden="true"></div>
+        <div class="world-burst" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="machine">
+          <div class="cabinet-top">
+            <span>EST. RIVAL DAY III</span><b>FATE HAS NO FAVORITES.</b
+            ><span>№ 005</span>
+          </div>
+          <div class="cabinet-brand">RiVAL REAPER</div>
+          <div class="energy-window">
+            <div class="energy-ribbons" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="badge" id="badge">
+              <span class="badge-symbol" id="badge-symbol">R</span
+              ><span id="badge-name">FIVE WORLDS<br />ONE FATE</span
+              ><small id="badge-note">BADGE ART PLACEHOLDER</small>
+            </div>
+          </div>
+          <div class="slot">
+            <span>TICKET DISPENSER · FATE LOCKED BEFORE REVEAL</span>
+          </div>
+          <div class="ticket-bay">
+            <article class="ticket" id="ticket" aria-label="Locked fate ticket">
+              <div class="ticket-head">
+                <span>RIVAL DAY III</span><span id="serial">ADMIT ONE / —</span>
+              </div>
+              <h2 id="ticket-team">YOUR WORLD IS WAITING</h2>
+              <div class="ink-zone">
+                <strong id="player-name">IDENTITY SEALED</strong>
+                <div class="ink-cover" aria-hidden="true">
+                  <span>THREE YANKS. NO TAKEBACKS.</span>
+                </div>
+              </div>
+              <div class="ticket-foot">
+                <span>THE MACHINE KEEPS RECEIPTS.</span
+                ><span class="barcode" aria-hidden="true"></span>
+              </div>
+            </article>
+          </div>
+          <div class="cabinet-base">
+            <span>FATE ENGINE / ONLINE</span><span>★ ★ ★ ★ ★</span
+            ><span>MGR</span>
+          </div>
+          <div class="lever-decoration" aria-hidden="true"><div></div></div>
+        </div>
+      </section>
+    </main>
+    <section class="war-board" aria-label="Team roster board">
+      <div class="board-heading">
+        <span>THE WAR BOARD</span><span>FIVE TEAMS. ALL PRESSURE.</span>
+      </div>
+      <div id="teams" class="board-teams"></div>
+    </section>
+    <footer class="arena-footer">
+      <span><b>BLACKOUT KREW</b> · GORILLA + DOG / SUPPORT CREW</span
+      ><span>REFS · GRILL · MEDIA · SIDELINES <b>OUTSIDE THE DRAW</b></span>
+    </footer>
+  </body>
+</html>

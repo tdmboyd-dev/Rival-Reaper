@@ -1,0 +1,62 @@
+
+> @mgr/rival-reaper@0.2.0 test
+> node --test --import tsx test/*.test.ts
+
+TAP version 13
+# Subtest: encrypted snapshot round-trips and rejects wrong secret
+ok 1 - encrypted snapshot round-trips and rejects wrong secret
+  ---
+  duration_ms: 4.889
+  type: 'test'
+  ...
+# Subtest: receipt chain verifies and detects tampering
+ok 2 - receipt chain verifies and detects tampering
+  ---
+  duration_ms: 25.1046
+  type: 'test'
+  ...
+# Subtest: reveal walks the locked fate through every theatrical phase
+ok 3 - reveal walks the locked fate through every theatrical phase
+  ---
+  duration_ms: 25.7261
+  type: 'test'
+  ...
+# Subtest: 45 competitors become five teams of nine and blackout stays outside
+ok 4 - 45 competitors become five teams of nine and blackout stays outside
+  ---
+  duration_ms: 4.268
+  type: 'test'
+  ...
+# Subtest: uneven counts distribute capacities by at most one
+ok 5 - uneven counts distribute capacities by at most one
+  ---
+  duration_ms: 0.8041
+  type: 'test'
+  ...
+# Subtest: session can snapshot and restore locked draw history
+ok 6 - session can snapshot and restore locked draw history
+  ---
+  duration_ms: 28.179
+  type: 'test'
+  ...
+# Subtest: Rival Reaper fills balanced teams without duplicates
+ok 7 - Rival Reaper fills balanced teams without duplicates
+  ---
+  duration_ms: 32.4033
+  type: 'test'
+  ...
+# Subtest: Black/support crew never enters engine unless explicitly supplied as players
+ok 8 - Black/support crew never enters engine unless explicitly supplied as players
+  ---
+  duration_ms: 0.403
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 710.4405
