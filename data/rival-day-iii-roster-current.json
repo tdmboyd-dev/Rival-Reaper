@@ -1,0 +1,193 @@
+{
+  "updated_at": "2026-10-07",
+  "status": "owner-locked-latest-update",
+  "purple_team_status": "dissolved",
+  "removed_players": [
+    "Shai"
+  ],
+  "teams": {
+    "Blood Bloom": [
+      "Bird",
+      "Daisha",
+      "Mari",
+      "Micah",
+      "Mike",
+      "Shika",
+      "Tiffany",
+      "TORY",
+      "Trent",
+      "Tia"
+    ],
+    "Pressure Gang": [
+      "GeWayne",
+      "Kayla",
+      "KeKe",
+      "MUMU",
+      "Qpskii",
+      "Ray Ray",
+      "Shania",
+      "Time",
+      "Tweety",
+      "Robert"
+    ],
+    "High Society": [
+      "Ally",
+      "Boosie",
+      "CharMicheal",
+      "Colby",
+      "Hattie",
+      "LIYAH",
+      "Mario",
+      "Steph",
+      "Teryll",
+      "Lasha"
+    ],
+    "Heat Mob": [
+      "Beat",
+      "Greg",
+      "Julius",
+      "KD",
+      "Memphis Jewel",
+      "Mon",
+      "Nene",
+      "Quita H",
+      "K2",
+      "Tay",
+      "Will"
+    ],
+    "Pink Venom": [
+      "Chris",
+      "High Ty",
+      "Jie",
+      "John",
+      "Kenyatta",
+      "Red",
+      "Sissy",
+      "Taylor",
+      "Tina",
+      "Nyi",
+      "NaeNae"
+    ]
+  },
+  "support_blackout": [
+    "Boomane",
+    "Jimmy",
+    "Wilbert",
+    "Baby J",
+    "Quita"
+  ],
+  "households_known": {
+    "Tip's Household": [
+      "Tiffany",
+      "Hattie",
+      "Beat",
+      "Chris",
+      "Tia",
+      "Boosie",
+      "Kayla",
+      "Qpskii"
+    ],
+    "Micah's Household": [
+      "Micah"
+    ],
+    "Bird's Household": [
+      "Bird",
+      "Colby",
+      "Sissy",
+      "Nene",
+      "Tay",
+      "Shania"
+    ],
+    "CharMicheal's Household": [
+      "CharMicheal",
+      "John"
+    ],
+    "Michael C's Household": [
+      "Mike",
+      "KeKe",
+      "Will"
+    ],
+    "Kenyatta's Household": [
+      "Kenyatta",
+      "TORY",
+      "MUMU",
+      "LIYAH",
+      "K2"
+    ],
+    "Boomane Household": [
+      "Tina",
+      "Boomane"
+    ],
+    "Tay Household": [
+      "Tay",
+      "Jimmy"
+    ],
+    "Trent's Household": [
+      "Trent"
+    ],
+    "Robert's Household": [
+      "Robert"
+    ],
+    "Shika's Household": [
+      "Ray Ray",
+      "Daisha",
+      "Shika"
+    ],
+    "GeWayne's Household": [
+      "Lasha",
+      "GeWayne"
+    ],
+    "Tweety's Household": [
+      "Red",
+      "Mari",
+      "Tweety",
+      "Allison",
+      "Baby J"
+    ],
+    "LaQuita H Household": [
+      "Quita H"
+    ],
+    "Ty'Million Household": [
+      "High Ty",
+      "Mon"
+    ],
+    "Quita Fay's Household": [
+      "Julius",
+      "Quita"
+    ],
+    "Eva's Household": [
+      "Eva"
+    ],
+    "Time's Household": [
+      "Time",
+      "KD",
+      "Mario",
+      "Nyi"
+    ],
+    "Stephon's Household": [
+      "Steph"
+    ],
+    "Ron / Memphis Jewel Household": [
+      "Memphis Jewel",
+      "Jie"
+    ],
+    "Taylor Household": [
+      "Taylor",
+      "NaeNae"
+    ]
+  },
+  "household_unresolved_current": [
+    "Ally",
+    "Greg",
+    "Teryll"
+  ],
+  "tay_identity_ambiguous": true,
+  "notes": [
+    "K2 must not be on Pressure Gang.",
+    "Will is on Heat Mob.",
+    "NaeNae is in Taylor Household and on Pink Venom.",
+    "Jie is in Ron / Memphis Jewel Household and on Pink Venom.",
+    "Shika moved from Blackout Krew to Blood Bloom.",
+    "Shai left the games completely."
+  ]
+}
