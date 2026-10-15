@@ -57,7 +57,7 @@ The counts above supersede older estimates. All games use the **same event-wide 
 
 | Equipment | Now on hand | Notes |
 |---|---|---|
-| Small colorful balls | **100 balls** | Delivered; count by five team colors not yet verified |
+| Small colorful balls | **100 balls** | **NOT DELIVERED — owner correction; pending** |
 | Metal jacks | **Arrived** | Set count/contents not yet verified |
 | Giant tic-tac-toe boards | **3 complete sets** | Each has 5 X and 5 O pieces: **15 X + 15 O = 30 pieces** across three boards |
 | Water balloons | **Arrived** | Exact count and whether filled not confirmed |
@@ -72,3 +72,6 @@ These are physical deliveries confirmed by the owner, not merely Amazon order st
 | RWHXRWY multicolored table-tennis balls | **185** | **40 mm (~1.6 inches)** | Purchased; owner expects delivery tomorrow, not yet received | Color challenges after arrival; count red/pink/orange/blue/green separately |
 
 **Reconciliation warning:** Owner earlier confirmed a separate **100 small colorful balls** had arrived. Do not silently merge those 100 with the 80 white balls or 185 incoming balls. Total quantities are not interchangeable; verify packaging before assigning balls to a game.
+
+## Owner correction — 100 colorful balls pending
+The owner explicitly clarified the **100 colorful balls have NOT arrived** and are still expected. This supersedes the earlier `Owner-confirmed arrivals` row stating they were delivered. **80 white 25mm balls are confirmed arrived; 185 multicolor 40mm ping pong balls are still pending.** Do not plan a game requiring either colorful package until physical receipt is confirmed.
