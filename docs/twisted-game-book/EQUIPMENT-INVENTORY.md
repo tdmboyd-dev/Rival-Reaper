@@ -52,3 +52,14 @@ These are possible requirements only. Do not mark them owned without confirmatio
 
 ## Latest owner correction — October 15, 2026
 The counts above supersede older estimates. All games use the **same event-wide tie-breaker**; see `UNIVERSAL-TIEBREAKER.md`. Do not invent different game-specific sudden-death rules. For flag football, child-size equipment is conditional until checked for adult fit. The short limbo is backup only.
+
+## Owner-confirmed arrivals — October 15, 2026
+
+| Equipment | Now on hand | Notes |
+|---|---|---|
+| Small colorful balls | **100 balls** | Delivered; count by five team colors not yet verified |
+| Metal jacks | **Arrived** | Set count/contents not yet verified |
+| Giant tic-tac-toe boards | **3 complete sets** | Each has 5 X and 5 O pieces: **15 X + 15 O = 30 pieces** across three boards |
+| Water balloons | **Arrived** | Exact count and whether filled not confirmed |
+
+These are physical deliveries confirmed by the owner, not merely Amazon order statuses. Games 6 and future games may use these items. Do not assume all five team colors are equally represented in the 100 balls.
