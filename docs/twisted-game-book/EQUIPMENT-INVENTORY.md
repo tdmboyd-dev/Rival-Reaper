@@ -6,14 +6,16 @@
 
 | Item | Reported quantity/details | Likely uses | Confidence/status |
 |---|---|---|---|
-| Flag football set | Quantity/components not restated | Flag football | OWNER REPORTED — recheck pieces and belt/flag count |
+| Flag football set | **1 set, opened; appears child-sized** | Flag football (conditional) | OWNER INSPECTED — check adult fit; may use regular football with suitable flags |
 | Tug-of-war rope | Length/condition not restated | Tug-of-war | OWNER REPORTED — inspect rope and safe pulling area |
-| Three-legged / multi-leg race equipment | Exact design/count not restated | Three-legged race | OWNER REPORTED — count straps and inspect closures |
-| Sack race equipment | Quantity/size not restated | Sack race | OWNER REPORTED — count sacks and inspect seams |
-| Small dodgeballs | **11 balls, 6-inch** | Dodgeball / proposed Protect Yo Problem | OWNER REPORTED — count and inspect condition |
+| Three-legged race gear | **10 sets** | Three-legged race | OWNER COUNTED — inspect closures |
+| Sack race bags | **8 bags** | Sack race | OWNER COUNTED — inspect seams |
+| Small dodgeballs | **11 usable balls, 6-inch** | Dodgeball / Protect Yo Problem | OWNER CONFIRMED usable |
 | Kickball set | Exact contents not restated | Kickball | OWNER REPORTED — check bases and ball separately |
-| Limbo set | Exact contents not restated | Limbo | OWNER REPORTED — check bar, supports and stability |
-| Granny pants | **4 pairs** | Granny Pants relay | OWNER REPORTED — check sizes and condition |
+| Limbo set | **1 set, short height** | Optional limbo | OWNER INSPECTED — may not suit adults; keep as backup |
+| Granny pants | **4 adult-size pairs** | Granny Pants relay | OWNER COUNTED — avoid tearing |
+
+| Eight-legged race gear | **2 sets, four people per set** | Four-person linked race | OWNER COUNTED — inspect straps and practice walking before racing |
 
 ## Previously identified purchase gap
 
@@ -47,3 +49,6 @@ These are possible requirements only. Do not mark them owned without confirmatio
 - Separate safety-critical items from optional fun extras.
 - Keep the shopping list as a draft until the owner approves it.
 - Never describe an item as purchased or available based only on a proposed list.
+
+## Latest owner correction — October 15, 2026
+The counts above supersede older estimates. All games use the **same event-wide tie-breaker**; see `UNIVERSAL-TIEBREAKER.md`. Do not invent different game-specific sudden-death rules. For flag football, child-size equipment is conditional until checked for adult fit. The short limbo is backup only.
