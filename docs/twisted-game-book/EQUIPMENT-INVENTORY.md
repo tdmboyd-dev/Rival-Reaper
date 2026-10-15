@@ -63,3 +63,12 @@ The counts above supersede older estimates. All games use the **same event-wide 
 | Water balloons | **Arrived** | Exact count and whether filled not confirmed |
 
 These are physical deliveries confirmed by the owner, not merely Amazon order statuses. Games 6 and future games may use these items. Do not assume all five team colors are equally represented in the 100 balls.
+
+## Additional ball inventory clarification — October 15, 2026
+
+| Product | Count | Actual listed diameter | Status | Use |
+|---|---:|---|---|---|
+| CHENGU white mini balls | **80** | **25 mm (~1 inch)** | Owner says arrived today | Tabletop matching, target and precision games; too small to rely on for grass collection |
+| RWHXRWY multicolored table-tennis balls | **185** | **40 mm (~1.6 inches)** | Purchased; owner expects delivery tomorrow, not yet received | Color challenges after arrival; count red/pink/orange/blue/green separately |
+
+**Reconciliation warning:** Owner earlier confirmed a separate **100 small colorful balls** had arrived. Do not silently merge those 100 with the 80 white balls or 185 incoming balls. Total quantities are not interchangeable; verify packaging before assigning balls to a game.
