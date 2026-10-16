@@ -1,0 +1,21 @@
+# Original UNO canon, Game 13 parity, and Games 15–16 drafts
+
+## Original UNO invention — PRESERVE, DO NOT SIMPLIFY
+The owner invented an unnamed game using UNO cards. Do not rename without owner approval. Each participant has 13 face-down positions in 5/5/3 rows: 0,1,2,3,4,5,6,7,8,9,Draw Two,Draw Four,Wild. Dice determines first turn (highest first), then counterclockwise. Draw from middle, replace the matching face-down position, turn over displaced card, continue chaining until card cannot be used, then discard and next player's turn. All 13 positions must be flipped to win.
+- Skip placed on an opponent's unflipped position blocks that position until Reverse removes Skip; Skip on activated Draw Two/Draw Four disables that power, not necessarily their win condition.
+- Activated Draw Two or Draw Four drawn subsequently can flip back two or four of opponent's completed positions.
+- Duplicate cards can be stacked; three of a kind permit flipping one unfinished position, with two of the three returned to discard.
+- Three Wilds allow flipping back two completed positions for **every opponent**.
+- Two Draw Twos can temporarily replace Draw Four and can be exchanged for a real discarded Draw Four; a **real Draw Four is required to win**.
+- This is a seated, untimed cool-off game, not the field-day three-card UNO mini-challenge. Owner has not approved a public title. Remaining edge cases should be presented separately without changing these mechanics.
+
+## Game 13 — parity correction OWNER APPROVED
+Equal course length, number of required team-color balls, hop distance/count, number of tasks, cup/ball distance, and objective difficulty across five teams. Secret instruction order may differ, but difficulty may not. Preprint five balanced referee cards and a master answer sheet; one correction call per team at 20-second cost. Do not use the vague phrase 'complete the swinging ball challenge.' Proposed concrete tasks: chicken between knees around cone with three squeaks; bounce white balls into numbered cups totaling seven; dice-assigned ring/cup/stack finish. All teams must have the same dice result for the same round, or equivalently balanced tasks. If colorful balls have not arrived, use visibly marked equal-color substitutes.
+
+## Game 15 DRAFT — WHO STOLE THE KICK?!
+Five-team kickball-inspired territory chase. Equipment: 12 playground balls (pending), cones, kickball set, colored rings and timer. Each team appoints one kicker, two retrievers and one blocker (no contact). A neutral referee sets five equal lanes and one central target circle. Teams kick one ball each in synchronized turns, trying to land in one of three scoring zones: near = 1, middle = 2, far = 3. After each kick, opposing retrievers can earn a 1-point 'snatch' by retrieving the ball into their own collection ring before the kicker's teammate reaches the return cone. Rotate kickers/retrievers each round; five rounds, equal turns. Referee announces one of three prewritten twist rounds: DOUBLE DISTANCE (far zone 6), REVERSE TAX (near zone 3, far 1), or STEAL THE SHOW (retrieval snatch 2). Score totals decide places; universal bottle tiebreaker. No need to pretend the playground balls have arrived. Confirm ball size for actual kicking before playing.
+
+## Game 16 DRAFT — JACKPOT OR JACKASS
+Five rival players at one table; uses delivered metal jacks, delivered white mini balls, numbered cups, and ring-toss rings. Referee rolls one die to choose the challenge for ALL five: 1–2 one-jack catch, 3–4 three-jack catch, 5–6 five-jack catch. Each gets one attempt in dice-established order, with no touching other jacks. Success earns one point. Each player may then risk that point: take a second attempt at the next-harder level to double to 2, or fail and lose it. Three rounds with equal turns, team members rotate; rank teams by accumulated points and use universal bottle tiebreaker. This is a short challenge and must not be conflated with Game 11's Jack Yo Spot table or its Hustle Chip awards. The extra gamble is what differentiates it.
+
+STATUS: Game 13 parity correction approved; Game 15 and 16 are DRAFTS for owner review. Games 1–12 approvals unchanged; Game 14 is owner's unnamed original UNO invention, not a newly invented name.
