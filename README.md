@@ -57,3 +57,8 @@ BELT 2 ASS (purple) is the sixth competing team. `npm start` uses the six-team l
 The approved original roster templates are bundled and mapped automatically; no coordinate entry is required for them. Completed-team PNGs preserve names and surrounding art. Corrected blue/green standalone reveal badges are still awaiting owner approval; obsolete Blue Pressure/Loud Pack lettering is not installed under the current names.
 
 Current integration evidence and remaining acceptance are in [the six-team wave record](evidence/SIX-TEAM-2026-09-30.md). Do not substitute historical browser checks for the final interactive run.
+
+
+## Ecosystem review — October 27, 2026
+
+Additive source-pinned ecosystem context: [human handoff](docs/ecosystem/HUMAN-HANDOFF.md). This review branch preserves the default-branch baseline and existing work orders. Domain runtime/production acceptance is separate.
