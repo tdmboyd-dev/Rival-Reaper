@@ -43,3 +43,38 @@ Read `AGENTS.md`, `PROJECT-READ-FIRST.md`, `docs/CONVERSATION-CANON.md`, `BuildL
 ## Latest local reliability checkpoint
 
 The bounded reliability wave fixed host command-ID API compatibility and a reproduced concurrent stale-lock recovery race. All 94 automated tests, typecheck, 75-test unit subset and 19-test HTTP integration subset pass. A complete fictional 47-player show executed 470 persisted commands and completed-state restart. See `evidence/RELIABILITY-2026-09-30.md` for defined acceptance denominators, evidence and limits. Artwork bytes remain unchanged. An interrupted ownership-acquisition guard is retained for operator inspection rather than automatically erased.
+
+
+## Shared API/MCP connector resume update — 2026-11-08
+
+Documentation-only integration plan. Source baseline: `6764f52e701ec0dbe87ac0bbdb43f81ac8c4eb09`. Review branch: `docs/mgr-connector-handoff-2026-11-08`. Existing content above is preserved. This update does not deploy, enable a connector, change credentials or certify live connectivity.
+
+### Verified inspection and existing ownership
+
+`src/rival-reaper/server.ts` already provides /api/state and /api/events plus host-token-protected /api/host/state, /api/host/audit and draw/reveal commands. It preserves encrypted session state, command fingerprints and expectedRevision checks. The locked-fate and private-host/public-arena boundaries must survive any connector.
+
+### Work on this application's side
+
+1. Prefer read-only event/session health and redacted public projection for the first connector. Keep private roster and host controls behind the existing authorization boundary.
+2. Bind service access to an exact event/session and return the current sessionId/revision with each response. Do not confuse a new event's reset revision with an existing event replay.
+3. If host execution is later authorized, retain commandId, exact fingerprint, expectedRevision, persistence lock and immutable fate receipts. Reconnect/retry must resume the same fate, never redraw.
+4. Do not expose raw host tokens, encrypted-store secrets or unrestricted roster exports through tools. Preserve event host approval for consequential draw/reveal changes.
+
+### Work on the shared MGR-API-MCP side
+
+1. Add only allowlisted projection/status calls first, bounded event streaming/reconnect if required. No generic host-route proxy.
+2. For a future command tool map approval to session and exact command payload, and reconcile uncertain responses using audit/state before retry. Arena reads must never grant host rights.
+
+Use one versioned capability contract: capability ID/schema version, authenticated actor/tenant/resource scope, request/trace ID, bounded deadline, typed domain payload and authoritative result/evidence. Mutation lanes additionally need exact approval where required, stable idempotency key plus canonical input digest, and status/readback before retrying an unknown outcome. Capability discovery is not permission. Endpoint/secret configuration is operator-controlled, never an arbitrary caller-supplied proxy destination.
+
+### Next acceptance gate and limits
+
+Use synthetic rosters to test wrong event/token, stale revision, identical replay, changed-payload replay, crash/reopen and slow event consumers. Verify no premature private-name/reveal leakage and no silent reroll. Physical-event/owner acceptance stays separate.
+
+This pass inspected committed source/documents and checks preservation/readback of the documentation change only. It did not execute product tests, contact live domain services, deploy, or promote any existing completion-ledger status. At resume, reconcile fresh HEAD, active implementation branches and local work before coding; preserve unrelated concurrent changes. Historical proofs remain valid only for their recorded source/runtime scope. Readiness must distinguish source implementation, local test, real integration and live/owner acceptance.
+
+### Source pointers at the inspected baseline
+
+- [WORK-STATE.md](https://github.com/tdmboyd-dev/Rival-Reaper/blob/6764f52e701ec0dbe87ac0bbdb43f81ac8c4eb09/WORK-STATE.md)
+- [src/rival-reaper/server.ts](https://github.com/tdmboyd-dev/Rival-Reaper/blob/6764f52e701ec0dbe87ac0bbdb43f81ac8c4eb09/src/rival-reaper/server.ts)
+- [PROJECT-READ-FIRST.md](https://github.com/tdmboyd-dev/Rival-Reaper/blob/6764f52e701ec0dbe87ac0bbdb43f81ac8c4eb09/PROJECT-READ-FIRST.md)
